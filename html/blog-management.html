@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Management - MPalomares Digital Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <script src="../assets/js/auth.js"></script>
+    <style>
+        .auth-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+        }
+
+        .login-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-form h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .auth-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .auth-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+
+        .auth-form input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .auth-submit-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .auth-submit-btn:hover {
+            background-color: #1976D2;
+        }
+
+        .password-input-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #666;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .toggle-password:hover {
+            color: #333;
+        }
+
+        .auth-links {
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        .auth-links a {
+            color: #2196F3;
+            text-decoration: none;
+            margin: 0 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .auth-links a:hover {
+            text-decoration: underline;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .remember-me input[type="checkbox"] {
+            width: auto;
+            margin-right: 0.5rem;
+        }
+
+        .form-group .password-input-container input {
+            padding-right: 40px;
+        }
+
+        .blog-management-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .auth-section {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+        .content-section {
+            height: calc(100vh - 200px);
+            overflow-y: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .auth-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+        .auth-modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .auth-form-container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 400px;
+            width: 90%;
+        }
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            z-index: 1001;
+            display: none;
+        }
+        .notification.success {
+            background: #4CAF50;
+            color: white;
+        }
+        .notification.error {
+            background: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="auth-container" class="auth-container">
+        <div class="login-form" id="login-section">
+            <h2>Admin Login</h2>
+            <form id="login-form" class="auth-form">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" name="email" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <div class="password-input-container">
+                        <input type="password" id="login-password" name="password" required placeholder="Enter your password">
+                        <button type="button" class="toggle-password" onclick="togglePasswordVisibility('login-password')">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group remember-me">
+                    <label>
+                        <input type="checkbox" name="remember-me"> Remember me
+                    </label>
+                </div>
+                <button type="submit" class="auth-submit-btn">Sign In</button>
+                <div class="auth-links">
+                    <a href="#" onclick="showRegistrationForm()">Create new account</a>
+                    <a href="#" onclick="showForgotPasswordForm()">Forgot password?</a>
+                </div>
+            </form>
+        </div>
+
+        <div class="login-form" id="register-section" style="display: none;">
+            <h2>Create Admin Account</h2>
+            <form id="register-form" class="auth-form">
+                <div class="form-group">
+                    <label for="register-name">Full Name</label>
+                    <input type="text" id="register-name" name="name" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="register-email">Email</label>
+                    <input type="email" id="register-email" name="email" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Password</label>
+                    <div class="password-input-container">
+                        <input type="password" id="register-password" name="password" required placeholder="Enter your password">
+                        <button type="button" class="toggle-password" onclick="togglePasswordVisibility('register-password')">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="register-confirm-password">Confirm Password</label>
+                    <div class="password-input-container">
+                        <input type="password" id="register-confirm-password" name="confirm-password" required placeholder="Confirm your password">
+                        <button type="button" class="toggle-password" onclick="togglePasswordVisibility('register-confirm-password')">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <button type="submit" class="auth-submit-btn">Create Account</button>
+                <div class="auth-links">
+                    <a href="#" onclick="showLoginForm()">Already have an account? Sign in</a>
+                    <a href="#" onclick="localStorage.clear(); location.reload();">Clear Storage & Reset</a>
+                </div>
+            </form>
+        </div>
+
+        <div class="login-form" id="forgot-password-section" style="display: none;">
+            <h2>Reset Password</h2>
+            <form id="forgot-password-form" class="auth-form">
+                <div class="form-group">
+                    <label for="reset-email">Email</label>
+                    <input type="email" id="reset-email" name="email" required placeholder="Enter your email">
+                </div>
+                <button type="submit" class="auth-submit-btn">Reset Password</button>
+                <div class="auth-links">
+                    <a href="#" onclick="showLoginForm()">Back to login</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="admin-panel" id="admin-panel" style="display: none;">
+        <div class="auth-section">
+            <div class="user-info" style="display: none;">
+                Welcome, <span class="user-name"></span>!
+                <button class="logout-btn">Logout</button>
+            </div>
+            <button class="login-btn" style="display: none;">Login</button>
+        </div>
+
+        <div class="content-section">
+            <div class="blog-stats">
+                <h2>Blog Statistics</h2>
+                <div id="stats-container"></div>
+            </div>
+
+            <div class="blog-posts">
+                <h2>Manage Posts</h2>
+                <button id="create-post-btn" style="display: none;">Create New Post</button>
+                <div id="posts-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div class="auth-modal">
+        <!-- Modal content will be dynamically inserted here -->
+    </div>
+
+    <!-- Notification -->
+    <div class="notification"></div>
+
+    <script src="../assets/js/blog-admin.js" type="text/javascript"></script>
+<script>
+    // Initialize authentication
+    const authManager = new AuthManager();
+    const blogAdmin = new BlogAdminManager(authManager);
+
+    // Update UI based on authentication state
+    function updateUI() {
+        const authContainer = document.getElementById('auth-container');
+        const adminPanel = document.getElementById('admin-panel');
+
+        if (authManager.isAuthenticated) {
+            authContainer.style.display = 'none';
+            adminPanel.style.display = 'block';
+        } else {
+            authContainer.style.display = 'block';
+            adminPanel.style.display = 'none';
+        }
+    }
+
+    // Toggle password visibility
+    function togglePasswordVisibility(inputId) {
+        const input = document.getElementById(inputId);
+        const icon = input.parentElement.querySelector('.fa-eye, .fa-eye-slash');
+        
+        if (input.type === 'password') {
+            input.type = 'text';
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash');
+        } else {
+            input.type = 'password';
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
+        }
+    }
+
+    // Show/hide form sections
+    function showLoginForm() {
+        document.getElementById('login-section').style.display = 'block';
+        document.getElementById('register-section').style.display = 'none';
+        document.getElementById('forgot-password-section').style.display = 'none';
+    }
+
+    function showRegistrationForm() {
+        document.getElementById('login-section').style.display = 'none';
+        document.getElementById('register-section').style.display = 'block';
+        document.getElementById('forgot-password-section').style.display = 'none';
+    }
+
+    function showForgotPasswordForm() {
+        document.getElementById('login-section').style.display = 'none';
+        document.getElementById('register-section').style.display = 'none';
+        document.getElementById('forgot-password-section').style.display = 'block';
+    }
+
+    // Initial UI update
+    updateUI();
+
+    // Listen for authentication changes
+    document.addEventListener('authStateChanged', updateUI);
+
+    // Form submission handlers
+    document.getElementById('register-form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const password = document.getElementById('register-password').value;
+        const confirmPassword = document.getElementById('register-confirm-password').value;
+
+        if (password !== confirmPassword) {
+            const notification = document.createElement('div');
+            notification.className = 'notification error';
+            notification.textContent = 'Passwords do not match!';
+            document.body.appendChild(notification);
+            setTimeout(() => notification.remove(), 3000);
+            return;
+        }
+
+        // Clear localStorage before first registration attempt
+        const users = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+        if (users.length === 0) {
+            localStorage.clear();
+        }
+
+        // Handle registration through AuthManager
+        try {
+            await authManager.handleRegistration(e.target);
+            // Form will be reset and UI will be updated by AuthManager if registration is successful
+            location.reload(); // Ensure clean state after registration
+        } catch (error) {
+            const notification = document.createElement('div');
+            notification.className = 'notification error';
+            notification.textContent = error.message || 'Registration failed. Please try again.';
+            document.body.appendChild(notification);
+            setTimeout(() => notification.remove(), 3000);
+        }
+    });
+
+    document.getElementById('forgot-password-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Handle password reset through AuthManager
+        authManager.handlePasswordReset(e.target);
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MP Digital - Build Campaigns</title>
+    <meta name="description" content="Custom digital marketing campaigns to help your business grow online">
+    <meta name="keywords" content="digital marketing, campaign building, advertising, search engine marketing, social media campaigns, lead generation">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --astral: #d4d6d9;
+            --chilean-fire: #336d9d;
+            --jaffa: #fb6b04;
+            --jaffa-light: #f28a30;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .header-logo {
+            height: 50px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .header-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .hero-logo {
+            width: 200px;
+            height: auto;
+            margin-bottom: 30px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .guide-title {
+            color: white;
+            font-size: 2.2rem;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav ul li a i {
+            font-size: 1.1em;
+            color: var(--jaffa);
+        }
+        
+        nav ul li a:hover, 
+        nav ul li a.active {
+            color: var(--jaffa);
+        }
+        
+        /* Hero section */
+        .hero {
+            background: linear-gradient(135deg, var(--chilean-fire) 0%, var(--jaffa) 50%, var(--jaffa-light) 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--jaffa);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--jaffa-light);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(251, 107, 4, 0.3);
+        }
+        
+        /* Campaign sections */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--chilean-fire);
+            position: relative;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--jaffa);
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Campaign cards */
+        .campaign-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .campaign-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .campaign-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .campaign-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .campaign-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .campaign-card:hover .campaign-image img {
+            transform: scale(1.05);
+        }
+        
+        .campaign-content {
+            padding: 25px;
+        }
+        
+        .campaign-content h3 {
+            margin-bottom: 15px;
+            color: var(--chilean-fire);
+        }
+        
+        .campaign-content p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        /* Results section */
+        .results {
+            background-color: var(--astral);
+            text-align: center;
+        }
+        
+        .results-image {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .results-image img {
+            width: 100%;
+            height: auto;
+        }
+        
+        /* CTA section */
+        .cta {
+            background: linear-gradient(135deg, var(--jaffa), var(--jaffa-light));
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.2rem;
+        }
+        
+        .cta .btn {
+            background-color: white;
+            color: var(--jaffa);
+        }
+        
+        .cta .btn:hover {
+            background-color: var(--chilean-fire);
+            color: white;
+            box-shadow: 0 5px 15px rgba(51, 109, 157, 0.4);
+        }
+        
+        /* Footer styles */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            color: var(--jaffa);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column p, .footer-column address {
+            color: #bbb;
+            font-style: normal;
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+            width: 40px;
+            background-color: #444;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--jaffa);
+        }
+        
+        .social-links svg {
+            fill: white;
+            height: 20px;
+            width: 20px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive styles */
+        @media screen and (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .campaign-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header section with navigation -->
+    <header>
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="../assets/images/Logo.svg" alt="Logo" width="100" height="auto">
+            </a>
+        </div>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html">
+                    
+                </a>
+                <nav>
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
+                <li><a href="portfolio.html"><i class="fas fa-briefcase"></i>Portfolio</a></li>
+                <li><a href="services.html"><i class="fas fa-cogs"></i>Services</a></li>
+                <li><a href="blog.html"><i class="fas fa-blog"></i>Blog</a></li>
+                <li><a href="google-ads-bid-calculator.html"><i class="fas fa-calculator"></i>ROI Calculator</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
+            </ul>
+        </nav>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero section -->
+    <section class="hero">
+        <div class="container">
+            <h1>MPDIGITAL SOLUTIONS</h1>
+            <h2 class="guide-title">GOOGLE ADS SEARCH CAMPAIGN SET-UP GUIDE</h2>
+            <p>Best practices and step-by-step instructions for setting up effective Google Ads Search Campaigns</p>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>BEST PRACTICES FOR SETTING UP GOOGLE ADS SEARCH CAMPAIGNS</h2>
+            </div>
+    
+            <div class="best-practices">
+                <div class="practice-item">
+                    <h3>Campaign Structure Best Practices</h3>
+                    <img src="../assets/images/Search ad/structure.png" alt="Google Ads Campaign Structure" class="practice-image" style="width: 100%; max-width: 800px; height: auto; margin: 20px 0; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    <ul>
+                        <li>Campaigns targeting top level products or services</li>
+                        <li>Ad Groups that only have 1 x Keyword theme in each ad group</li>
+                        <li>Each Ad Group having targeting Ad Copies that sent users to the most relevant product or service page</li>
+                    </ul>
+                </div>
+            </div>
+    
+            <div class="setup-steps">
+            <h2 style="color: white;">GOOGLE ADS SEARCH CAMPAIGN SET-UP GUIDE</h2>
+                
+                <div class="step">
+                    <h4>1. Select New Campaign</h4>
+                    <img src="../assets/images/Search ad/1.png" alt="New Campaign Creation" class="step-image">
+                    <p>Begin your campaign setup process</p>
+                    <a href="contact.html" class="btn step-btn">Get Setup Help</a>
+                </div>
+    
+                <div class="step">
+                    <h4>2. Select Sales or Leads</h4>
+                    <img src="../assets/images/Search ad/2.png" alt="Select Campaign Goal" class="step-image">
+                    <p>Choose your primary campaign objective</p>
+                    <a href="contact.html" class="btn step-btn">Goal Setting Help</a>
+                </div>
+    
+                <div class="step">
+                    <h4>3. Choose Conversion Actions</h4>
+                    <img src="../assets/images/Search ad/3.png" alt="Conversion Actions" class="step-image">
+                    <p>Select which conversion actions you want Google to target</p>
+                    <a href="contact.html" class="btn step-btn">Conversion Setup</a>
+                </div>
+    
+                <div class="step">
+                    <h4>4. Select Campaign Type</h4>
+                    <img src="../assets/images/Search ad/4.png" alt="Campaign Type" class="step-image">
+                    <p>Select "Search" as the campaign type and set up conversion tracking</p>
+                    <a href="contact.html" class="btn step-btn">Campaign Type Guide</a>
+                </div>
+    
+                <div class="step">
+                    <h4>5. Campaign Settings</h4>
+                    <img src="../assets/images/Search ad/5.png" alt="Campaign Settings" class="step-image">
+                    <p>Set locations, language & schedule. Tip: Unselect 'Search Network' & 'Display Network'</p>
+                    <a href="contact.html" class="btn step-btn">Settings Review</a>
+                </div>
+    
+                <div class="step">
+                    <h4>6. Budget and Bidding</h4>
+                    <img src="../assets/images/Search ad/6.png" alt="Budget Settings" class="step-image">
+                    <p>Add Daily Budget & Select Bidding to target by 'Maximise Conversions' or 'Maximise Clicks'</p>
+                    <a href="contact.html" class="btn step-btn">Budget Strategy</a>
+                </div>
+    
+                <div class="step">
+                    <h4>7. Audience Targeting</h4>
+                    <img src="../assets/images/Search ad/7.png" alt="Audience Targeting" class="step-image">
+                    <p>Add targeting via Audiences & keep this set in the 'observation' method</p>
+                    <a href="contact.html" class="btn step-btn">Audience Setup</a>
+                </div>
+    
+                <div class="step">
+                    <h4>8. Keywords Setup</h4>
+                    <img src="../assets/images/Search ad/8.png" alt="Keyword Setup" class="step-image">
+                    <p>Add your keywords, remembering to only have 1 keyword theme per ad group</p>
+                    <a href="contact.html" class="btn step-btn">Keyword Strategy</a>
+                </div>
+    
+                <div class="step">
+                    <h4>9. Create Your Ads</h4>
+                    <img src="../assets/images/Search ad/9.png" alt="Ad Creation" class="step-image">
+                    <p>Create ads using Headlines & Descriptions with Emotional Triggers & Call to Actions</p>
+                    <a href="contact.html" class="btn step-btn">Ad Creation Help</a>
+                </div>
+            </div>
+    
+            <style>
+                .hero {
+                    text-align: center;
+                    padding: 60px 0;
+                }
+    
+                .hero h1 {
+                    color: var(--chilean-fire);
+                    font-size: 2.5em;
+                    margin-bottom: 20px;
+                }
+    
+                .hero h2 {
+                    color: var(--jaffa);
+                    font-size: 2em;
+                    margin-bottom: 15px;
+                }
+    
+                .best-practices {
+                    background: white;
+                    padding: 30px;
+                    border-radius: 10px;
+                    margin-bottom: 40px;
+                    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                }
+    
+                .practice-item ul {
+                    list-style-type: none;
+                    padding-left: 20px;
+                }
+    
+                .practice-item ul li {
+                    margin: 10px 0;
+                    position: relative;
+                    padding-left: 25px;
+                }
+    
+                .practice-item ul li:before {
+                    content: "→";
+                    position: absolute;
+                    left: 0;
+                    color: var(--jaffa);
+                }
+    
+                .setup-steps {
+                    margin-top: 40px;
+                }
+    
+                .step {
+            background: white;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--chilean-fire), var(--jaffa));
+            transform: scaleX(0);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .step::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(251, 107, 4, 0.05) 0%, transparent 70%);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+        }
+    
+                .step:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .step:hover::before {
+            transform: scaleX(1);
+        }
+
+        .step:hover::after {
+            width: 300px;
+            height: 300px;
+        }
+    
+                .step-image {
+                    width: 100%;
+                    max-width: 800px;
+                    height: auto;
+                    margin: 20px 0;
+                    border-radius: 8px;
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                }
+    
+                .step-btn {
+                    display: inline-block;
+                    margin-top: 15px;
+                    background-color: var(--jaffa);
+                    color: white;
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    text-decoration: none;
+                    transition: all 0.3s;
+                }
+    
+                .step-btn:hover {
+                    background-color: var(--chilean-fire);
+                    transform: translateY(-2px);
+                }
+            </style>
+        </div>
+    </section>
+    
+    <!-- Results section -->
+    <section class="section results">
+        <div class="container">
+            <div class="section-title">
+                <h2>Real Campaign Results</h2>
+                <p>Our campaigns have delivered measurable growth and tangible ROI for businesses across various industries.</p>
+            </div>
+            
+            <div class="results-image">
+                <img src="../assets/images/Real-Campaign.png" alt="Campaign Results Dashboard" style="width: 100%; max-width: 800px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Call to action section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Build Your Next Successful Campaign?</h2>
+            <p>Let's work together to create a targeted marketing strategy that helps your business reach its full potential.</p>
+            <a href="contact.html" class="btn">Get Started Today</a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+    <div class="footer-logo">
+        <a href="index.html">
+            <img src="../assets/images/Logo.svg" alt="Logo" width="200" height="auto" style="margin-bottom: 20px;">
+        </a>
+    </div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About MP Digital</h3>
+                    <p>We provide comprehensive digital marketing solutions to help businesses grow their online presence and reach their target audience effectively.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <address>
+                        <p>Email: mpalomaresdigitalsolutions@gmail.com</p>
+                       <p>San Pedro Laguna Philippines</p>
+                    </address>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/marlon.palomares.2024/" target="_blank" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                                <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/mpdigital/" target="_blank" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/palomares523/" target="_blank" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/mpalomaresdigitalsolutions" target="_blank" aria-label="GitHub">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+                                <path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 MP Digital Solutions. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Management - MPalomares Digital Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <style>
+        .admin-panel {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .stat-card {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-table th, .post-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        .action-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            margin-right: 0.5rem;
+        }
+        .edit-btn { background: #4CAF50; color: white; }
+        .delete-btn { background: #f44336; color: white; }
+        .create-btn {
+            background: #2196F3;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 1rem;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+        }
+        .modal.active { display: flex; }
+        .modal-content {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 800px;
+            margin: auto;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-panel">
+        <h1>Blog Management</h1>
+        
+        <div class="stats-grid" id="stats-grid">
+            <!-- Stats will be dynamically inserted here -->
+        </div>
+
+        <button class="create-btn" onclick="showCreateModal()">
+            <i class="fas fa-plus"></i> Create New Post
+        </button>
+
+        <div class="tab-navigation">
+            <button class="nav-tab active" onclick="showTab('posts')">All Posts</button>
+            <button class="nav-tab" onclick="showTab('published')">Published</button>
+            <button class="nav-tab" onclick="showTab('drafts')">Drafts</button>
+        </div>
+
+        <div id="posts" class="tab-content active">
+            <div id="all-posts-table"></div>
+        </div>
+
+        <div id="published" class="tab-content">
+            <div id="published-posts-table"></div>
+        </div>
+
+        <div id="drafts" class="tab-content">
+            <div id="draft-posts-table"></div>
+        </div>
+    </div>
+
+    <!-- Post Modal -->
+    <div id="post-modal" class="modal">
+        <div class="modal-content">
+            <h2 id="modal-title">Create New Post</h2>
+            <form id="post-form">
+                <div class="form-group">
+                    <label for="post-title">Title</label>
+                    <input type="text" id="post-title" required>
+                </div>
+                <div class="form-group">
+                    <label for="post-category">Category</label>
+                    <select id="post-category" required>
+                        <option value="Google Ads">Google Ads</option>
+                        <option value="PPC Strategy">PPC Strategy</option>
+                        <option value="Analytics">Analytics</option>
+                        <option value="Optimization">Optimization</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="post-excerpt">Excerpt</label>
+                    <textarea id="post-excerpt" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="post-content">Content</label>
+                    <div id="editor-toolbar">
+                        <button type="button" onclick="formatText('bold')"><i class="fas fa-bold"></i></button>
+                        <button type="button" onclick="formatText('italic')"><i class="fas fa-italic"></i></button>
+                        <button type="button" onclick="formatText('underline')"><i class="fas fa-underline"></i></button>
+                        <button type="button" onclick="formatText('insertUnorderedList')"><i class="fas fa-list-ul"></i></button>
+                        <button type="button" onclick="formatText('insertOrderedList')"><i class="fas fa-list-ol"></i></button>
+                        <button type="button" onclick="formatText('createLink', prompt('Enter URL:'))"><i class="fas fa-link"></i></button>
+                    </div>
+                    <div id="post-content" contenteditable="true" style="border: 1px solid #ddd; min-height: 200px; padding: 1rem;"></div>
+                </div>
+                <div class="form-group">
+                    <label for="post-image">Featured Image URL</label>
+                    <input type="text" id="post-image">
+                </div>
+                <div class="form-group">
+                    <label for="post-tags">Tags (comma-separated)</label>
+                    <input type="text" id="post-tags">
+                </div>
+                <div class="form-group">
+                    <label for="post-meta-description">Meta Description</label>
+                    <textarea id="post-meta-description" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="post-meta-keywords">Meta Keywords</label>
+                    <input type="text" id="post-meta-keywords">
+                </div>
+                <div class="form-group">
+                    <label for="post-status">Status</label>
+                    <select id="post-status" required>
+                        <option value="draft">Draft</option>
+                        <option value="published">Published</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="post-author">Author</label>
+                    <input type="text" id="post-author" value="Marlon Palomares" required>
+                </div>
+                <button type="submit" class="create-btn">Save Post</button>
+                <button type="button" class="action-btn" onclick="closeModal()">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../assets/js/blog-admin.js" type="text/javascript"></script>
+</body>
+</html>

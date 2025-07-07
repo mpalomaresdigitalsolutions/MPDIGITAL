@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact - MPalomares Digital Solutions</title>
+
+  <!-- Resource Hints -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preload" as="script" href="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+  <meta name="description" content="Contact Mpalomares Digital Solutions for expert digital marketing strategies and services. Get in touch today!">
+  <meta name="keywords" content="Contact, Digital Marketing, Web Development, SEO, Google Ads">
+
+  <!-- Schema Markup for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Mpalomares Digital Solutions",
+    "url": "https://your-website-url.com",
+    
+    "sameAs": [
+      "https://www.facebook.com/marlon.palomares.2024/",
+      "https://www.linkedin.com/in/mpdigital/",
+      "https://www.instagram.com/palomares523/",
+      "https://github.com/mpalomaresdigitalsolutions"
+    ]
+  }
+  </script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-XXXXX" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Favicon -->
+  
+
+  <!-- EmailJS Library -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function(){
+      emailjs.init("7cldp91TueGi-giUu");
+    })();
+  </script>
+
+  <style>
+    /* Global Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      background: #f9f9f9;
+      line-height: 1.6;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    /* NAVIGATION */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 1rem 5%;
+      background: #fff;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-sizing: border-box;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      flex-wrap: nowrap;
+      overflow: visible;
+    }
+    .nav-links a {
+      padding: 0.5rem 1rem;
+      font-weight: 600;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      background: rgba(0,102,204,0.1);
+      color: #0066cc;
+    }
+    .mobile-toggle {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #0066cc;
+    }
+    /* HERO SECTION */
+    .hero-section {
+      height: 40vh;
+      background: linear-gradient(135deg, #0066cc, #004e9c);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin-top: 80px;
+    }
+    .hero-section::after {
+      content: "";
+      position: absolute;
+      top:0; left:0; right:0; bottom:0;
+      background: rgba(0,0,0,0.45);
+      z-index: 1;
+    }
+    .hero-section::before {
+      content: "";
+      position: absolute;
+      top: 20px; left: 20px; right: 20px; bottom: 20px;
+      border: 2px solid rgba(0,102,204,0.3);
+      border-radius: 10px;
+      pointer-events: none;
+      z-index: 2;
+      animation: pulse 3s infinite alternate;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 10px rgba(0,102,204,0.3); }
+      100% { box-shadow: 0 0 25px rgba(0,102,204,0.6); }
+    }
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      background: rgba(255,255,255,0.85);
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 800px;
+      border: 1px solid rgba(0,102,204,0.3);
+      backdrop-filter: blur(5px);
+    }
+    .hero-content h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+      color: #0066cc;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    }
+    .hero-content h1 a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .hero-content p {
+      font-size: 1.4rem;
+      margin-bottom: 2rem;
+      color: #333;
+    }
+    .highlight {
+      color: #ff6b00;
+      font-weight: 700;
+    }
+    /* CONTACT SECTION */
+    .contact-section {
+      padding: 4rem 5%;
+      background: #fff;
+      max-width: 800px;
+      margin: 3rem auto;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      border: 1px solid rgba(0,102,204,0.3);
+    }
+    .contact-section h2 {
+      color: #0066cc;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .contact-info, .contact-form-container {
+      margin-bottom: 2rem;
+    }
+    .contact-method {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      align-items: center;
+    }
+    .contact-method .contact-icon {
+      font-size: 1.8rem;
+      color: #0066cc;
+      width: 40px;
+      text-align: center;
+    }
+    .contact-method .contact-details h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #0066cc;
+    }
+    .contact-method .contact-details p {
+      margin: 0.2rem 0 0;
+      font-size: 1rem;
+    }
+    .social-links {
+      text-align: center;
+      margin-top: 1rem;
+    }
+    .social-links a {
+      margin: 0 0.5rem;
+      font-size: 1.2rem;
+      color: #0066cc;
+      transition: color 0.3s;
+    }
+    .social-links a:hover {
+      color: #ff6b00;
+    }
+    /* CONTACT FORM */
+    .contact-form {
+      width: 100%;
+    }
+    .form-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .form-group {
+      flex: 1;
+      min-width: 250px;
+      margin-bottom: 1.5rem;
+    }
+    .contact-form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    .contact-form-group input,
+    .contact-form-group textarea,
+    .contact-form-group select {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    .contact-form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    .contact-form .submit-btn {
+      background: #0066cc;
+      color: #fff;
+      padding: 0.8rem 2rem;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .contact-form .submit-btn:hover {
+      background: #0056b3;
+      transform: translateY(-3px);
+    }
+    .privacy-note {
+      font-size: 0.9rem;
+      margin-top: 1rem;
+      text-align: center;
+    }
+    .privacy-note a {
+      color: #0066cc;
+      text-decoration: underline;
+    }
+    .form-message {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      text-align: center;
+      display: none;
+    }
+    /* MAP SECTION */
+    .map-section {
+      height: 400px;
+      background: #e9e9e9;
+      position: relative;
+      margin: 2rem 0;
+    }
+    .map-section iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    /* CTA SECTION */
+    .cta-section {
+      background: linear-gradient(135deg, #0066cc, #004e9c);
+      padding: 4rem 5%;
+      text-align: center;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      margin-top: 4rem;
+    }
+    .cta-section::before {
+      content: "";
+      position: absolute;
+      top:0;
+      left:0;
+      width: 100%;
+      height: 100%;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="none" width="100" height="100"/><circle cx="50" cy="50" r="40" stroke="white" stroke-width="0.5" fill="none"/></svg>');
+      opacity: 0.1;
+      z-index: 1;
+    }
+    .cta-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .cta-section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .cta-section p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .cta-btn-primary {
+      background: #fff;
+      color: #0066cc;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .cta-btn-primary:hover {
+      background: #f0f0f0;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+    .cta-btn-secondary {
+      background: transparent;
+      color: #fff;
+      border: 2px solid #fff;
+    }
+    .cta-btn-secondary:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-3px);
+    }
+    /* FOOTER */
+    footer {
+      background: #222;
+      color: #fff;
+      padding: 3rem 5% 2rem;
+    }
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-about {
+      flex: 1;
+      min-width: 250px;
+    }
+    .footer-about img {
+      height: 50px;
+      margin-bottom: 1rem;
+    }
+    .footer-about p {
+      color: #bbb;
+      line-height: 1.6;
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+    }
+    .footer-links h3 {
+      color: #fff;
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+      position: relative;
+    }
+    .footer-links h3::after {
+      content: "";
+      display: block;
+      width: 40px;
+      height: 3px;
+      background: #0066cc;
+      margin-top: 0.8rem;
+    }
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+    .footer-links a {
+      color: #bbb;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .footer-links a:hover {
+      color: #0066cc;
+    }
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid #333;
+      color: #999;
+    }
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate {
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .form-row {
+        flex-direction: column;
+      }
+      .nav-links {
+        gap: 1rem;
+      }
+    }
+    @media (max-width: 550px) {
+      .mobile-toggle {
+        display: block;
+      }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #fff;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 70%;
+        height: 100vh;
+        padding: 4rem 2rem;
+        box-shadow: -4px 0 20px rgba(0,0,0,0.1);
+        z-index: 1001;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+    }
+  </style>
+  <script>
+    // Smooth scrolling for navigation links
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileToggle = document.getElementById('mobile-toggle');
+      const navLinks = document.getElementById('nav-links');
+      if (mobileToggle) {
+        mobileToggle.addEventListener('click', function () {
+          navLinks.classList.toggle('active');
+          mobileToggle.innerHTML = navLinks.classList.contains('active')
+            ? '<i class="fas fa-times"></i>'
+            : '<i class="fas fa-bars"></i>';
+        });
+      }
+      // Highlight current page in navigation
+      const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+      const navItems = document.querySelectorAll('.nav-links a');
+      navItems.forEach((item) => {
+        const href = item.getAttribute('href');
+        if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+      // Check screen size for mobile toggle
+      function checkScreenSize() {
+        if (window.innerWidth <= 550) {
+          document.getElementById('mobile-toggle').style.display = 'block';
+        } else {
+          document.getElementById('mobile-toggle').style.display = 'none';
+          navLinks.classList.remove('active');
+        }
+      }
+      checkScreenSize();
+      window.addEventListener('resize', checkScreenSize);
+
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href').substring(1);
+          const target = document.getElementById(targetId);
+          if (target) {
+            const headerHeight = document.querySelector('.navbar').offsetHeight;
+            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <!-- NAVIGATION -->
+  <nav class="navbar">
+    <div class="mobile-toggle" id="mobile-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html#home"><i class="fas fa-house-chimney"></i> <span>Home</span></a>
+      <a href="index.html#calculator"><i class="fas fa-calculator"></i> <span>ROI Calculator</span></a>
+      <a href="index.html#services"><i class="fas fa-rocket"></i> <span>Services</span></a>
+      <a href="index.html#blog"><i class="fas fa-pen-fancy"></i> <span>Blog</span></a>
+      <a href="contact.html" class="active"><i class="fas fa-envelope"></i> <span>Contact</span></a>
+      <a href="portfolio.html"><i class="fas fa-laptop-code"></i> <span>Portfolio</span></a>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1>
+        <a href="https://cal.com/marlon-palomares-c4cyjo/secret">
+          <i class="fas fa-paper-plane"></i> Let's Start a Conversation
+        </a>
+      </h1>
+      <p>We're excited to hear about your project and explore how we can help achieve your digital marketing goals.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="contact-section">
+    <div class="contact-info animate">
+      <h2 class="section-title">Get in Touch</h2>
+      
+      <div class="contact-method">
+        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <div class="contact-details">
+          <h3>Our Location</h3>
+          <p>Sitio Bayan bayanan Brgy. San Vicente<br>San Pedro, Laguna</p>
+        </div>
+      </div>
+      
+      <div class="contact-method">
+        <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+        <div class="contact-details">
+          <h3>Call Us</h3>
+          <p><a href="tel:+639913062370">09913062370</a><br>Mon - Fri, 9am - 5pm</p>
+        </div>
+      </div>
+      
+      <div class="contact-method">
+        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+        <div class="contact-details">
+          <h3>Email Us</h3>
+          <p><a href="mailto:mpalomaresdigitalsulotions@gmail.com">mpalomaresdigitalsulotions@gmail.com</a><br>We'll respond within 24 hours</p>
+        </div>
+      </div>
+      
+      <div class="social-links">
+        <a href="https://www.facebook.com/marlon.palomares.2024/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/palomares523/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://x.com/marlonpalo64854" target="_blank" aria-label="X"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.linkedin.com/in/mpdigital/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/mpalomaresdigitalsolutions" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+    
+    <div class="contact-form-container animate" style="animation-delay: 0.2s;">
+      <h2 class="section-title">Send a Message</h2>
+      <form class="contact-form" id="contactForm">
+        <div class="form-row">
+          <div class="form-group contact-form-group">
+            <label for="name"><i class="fas fa-user"></i> Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+            <span class="error-message">Please enter your name</span>
+          </div>
+          <div class="form-group contact-form-group">
+            <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+            <input type="email" id="email" name="email" placeholder="Your email" required>
+            <span class="error-message">Please enter a valid email</span>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group contact-form-group">
+            <label for="phone"><i class="fas fa-phone"></i> Phone (Optional)</label>
+            <input type="tel" id="phone" name="phone" placeholder="Your phone number">
+          </div>
+          <div class="form-group contact-form-group">
+            <label for="subject"><i class="fas fa-tag"></i> Subject</label>
+            <select id="subject" name="subject" required>
+              <option value="">Select a subject</option>
+              <option value="general">General Inquiry</option>
+              <option value="quote">Request a Quote</option>
+              <option value="support">Customer Support</option>
+              <option value="partnership">Partnership Opportunity</option>
+            </select>
+            <span class="error-message">Please select a subject</span>
+          </div>
+        </div>
+        
+        <div class="form-group contact-form-group">
+          <label for="message"><i class="fas fa-comment-alt"></i> Your Message</label>
+          <textarea id="message" name="message" placeholder="Type your message here..." required></textarea>
+          <span class="error-message">Please enter your message</span>
+        </div>
+        
+        <div class="form-footer">
+          <p class="privacy-note">Your information is protected by our <a href="privacy-policy.html">Privacy Policy</a> and <a href="terms-and-conditions.html">Terms & Conditions</a>.</p>
+          <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+        </div>
+      </form>
+      <div class="form-message" id="form-message"></div>
+    </div>
+  </section>
+
+  <!-- MAP SECTION -->
+  <section class="map-section">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3866.982539165412!2d121.04901237493018!3d14.256833685615347!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397d82b1f612fdb%3A0x424edeee92cfacd2!2sBrgy.%20San%20Vicente%2C%20San%20Pedro%2C%20Laguna!5e0!3m2!1sen!2sph!4v1709818493911!5m2!1sen!2sph" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2>Need Immediate Assistance?</h2>
+      <p>Schedule a free 30-minute consultation call with one of our digital marketing experts</p>
+      <div class="cta-buttons">
+        <a href="https://cal.com/marlon-palomares-c4cyjo/secret" class="cta-btn cta-btn-primary"><i class="fas fa-calendar-alt"></i> Schedule a Call</a>
+        <a href="https://cal.com/marlon-palomares-c4cyjo/secret" class="cta-btn cta-btn-secondary"><i class="fas fa-file-pdf"></i> Download Our Brochure</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-about">
+        <a href="index.html">
+          
+        </a>
+        <p>We help businesses optimize their digital presence with cutting-edge marketing strategies that drive results and maximize ROI.</p>
+      </div>
+      <div class="footer-links">
+        <div>
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#calculator">ROI Calculator</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#blog">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Services</h3>
+          <ul>
+            <li><a href="index.html#services">Digital Marketing</a></li>
+            <li><a href="index.html#services">Web Development</a></li>
+            <li><a href="index.html#services">SEO Optimization</a></li>
+            <li><a href="index.html#services">Content Creation</a></li>
+            <li><a href="index.html#services">Social Media</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Mpalomares Digital Solutions. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- EmailJS Script Integration -->
+  <script src="emailjs.js"></script>
+  <script>
+    // EmailJS Contact Form Submission
+    document.addEventListener('DOMContentLoaded', function() {
+      const contactForm = document.getElementById('contactForm');
+      const formMessage = document.getElementById('form-message');
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          emailjs.sendForm('service_menami7', 'template_l1tl3wg', this)
+            .then(function(response) {
+              formMessage.style.display = 'block';
+              formMessage.style.color = 'green';
+              formMessage.textContent = 'Message sent successfully!';
+              contactForm.reset();
+            }, function(error) {
+              formMessage.style.display = 'block';
+              formMessage.style.color = 'red';
+              formMessage.textContent = 'Failed to send message. Please try again later.';
+            });
+        });
+      }
+    });
+  </script>
+</body>
+</html>

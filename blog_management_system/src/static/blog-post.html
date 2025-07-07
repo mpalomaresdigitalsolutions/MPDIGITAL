@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .navigation {
+            margin-bottom: 30px;
+        }
+        .nav-button {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        .nav-button:hover {
+            background-color: #0056b3;
+        }
+        .featured-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .post-title {
+            color: #333;
+            margin: 0 0 20px 0;
+            font-size: 2.5em;
+            line-height: 1.2;
+        }
+        .post-meta {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 0.9em;
+        }
+        .post-meta span {
+            margin-right: 20px;
+        }
+        .post-content {
+            color: #444;
+            font-size: 1.1em;
+            margin-bottom: 40px;
+        }
+        .post-tags {
+            margin-top: 30px;
+        }
+        .tag {
+            display: inline-block;
+            padding: 4px 8px;
+            background-color: #e9ecef;
+            color: #666;
+            border-radius: 4px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navigation">
+            <a href="/blog" class="nav-button">← Back to Blog</a>
+        </div>
+
+        <article id="post-content">
+            <!-- Post content will be dynamically added here -->
+        </article>
+    </div>
+
+    <script>
+        // Function to format date
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString(undefined, options);
+        }
+
+        // Function to create post HTML
+        function createPostHTML(post) {
+            // Parse tags if they're stored as a JSON string
+            const tags = typeof post.tags === 'string' ? JSON.parse(post.tags) : (Array.isArray(post.tags) ? post.tags : []);
+            
+            return `
+                <div class="post-header">
+                    <h1>${post.title}</h1>
+                    <div class="post-meta">
+                        <span class="date">${new Date(post.created_at).toLocaleDateString()}</span>
+                        ${post.author ? `<span class="author">By ${post.author}</span>` : ''}
+                    </div>
+                </div>
+                <div class="post-content">
+                    ${post.content}
+                </div>
+                ${tags && tags.length > 0 ? `
+                <div class="post-tags">
+                    ${tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                </div>
+                ` : ''}
+            `;
+        }
+
+        // Function to fetch and display post
+        async function fetchPost() {
+            try {
+                const postId = window.location.pathname.split('/').pop();
+                const response = await fetch(`/api/posts/${postId}`);
+                const post = await response.json();
+                
+                document.title = `${post.title} - Blog Post`;
+                document.getElementById('post-content').innerHTML = createPostHTML(post);
+            } catch (error) {
+                console.error('Error fetching post:', error);
+                document.getElementById('post-content').innerHTML = '<p>Error loading post. Please try again later.</p>';
+            }
+        }
+
+        // Load post on page load
+        fetchPost();
+    </script>
+</body>
+</html>

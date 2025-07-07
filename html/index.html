@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="../assets/images/Logo.svg" type="image/svg+xml">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Expert Google Ads management and digital marketing solutions. Maximize your ROI with data-driven strategies and proven results.">
+    <meta name="keywords" content="Google Ads, PPC, Digital Marketing, ROI Calculator, Google Analytics, SEM">
+    <meta name="author" content="Marlon Palomares">
+    
+    <!-- Resource Hints for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://unpkg.com">
+    
+    <!-- Critical CSS - Inline for above-the-fold content -->
+    <style>
+        :root {
+            --primary-color: #0066cc;
+            --secondary-color: #004499;
+            --accent-color: #ff6b35;
+            --white: #ffffff;
+            --gray-800: #343a40;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-800);
+            background-color: var(--white);
+        }
+        
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e9ecef;
+            z-index: 1000;
+            height: 70px;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 120px 0 80px;
+            margin-top: 70px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--white);
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: var(--border-radius);
+            padding: 10px 0;
+            top: 100%; /* Position below the parent link */
+            left: 0;
+        }
+
+        .dropdown-content a {
+            color: var(--gray-700);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-links a i:not(.fa-caret-down) {
+            margin-right: 0.5rem;
+        }
+
+        .dropdown-content a i {
+            margin-right: 0.5rem;
+            width: 1.2em;
+            text-align: center;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--gray-100);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Mpalomares Digital Solutions - Google Ads Expert">
+    <meta property="og:description" content="Expert Google Ads management and digital marketing solutions. Maximize your ROI with data-driven strategies.">
+    <meta property="og:image" content="../assets/images/og-image.jpg">
+    <meta property="og:url" content="https://mpalomares.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mpalomares Digital Solutions - Google Ads Expert">
+    <meta name="twitter:description" content="Expert Google Ads management and digital marketing solutions.">
+    <meta name="twitter:image" content="../assets/images/twitter-card.jpg">
+    
+    <title>Mpalomares Digital Solutions - Google Ads Expert & ROI Calculator</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="../assets/css/enhanced-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="../assets/css/enhanced-styles.css"></noscript>
+    
+    <!-- Async load non-critical CSS -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"></noscript>
+    
+    <!-- Font Awesome - Load async -->
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+
+    <!-- Blog Display Script -->
+    <script src="../assets/js/blog-display.js" defer></script>
+</head>
+<body>
+    <!-- Reading Progress Bar -->
+    <div class="reading-progress" aria-hidden="true"></div>
+
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <a href="#home" class="logo" aria-label="Mpalomares Digital Home">
+                 <img src="../assets/images/Logo.svg" alt="Mpalomares Digital Logo" style="width: 200px; height: auto; transition: transform 0.3s ease; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1)); transform-origin: left center;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+              </a>
+            
+            <ul class="nav-links" role="navigation">
+                <li><a href="#home" class="active"><i class="fas fa-home"></i> Home</a></li>
+                <li class="dropdown">
+                    <a href="./portfolio.html"><i class="fas fa-briefcase"></i> Portfolio <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="./Search_Ads.html"><i class="fas fa-search"></i> Search Campaign Sample</a>
+                        <a href="./pmax.html"><i class="fas fa-chart-line"></i> Pmax</a>
+                    </div>
+                </li>
+                <li><a href="#services"><i class="fas fa-cogs"></i> Services</a></li>
+                <li><a href="#blog"><i class="fas fa-blog"></i> Blog</a></li>
+                <li class="dropdown">
+                    <a href="#calculator"><i class="fas fa-calculator"></i> ROI Calculator <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="./google-ads-bid-calculator.html"><i class="fas fa-calculator"></i> Google Ads Calculator</a>
+                    </div>
+                </li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+            
+            <button class="mobile-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text" data-aos="fade-right">
+                <h1>Maximize Your <span class="highlight">Google Ads ROI</span> with Expert Management</h1>
+                <p>Transform your digital marketing with data-driven strategies, advanced analytics, and proven results. Get more leads, sales, and revenue from your Google Ads campaigns.</p>
+                <div class="hero-cta">
+                    <a href="#calculator" class="btn btn-primary">
+                        <i class="fas fa-calculator" aria-hidden="true"></i>
+                        Calculate Your ROI
+                    </a>
+                    <a href="#contact" class="btn btn-outline">
+                        <i class="fas fa-comments" aria-hidden="true"></i>
+                        Free Consultation
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-visual" data-aos="fade-left">
+                <div class="hero-card">
+                    <h3>Average Client Results</h3>
+                    <span class="metric">340%</span>
+                    <p>ROI Increase</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI Calculator Section -->
+    <section id="calculator" class="roi-calculator">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Google Ads ROI Calculator</h2>
+                <p>Calculate your potential return on investment and discover how much revenue your Google Ads campaigns could generate based on proven industry metrics.</p>
+            </div>
+            
+            <div class="calculator-container" data-aos="fade-up" data-aos-delay="200">
+                <div class="calculator-header">
+                    <h3><i class="fas fa-calculator" aria-hidden="true"></i> Calculate Your Google Ads ROI</h3>
+                    <p>Enter your campaign details to get accurate ROI projections</p>
+                </div>
+                
+                <div class="calculator-body">
+                    <form id="roi-calculator-form" class="calculator-form">
+                        <div class="form-group">
+                            <label for="monthly-budget">Monthly Ad Budget</label>
+                            <div class="input-group">
+                                <span class="input-prefix">$</span>
+                                <input type="number" id="monthly-budget" name="monthly-budget" placeholder="5000" min="100" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="avg-cpc">Average Cost Per Click</label>
+                            <div class="input-group">
+                                <span class="input-prefix">$</span>
+                                <input type="number" id="avg-cpc" name="avg-cpc" placeholder="2.50" step="0.01" min="0.01" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="conversion-rate">Conversion Rate (%)</label>
+                            <input type="number" id="conversion-rate" name="conversion-rate" placeholder="3.5" step="0.1" min="0.1" max="100" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="avg-order-value">Average Order Value</label>
+                            <div class="input-group">
+                                <span class="input-prefix">$</span>
+                                <input type="number" id="avg-order-value" name="avg-order-value" placeholder="150" min="1" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="profit-margin">Profit Margin (%)</label>
+                            <input type="number" id="profit-margin" name="profit-margin" placeholder="25" step="0.1" min="0.1" max="100" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="industry">Industry</label>
+                            <select id="industry" name="industry" required>
+                                <option value="">Select Industry</option>
+                                <option value="ecommerce">E-commerce</option>
+                                <option value="saas">SaaS/Software</option>
+                                <option value="healthcare">Healthcare</option>
+                                <option value="finance">Finance</option>
+                                <option value="real-estate">Real Estate</option>
+                                <option value="education">Education</option>
+                                <option value="automotive">Automotive</option>
+                                <option value="home-services">Home Services</option>
+                                <option value="legal">Legal Services</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="calculate-btn" id="calculate-roi-btn">
+                            <i class="fas fa-chart-line" aria-hidden="true"></i>
+                            Calculate ROI
+                        </button>
+                    </form>
+                    
+                    <div id="roi-results" class="roi-results">
+                        <div class="results-grid">
+                            <div class="result-card">
+                                <span class="metric-value" id="monthly-revenue">$0</span>
+                                <div class="metric-label">Monthly Revenue</div>
+                            </div>
+                            <div class="result-card">
+                                <span class="metric-value" id="monthly-profit">$0</span>
+                                <div class="metric-label">Monthly Profit</div>
+                            </div>
+                            <div class="result-card">
+                                <span class="metric-value" id="roi-percentage">0%</span>
+                                <div class="metric-label">ROI Percentage</div>
+                            </div>
+                            <div class="result-card">
+                                <span class="metric-value" id="break-even-days">0</span>
+                                <div class="metric-label">Break-even Days</div>
+                            </div>
+                        </div>
+                        
+                        <div class="results-actions">
+                            <a href="#contact" class="btn btn-primary">Get Professional Help</a>
+                            <button type="button" class="btn btn-outline" onclick="window.print()">Print Results</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Our Services</h2>
+                <p>Comprehensive digital marketing solutions designed to maximize your online presence and drive measurable results.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">
+                        <i class="fas fa-bullseye" aria-hidden="true"></i>
+                    </div>
+                    <h3>Google Ads Management</h3>
+                    <p>Expert campaign setup, optimization, and management to maximize your advertising ROI and drive qualified traffic.</p>
+                    <a href="#contact" class="btn">Learn More</a>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-bar" aria-hidden="true"></i>
+                    </div>
+                    <h3>Analytics & Reporting</h3>
+                    <p>Comprehensive tracking setup and detailed reporting to measure performance and identify optimization opportunities.</p>
+                    <a href="#contact" class="btn">Learn More</a>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                    </div>
+                    <h3>SEO Optimization</h3>
+                    <p>Improve your organic search visibility and drive long-term sustainable traffic growth through proven SEO strategies.</p>
+                    <a href="#contact" class="btn">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Preview Section -->
+    <section id="blog" class="blog-preview">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Latest Insights</h2>
+                <p>Stay updated with the latest digital marketing trends, tips, and strategies from our experts.</p>
+            </div>
+            
+            <div class="latest-insights" data-aos="fade-up">
+                <!-- Blog posts will be dynamically loaded here -->
+            </div>
+            
+            <div class="blog-actions" data-aos="fade-up">
+                <a href="blog.html" class="btn btn-primary">
+                    <i class="fas fa-book-reader" aria-hidden="true"></i>
+                    View All Posts
+                </a>
+            </div>
+                            <span><i class="fas fa-user" aria-hidden="true"></i> Marlon Palomares</span>
+                        </div>
+                        <h3>PPC Trends to Watch in 2025</h3>
+                        <p>Stay ahead of the competition with insights into the emerging trends and technologies shaping the future of PPC advertising.</p>
+                        <a href="./blog/ppc-trends-2025.html" class="read-more">
+                            Read More <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Get In Touch</h2>
+                <p>Ready to take your digital marketing to the next level? Let\'s discuss how we can help you achieve your goals.</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info" data-aos="fade-right">
+                    <h3>Let\'s Start a Conversation</h3>
+                    <p>We're here to help you maximize your digital marketing ROI. Reach out to us for a free consultation and discover how our expertise can drive your business growth.</p>
+                    
+                    <div class="contact-item">
+                        <div class="icon">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>mpalomaresdigitalsolutions@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="icon">
+                            <i class="fas fa-phone" aria-hidden="true"></i>
+                        </div>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+639913032370</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="icon">
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        </div>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Manila,Philipphines</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <form class="contact-form" data-aos="fade-left" id="contact-form">
+                    <h3>Send us a Message</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="first-name">First Name</label>
+                            <input type="text" id="first-name" name="first-name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="last-name">Last Name</label>
+                            <input type="text" id="last-name" name="last-name" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company">Company (Optional)</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Tell us about your project and goals..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                     <img src="../assets/images/Logo.svg" alt="Mpalomares Digital Logo" class="footer-logo" style="width: 300px; height: auto; margin-bottom: 30px;">
+                     <p>Expert Google Ads management and digital marketing solutions designed to maximize your ROI and drive sustainable business growth.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <p><a href="#services">Google Ads Management</a></p>
+                    <p><a href="#services">Analytics & Reporting</a></p>
+                    <p><a href="#services">SEO Optimization</a></p>
+                    <p><a href="#calculator">ROI Calculator</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <p><a href="./blog.html">Blog</a></p>
+                    <p><a href="./portfolio.html">Portfolio</a></p>
+                    <p><a href="./privacy-policy.html">Privacy Policy</a></p>
+                    <p><a href="./terms-conditions.html">Terms & Conditions</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>hello@mpalomares.com</p>
+                    <p>+1 (555) 123-4567</p>
+                    <p>San Francisco, CA</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2024 Mpalomares Digital Solutions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- Load AOS library for animations -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    
+    <!-- Load main JavaScript -->
+    <script src="../assets/js/enhanced-main.js" defer></script>
+    <script src="../assets/js/navigation.js" defer></script>
+    
+    <!-- ROI Calculator Script -->
+    <script defer>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 800,
+                    easing: 'ease-in-out',
+                    once: true,
+                    offset: 100
+                });
+            }
+            
+            // Initialize Navigation
+            if (typeof NavigationManager !== 'undefined') {
+                new NavigationManager();
+            }
+            
+            // ROI Calculator functionality
+            const roiForm = document.getElementById('roi-calculator-form');
+            const roiResults = document.getElementById('roi-results');
+            
+            if (roiForm) {
+                roiForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    calculateROI();
+                });
+            }
+            
+            function calculateROI() {
+                const budget = parseFloat(document.getElementById('monthly-budget').value);
+                const cpc = parseFloat(document.getElementById('avg-cpc').value);
+                const conversionRate = parseFloat(document.getElementById('conversion-rate').value) / 100;
+                const orderValue = parseFloat(document.getElementById('avg-order-value').value);
+                const profitMargin = parseFloat(document.getElementById('profit-margin').value) / 100;
+                
+                if (!budget || !cpc || !conversionRate || !orderValue || !profitMargin) {
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+                
+                // Calculate metrics
+                const clicks = budget / cpc;
+                const conversions = clicks * conversionRate;
+                const revenue = conversions * orderValue;
+                const profit = revenue * profitMargin;
+                const roi = ((profit - budget) / budget) * 100;
+                const breakEvenDays = budget / (profit / 30);
+                
+                // Display results
+                document.getElementById('monthly-revenue').textContent = '$' + revenue.toLocaleString('en-US', {maximumFractionDigits: 0});
+                document.getElementById('monthly-profit').textContent = '$' + profit.toLocaleString('en-US', {maximumFractionDigits: 0});
+                document.getElementById('roi-percentage').textContent = roi.toFixed(1) + '%';
+                document.getElementById('break-even-days').textContent = Math.ceil(breakEvenDays) + ' days';
+                
+                roiResults.classList.add('show');
+                roiResults.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+            
+            // Contact form functionality
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // Add your form submission logic here
+                    alert('Thank you for your message! We\'ll get back to you soon.');
+                    contactForm.reset();
+                });
+            }
+            
+            // Reading progress bar
+            const progressBar = document.querySelector('.reading-progress');
+            if (progressBar) {
+                window.addEventListener('scroll', function() {
+                    const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                    progressBar.style.width = scrolled + '%';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

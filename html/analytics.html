@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Advanced analytics services by MPalomares to unlock data insights.">
+    <meta name="keywords" content="analytics, data insights, MPalomares, business intelligence">
+    <title>Analytics</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Color Variables (Copied from Image) */
+        :root {
+            --primary-bg: #2c3e50; /* Dark blue background from navbar */
+            --text-color: #ffffff; /* White text/icons */
+            --accent-color: #f76e0a; /* Orange for CTAs */
+            --secondary-bg: #f4f4f4; /* Light background for body */
+            --overlay-color: rgba(44, 62, 80, 0.7); /* Overlay for analytics sections */
+            --highlight-bg: rgba(247, 110, 10, 0.15); /* Light orange for highlight */
+            --highlight-border: #f76e0a; /* Orange for highlight border */
+        }
+
+        /* Reset and Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--secondary-bg);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header and Navigation */
+        header {
+            background: var(--primary-bg);
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            position: absolute;
+            left: 5%;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border: 2px solid transparent;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links a:hover, .nav-links a:focus {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .mobile-menu-btn, .close-menu {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            cursor: pointer;
+        }
+
+        /* Conversion Tracking Highlight */
+        .conversion-highlight {
+            background-color: var(--highlight-bg);
+            border: 2px solid var(--highlight-border);
+            border-radius: 15px;
+            margin: 2rem 5%;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        .conversion-highlight h2 {
+            color: var(--primary-bg);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .conversion-highlight p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin-bottom: 1rem;
+        }
+
+        .conversion-highlight .emoji {
+            font-size: 1.5rem;
+            margin: 0 0.25rem;
+        }
+
+        /* Analytics Section */
+        .analytics-section {
+            position: relative;
+            overflow: hidden;
+            margin: 2rem 5%;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .analytics-section:hover {
+            transform: scale(1.03);
+        }
+
+        .analytics-section img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            filter: brightness(70%);
+            transition: filter 0.3s ease;
+        }
+
+        .analytics-section:hover img {
+            filter: brightness(50%);
+        }
+
+        .analytics-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(to top, var(--overlay-color), transparent);
+            color: var(--text-color);
+            transform: translateY(20%);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .analytics-section:hover .analytics-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .analytics-content h2 {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+
+        .analytics-content h2 i {
+            font-size: 2rem;
+            color: var(--accent-color);
+        }
+
+        .analytics-content p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: var(--accent-color);
+            color: var(--text-color);
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            text-align: center;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-bg);
+            color: var(--text-color);
+            padding: 2rem 5%;
+            text-align: center;
+        }
+
+        .social-media {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-media a {
+            color: var(--text-color);
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-media a:hover, .social-media a:focus {
+            transform: scale(1.2) rotate(10deg);
+            color: var(--accent-color);
+        }
+
+        .footer-links {
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--text-color);
+            margin: 0 1rem;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover, .footer-links a:focus {
+            color: var(--accent-color);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .analytics-section {
+            animation: fadeIn 1s ease forwards;
+            opacity: 0;
+        }
+
+        .analytics-section:nth-child(even) {
+            animation-delay: 0.3s;
+        }
+
+        .analytics-section:nth-child(odd) {
+            animation-delay: 0.6s;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                justify-content: space-between;
+                position: relative;
+            }
+
+            .logo {
+                position: static;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background: var(--primary-bg);
+                flex-direction: column;
+                justify-content: center;
+                padding: 4rem 2rem;
+                transition: right 0.4s ease;
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .close-menu {
+                display: block;
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+            }
+
+            .analytics-section img {
+                max-height: 250px;
+            }
+
+            .analytics-content {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            .analytics-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .analytics-content p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .analytics-section img {
+                max-height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Centered Navigation -->
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <i class="fas fa-ad"></i> Analytics
+            </a>
+            <div class="mobile-menu-btn" aria-label="Open Menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <div class="close-menu" aria-label="Close Menu">
+                    <i class="fas fa-times"></i>
+                </div>
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="services.html"><i class="fas fa-cogs"></i> Services</a></li>
+                <li><a href="portfolio.html"><i class="fas fa-briefcase"></i> Portfolio</a></li>
+                <li><a href="case-studies.html"><i class="fas fa-chart-line"></i> Case Studies</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- New Conversion Tracking Highlight Section -->
+        <div class="conversion-highlight">
+            <h2><i class="fas fa-code"></i> Not Seeing Conversions In Your Analytics?</h2>
+            <p>Hey there! <span class="emoji">👋</span> I know you're wondering where all those conversions are hiding in my dashboard. Don't stress—this is just a showcase of my expertise in setting up proper conversion tracking architectures. Behind the scenes, I'm implementing GTM event listeners, custom JavaScript triggers, and cross-domain tracking solutions that would make any analytics nerd proud. <span class="emoji">🤓</span> Your actual implementation would capture every micro-conversion with pixel-perfect accuracy.</p>
+        </div>
+
+        <!-- Analytics Sections with Enhanced Design -->
+        <section class="analytics-section">
+            <img src="assets/images/CH1.png" alt="Data Visualization Dashboard" loading="lazy">
+            <div class="analytics-content">
+                <h2><i class="fas fa-chart-pie"></i>Intelligent Data Visualization</h2>
+                <p>Transform complex data into clear, actionable visual stories that drive strategic decision-making.</p>
+                <a href="https://cal.com/marlon-palomares-c4cyjo/secret" class="cta-button">Unlock Visual Insights</a>
+            </div>
+        </section>
+
+        <section class="analytics-section">
+            <img src="assets/images/CH2.png" alt="Customer Behavior Analysis" loading="lazy">
+            <div class="analytics-content">
+                <h2><i class="fas fa-users"></i>Deep Customer Intelligence</h2>
+                <p>Dive deep into customer behaviors, preferences, and hidden patterns to personalize your approach.</p>
+                <a href="https://cal.com/marlon-palomares-c4cyjo/secret" class="cta-button">Understand Your Audience</a>
+            </div>
+        </section>
+
+        <section class="analytics-section">
+            <img src="assets/images/CH3.png" alt="Sales Performance Metrics" loading="lazy">
+            <div class="analytics-content">
+                <h2><i class="fas fa-rocket"></i>Sales Performance Acceleration</h2>
+                <p>Supercharge your sales strategies with precision analytics and predictive performance tracking.</p>
+                <a href="https://cal.com/marlon-palomares-c4cyjo/secret" class="cta-button">Boost Sales Now</a>
+            </div>
+        </section>
+
+        <section class="analytics-section">
+            <img src="assets/images/CH4.png" alt="Predictive Analytics Chart" loading="lazy">
+            <div class="analytics-content">
+                <h2><i class="fas fa-crystal-ball"></i>Futuristic Trend Prediction</h2>
+                <p>Leverage advanced AI and machine learning to forecast market trends before they emerge.</p>
+                <a href="https://cal.com/marlon-palomares-c4cyjo/secret" class="cta-button">Predict the Future</a>
+            </div>
+        </section>
+
+        <section class="analytics-section">
+            <img src="assets/images/CH5.png" alt="Operational Efficiency Report" loading="lazy">
+            <div class="analytics-content">
+                <h2><i class="fas fa-cogs"></i>Operational Excellence Engine</h2>
+                <p>Streamline processes, eliminate bottlenecks, and maximize efficiency with data-driven insights.</p>
+                <a href="https://cal.com/marlon-palomares-c4cyjo/secret" class="cta-button">Optimize Operations</a>
+            </div>
+        </section>
+
+        <section class="analytics-section">
+            <img src="assets/images/CH6.png" alt="Marketing ROI Analysis" loading="lazy">
+            <div class="analytics-content">
+                <h2><i class="fas fa-bullhorn"></i>Marketing ROI Maximizer</h2>
+                <p>Measure, analyze, and amplify your marketing efforts with precision ROI tracking and insights.</p>
+                <a href="https://cal.com/marlon-palomares-c4cyjo/secret" class="cta-button">Elevate Marketing</a>
+            </div>
+        </section>
+
+        <section class="analytics-section">
+            <img src="assets/images/CH7.png" alt="Financial Forecasting Graph" loading="lazy">
+            <div class="analytics-content">
+                <h2><i class="fas fa-calculator"></i>Strategic Financial Foresight</h2>
+                <p>Generate accurate financial forecasts and strategic planning models to guide your business decisions.</p>
+                <a href="https://cal.com/marlon-palomares-c4cyjo/secret" class="cta-button">Plan Confidently</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer with Social Media and Links -->
+    <footer>
+        <div class="social-media">
+            <a href="https://www.facebook.com/marlon.palomares.2024/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/palomares523/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://twitter.com/your-twitter" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/mpdigital/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/mpalomaresdigitalsolutions" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="case-studies.html">Case Studies</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms-conditions.html">Terms & Conditions</a>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu Toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const closeMenu = document.querySelector('.close-menu');
+            const navLinks = document.querySelector('.nav-links');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.add('active');
+            });
+
+            closeMenu.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+
+            // Keyboard Accessibility
+            document.querySelectorAll('.nav-links a, .cta-button, .social-media a').forEach(link => {
+                link.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') link.click();
+                });
+            });
+        });
+    </script>
+</body>
+</html>

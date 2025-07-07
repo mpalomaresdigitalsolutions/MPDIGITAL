@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Your Free Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .form-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        
+        p {
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: bold;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        input:focus {
+            border-color: #4a90e2;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #6e8efb 0%, #4a67ea 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            text-decoration: none;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(74, 103, 234, 0.3);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+            width: 100%;
+        }
+        
+        .download-btn:hover {
+            background: linear-gradient(135deg, #5d7df3 0%, #3956d8 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(74, 103, 234, 0.4);
+        }
+        
+        .download-btn:active {
+            transform: translateY(1px);
+        }
+        
+        .download-btn i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(74, 103, 234, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(74, 103, 234, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(74, 103, 234, 0);
+            }
+        }
+        
+        .icon-container {
+            margin-bottom: 20px;
+        }
+        
+        .icon {
+            font-size: 50px;
+            color: #4a67ea;
+            margin-bottom: 15px;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .thank-you-message {
+            display: none;
+            color: #4CAF50;
+            font-weight: bold;
+            margin-top: 20px;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .error-message {
+            color: #f44336;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .loader {
+            display: none;
+            margin: 20px auto;
+            border: 5px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 5px solid #4a67ea;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            display: none;
+            z-index: 1000;
+            animation: slideIn 0.5s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                right: -300px;
+                opacity: 0;
+            }
+            to {
+                right: 20px;
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="icon-container">
+            <div class="icon">
+                <i class="fas fa-book-open"></i>
+            </div>
+        </div>
+        <h1>Get Your Free Guide Today!</h1>
+        <p>Fill out the form below to receive our exclusive free guide packed with valuable information to help you succeed.</p>
+        
+        <form id="leadForm">
+            <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" required>
+                <div class="error-message" id="nameError">Please enter your name</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+                <div class="error-message" id="emailError">Please enter a valid email</div>
+            </div>
+            
+            <button type="submit" class="download-btn" id="submitBtn">
+                <i class="fas fa-download"></i> Get My Free Guide
+            </button>
+            
+            <div class="loader" id="loader"></div>
+            
+            <div class="thank-you-message" id="thankYou">
+                Thank you for downloading your free guide! It should start downloading shortly.
+            </div>
+        </form>
+    </div>
+    
+    <div class="notification" id="notification">
+        Thank you for downloading your free guide!
+    </div>
+
+    <script>
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate form
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            let isValid = true;
+            
+            // Reset errors
+            document.getElementById('nameError').style.display = 'none';
+            document.getElementById('emailError').style.display = 'none';
+            
+            if (!name) {
+                document.getElementById('nameError').style.display = 'block';
+                isValid = false;
+            }
+            
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                document.getElementById('emailError').style.display = 'block';
+                isValid = false;
+            }
+            
+            if (!isValid) return;
+            
+            // Show loader
+            document.getElementById('loader').style.display = 'block';
+            document.getElementById('submitBtn').disabled = true;
+            
+            // Prepare data for Google Sheets
+            const timestamp = new Date().toISOString();
+            const data = {
+                name: name,
+                email: email,
+                timestamp: timestamp,
+                userAgent: navigator.userAgent,
+                referrer: document.referrer || window.location.href
+            };
+            
+            // Add your Google Apps Script URL here
+            // For security, replace with your actual deployed script URL
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbwZLs4zwpnGtiGd6h6JSV6cCZfZRV1l9MfRdcnPtJxGjkA1ySg/exec';
+            
+            // Alternative approach - create a FormData object for more reliable submissions
+            const formData = new FormData();
+            formData.append('data', JSON.stringify(data));
+            
+            // First try with fetch (modern browsers)
+            try {
+                fetch(scriptURL, {
+                    method: 'POST',
+                    mode: 'no-cors', // Important for cross-origin requests to Google Scripts
+                    body: formData
+                })
+                .then(response => {
+                    console.log('Form submitted successfully');
+                    handleSuccessfulSubmission();
+                })
+                .catch(error => {
+                    console.error('Error with fetch submission:', error);
+                    // Fall back to alternative submission method
+                    submitViaJSONP();
+                });
+            } catch (error) {
+                console.error('Could not use fetch, trying fallback:', error);
+                submitViaJSONP();
+            }
+            
+            // Fallback method using JSONP-like approach with a script tag
+            function submitViaJSONP() {
+                // Store data in sessionStorage as backup
+                sessionStorage.setItem('leadFormData', JSON.stringify(data));
+                
+                // Simply proceed with the download - worst case, we lose the lead data
+                // but the user still gets their PDF
+                handleSuccessfulSubmission();
+            }
+            
+            // Function to handle successful submission flow
+            function handleSuccessfulSubmission() {
+                // Hide loader
+                document.getElementById('loader').style.display = 'none';
+                
+                // Show thank you message
+                document.getElementById('thankYou').style.display = 'block';
+                
+                // Show notification
+                const notification = document.getElementById('notification');
+                notification.style.display = 'block';
+                
+                // Hide notification after 5 seconds
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 5000);
+                
+                // Reset form
+                document.getElementById('leadForm').reset();
+                
+                // Redirect to download link after short delay
+                setTimeout(() => {
+                    window.location.href = 'https://www.mediafire.com/file/1kjxqh7nvtc7v4w/Free_Guide.pdf/file';
+                }, 1500);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services - Mpalomares Digital Solutions</title>
+  <meta name="description" content="Google Ads Services That Drive Results by Mpalomares Digital Solutions. Expert strategies to maximize your ROI and accelerate business growth.">
+  <meta name="keywords" content="Google Ads, Digital Marketing, Campaign Optimization, PPC, ROI, Mpalomares Digital Solutions">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Schema.org Organization JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Mpalomares Digital Solutions",
+    "url": "https://yourwebsite.com",
+    
+    "sameAs": [
+      "https://www.facebook.com/marlon.palomares.2024/",
+      "https://www.linkedin.com/in/mpdigital/",
+      "https://www.instagram.com/palomares523/",
+      "https://github.com/mpalomaresdigitalsolutions"
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      --primary-color: #0066cc;
+      --secondary-color: #333;
+      --light-gray: #f4f4f4;
+      --white: #fff;
+      --gradient-overlay: linear-gradient(45deg, #0066cc, #0099ff);
+      --card-border: 3px;
+      --accent-color: #ffcc00;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: var(--secondary-color);
+      background-color: var(--light-gray);
+    }
+    /* Enhanced Navigation */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 5%;
+      background: var(--white);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      width: 90%;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 3px solid var(--primary-color);
+    }
+    .logo img {
+      height: 110px;
+      transition: transform 0.3s ease;
+    }
+    .logo img:hover {
+      transform: scale(1.05);
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    .nav-links a {
+      position: relative;
+      color: var(--secondary-color);
+      font-weight: 600;
+      padding: 0.75rem 1.2rem;
+      text-decoration: none;
+      border: 1px solid transparent;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      background: var(--primary-color);
+      transition: all 0.3s ease;
+    }
+    .nav-links a:hover {
+      color: var(--primary-color);
+      background: rgba(0,102,204,0.1);
+      border-color: var(--primary-color);
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+      left: 0;
+    }
+    /* Active link styling */
+    .nav-links a.active {
+      color: var(--primary-color);
+      border-bottom: 3px solid var(--primary-color);
+    }
+    /* Enhanced Hero Section */
+    .services-hero {
+      position: relative;
+      padding: 10rem 5% 6rem;
+      text-align: center;
+      background: var(--gradient-overlay);
+      color: var(--white);
+      overflow: hidden;
+      border-bottom: 6px solid var(--accent-color);
+    }
+    .services-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      background: repeating-radial-gradient(
+        circle at 50% 50%,
+        transparent,
+        rgba(255, 255, 255, 0.1) 20px
+      );
+      animation: wave 15s linear infinite;
+      opacity: 0.3;
+    }
+    .services-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 15px;
+      background: rgba(255, 255, 255, 0.2);
+      z-index: 1;
+    }
+    @keyframes wave {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .services-hero h1 {
+      font-size: 3.5rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 2s ease-in-out;
+      position: relative;
+      display: inline-block;
+      margin: 0;
+    }
+    .services-hero h1 a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .services-hero h1::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 25%;
+      width: 50%;
+      height: 4px;
+      background: var(--accent-color);
+      border-radius: 2px;
+    }
+    .services-hero p {
+      font-size: 1.5rem;
+      margin-bottom: 3rem;
+      animation: fadeIn 2.5s ease-in-out;
+    }
+    /* Enhanced Services Grid */
+    .services-offered {
+      position: relative;
+      padding-top: 2rem;
+    }
+    .services-offered::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230066cc' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.5;
+      z-index: -1;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 3rem;
+      padding: 4rem 5%;
+    }
+    .service-card {
+      position: relative;
+      background: var(--white);
+      border-radius: 15px;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: var(--card-border) solid transparent;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      border-radius: 15px;
+      background: linear-gradient(45deg, var(--primary-color), #0099ff);
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute;
+      top: var(--card-border);
+      left: var(--card-border);
+      right: var(--card-border);
+      bottom: var(--card-border);
+      background: var(--white);
+      border-radius: calc(15px - var(--card-border));
+      z-index: -1;
+    }
+    .service-card:hover::before {
+      opacity: 1;
+    }
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+    .service-card:hover .service-icon {
+      background: var(--primary-color);
+      color: var(--white);
+      transform: scale(1.1) rotate(5deg);
+    }
+    .service-icon {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: rgba(0, 102, 204, 0.1);
+      margin: 0 auto 2rem;
+      position: relative;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 102, 204, 0.2);
+    }
+    .service-icon::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 2px dashed var(--primary-color);
+      border-radius: 50%;
+      animation: spin 20s linear infinite;
+      opacity: 0.5;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .service-card h3 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 0.5rem;
+    }
+    .service-card h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--accent-color);
+    }
+    .service-card p {
+      position: relative;
+      z-index: 1;
+    }
+    /* Enhanced CTA Section */
+    .cta-section {
+      position: relative;
+      padding: 6rem 5%;
+      background: var(--gradient-overlay);
+      color: var(--white);
+      text-align: center;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border-top: 6px solid var(--accent-color);
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+      z-index: 0;
+    }
+    .cta-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      z-index: 1;
+      position: relative;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    .cta-section p {
+      font-size: 1.3rem;
+      margin-bottom: 3rem;
+      z-index: 1;
+      position: relative;
+    }
+    .cta-section .highlight {
+      font-weight: bold;
+      color: var(--accent-color);
+      position: relative;
+      display: inline-block;
+    }
+    .cta-section .highlight::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--accent-color);
+    }
+    .cta-button {
+      position: relative;
+      padding: 1.2rem 3rem;
+      background: var(--white);
+      color: var(--primary-color);
+      border-radius: 50px;
+      font-weight: 700;
+      transition: all 0.4s ease;
+      z-index: 2;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      border: 2px solid transparent;
+      overflow: hidden;
+    }
+    .cta-button i {
+      margin-left: 10px;
+      transition: transform 0.3s ease;
+    }
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--primary-color);
+      transition: all 0.4s ease;
+      z-index: -1;
+    }
+    .cta-button:hover {
+      color: var(--white);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      border-color: var(--white);
+    }
+    .cta-button:hover::before {
+      left: 0;
+    }
+    .cta-button:hover i {
+      transform: translateX(5px);
+    }
+    /* Footer */
+    footer {
+      background-color: var(--secondary-color);
+      color: var(--white);
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      border-top: 3px solid var(--primary-color);
+    }
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230066cc' fill-opacity='0.15'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.3;
+    }
+    .footer-content {
+      position: relative;
+      z-index: 1;
+    }
+    .footer-links {
+      margin: 1rem 0;
+    }
+    .footer-links a {
+      color: var(--white);
+      text-decoration: none;
+      margin: 0 0.5rem;
+      border-bottom: 1px dashed var(--white);
+      transition: color 0.3s ease;
+    }
+    .footer-links a:hover {
+      color: var(--accent-color);
+    }
+    .social-icons {
+      margin: 1rem 0;
+    }
+    .social-icons a {
+      color: var(--white);
+      margin: 0 0.5rem;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+    .social-icons a:hover {
+      color: var(--accent-color);
+    }
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      .navbar {
+        flex-direction: column;
+        padding: 1rem 5%;
+      }
+      .nav-links {
+        margin-top: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    }
+    @media (max-width: 768px) {
+      .services-hero h1 {
+        font-size: 2.5rem;
+      }
+      .services-hero p {
+        font-size: 1.2rem;
+      }
+      .service-card {
+        padding: 2rem;
+      }
+      .cta-section h2 {
+        font-size: 2rem;
+      }
+      .service-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .cta-button {
+        width: 100%;
+        padding: 1.5rem;
+        justify-content: center;
+      }
+      .nav-links {
+        gap: 0.5rem;
+      }
+      .nav-links a {
+        padding: 0.5rem 0.7rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="logo">
+      
+    </div>
+    <div class="nav-links">
+      <a href="index.html"><i class="fas fa-home"></i> Home</a>
+      <a href="services.html" class="active"><i class="fas fa-briefcase"></i> Services</a>
+      <a href="portfolio.html"><i class="fas fa-project-diagram"></i> Portfolio</a>
+      <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+      <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+      <a href="certificates.html"><i class="fas fa-award"></i> Certificates</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="services-hero">
+    <h1><a href="https://cal.com/marlon-palomares-c4cyjo/secret">🚀 Google Ads Services That Drive Results</a></h1>
+    <p>Expert strategies to maximize your ROI and accelerate business growth</p>
+  </section>
+
+  <!-- Services Offered -->
+  <section class="services-offered">
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fas fa-rocket"></i>
+        </div>
+        <h3>Campaign Setup &amp; Strategy</h3>
+        <p>Build high-performing campaigns tailored to your business goals and target audience</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fas fa-hand-holding-usd"></i>
+        </div>
+        <h3>Bidding Strategy Optimization</h3>
+        <p>Maximize ROI with smart bidding approaches and strategic budget allocation</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fas fa-chart-pie"></i>
+        </div>
+        <h3>Campaign Optimization</h3>
+        <p>Continuous performance tuning through data-driven decisions and analytics</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fas fa-lightbulb"></i>
+        </div>
+        <h3>Keyword Research &amp; Ad Copy</h3>
+        <p>Target high-intent keywords with compelling ad creatives that convert</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fas fa-analytics"></i>
+        </div>
+        <h3>Conversion Tracking Setup</h3>
+        <p>Implement accurate tracking for measurable results and performance insights</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fas fa-users"></i>
+        </div>
+        <h3>Audience Targeting</h3>
+        <p>Reach your ideal customers through precise demographic and behavioral targeting</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="cta-section">
+    <h2>Ready to Elevate Your Google Ads Performance?</h2>
+    <p>Partner with experts who deliver <span class="highlight">real results</span></p>
+    <a href="https://cal.com/marlon-palomares-c4cyjo/secret" class="cta-button">Start Your Free Consultation <i class="fas fa-angle-right"></i></a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <p>© 2024 Mpalomares Digital Solutions</p>
+      <div class="footer-links">
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="terms-conditions.html">Terms &amp; Conditions</a>
+      </div>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/marlon.palomares.2024/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/palomares523/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://twitter.com" target="_blank" aria-label="X (Twitter)"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.linkedin.com/in/mpdigital/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/mpalomaresdigitalsolutions" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+  <!-- Final study for script for further changes and improvements -->
+</body>
+</html>
