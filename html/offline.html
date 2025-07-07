@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - MP Digital Blog</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .offline-container {
+            max-width: 600px;
+            text-align: center;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .offline-icon {
+            font-size: 64px;
+            margin-bottom: 1rem;
+        }
+
+        .retry-button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .retry-button:hover {
+            background-color: #2980b9;
+        }
+
+        .retry-button:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+        }
+
+        @media (max-width: 480px) {
+            .offline-container {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .offline-icon {
+                font-size: 48px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-container" role="main">
+        <div class="offline-icon" aria-hidden="true">📡</div>
+        <h1>You're Offline</h1>
+        <p>It seems you've lost your internet connection. Don't worry - some features of the MP Digital Blog are still available offline.</p>
+        <p>You can still view previously loaded blog posts and drafts.</p>
+        <button class="retry-button" onclick="window.location.reload()" aria-label="Retry connection">
+            Try Again
+        </button>
+    </div>
+
+    <script>
+        // Check for online status changes
+        window.addEventListener('online', () => {
+            window.location.reload();
+        });
+
+        // Add keyboard support for the retry button
+        document.querySelector('.retry-button').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                window.location.reload();
+            }
+        });
+    </script>
+</body>
+</html>

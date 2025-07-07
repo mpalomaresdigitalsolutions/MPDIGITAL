@@ -10,6 +10,8 @@ class BlogDisplayManager {
     }
 
     init() {
+        // Initialize view controls
+        this.initializeViewControls();
         this.loadBlogPosts();
         this.setupEventListeners();
         this.displayPosts();
@@ -136,6 +138,7 @@ class BlogDisplayManager {
 
     displayPosts() {
         const container = document.querySelector('.blog-grid') || document.querySelector('.latest-insights');
+        container.className = `blog-${this.viewMode}`; // Apply view mode class
         if (!container) return;
 
         const startIndex = (this.currentPage - 1) * this.postsPerPage;
@@ -154,8 +157,9 @@ class BlogDisplayManager {
     }
 
     createPostCard(post) {
+        const cardClass = this.viewMode === 'grid' ? 'blog-card' : 'blog-list-item';
         return `
-            <article class="blog-card" data-id="${post.id}">
+            <article class="${cardClass}" data-id="${post.id}">
                 <div class="blog-image-container">
                     <img src="${post.image}" alt="${post.title}" class="blog-image" loading="lazy">
                     <div class="blog-category-badge">${this.getCategoryName(post.category)}</div>

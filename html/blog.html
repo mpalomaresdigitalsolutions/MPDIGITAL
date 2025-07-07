@@ -2,215 +2,334 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="../assets/images/Logo.svg" type="image/svg+xml">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Digital marketing insights, Google Ads strategies, and ROI optimization tips from industry experts.">
-    <meta name="keywords" content="Digital Marketing Blog, Google Ads Tips, PPC Strategy, ROI Optimization">
-    <meta name="author" content="Marlon Palomares">
+    <meta name="description" content="Explore the latest insights on digital marketing, SEO, social media, and content strategy from MP Digital's expert team.">
+    <meta name="keywords" content="digital marketing, SEO, social media marketing, content strategy, analytics, marketing insights">
+    <meta name="author" content="MP Digital">
+    <meta name="theme-color" content="#ffffff">
     
-    <!-- Resource Hints -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <title>Blog - Digital Marketing Insights | MP Digital</title>
     
-    <!-- Styles -->
-    <link rel="stylesheet" href="../assets/css/enhanced-styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Preload critical resources -->
+    <link rel="preload" href="../css/styles.css" as="style">
+    <link rel="preload" href="../assets/js/auth.js" as="script">
+    <link rel="preload" href="../assets/js/blog-display.js" as="script">
+    <link rel="preload" href="../assets/js/blog-admin.js" as="script">
     
-    <title>Blog - Digital Marketing Insights | Mpalomares Digital</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="alternate icon" type="image/png" href="../assets/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon.svg">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/styles.css">
+    
+    <!-- Open Graph tags for social sharing -->
+    <meta property="og:title" content="Digital Marketing Insights | MP Digital Blog">
+    <meta property="og:description" content="Explore the latest insights on digital marketing, SEO, social media, and content strategy from MP Digital's expert team.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mpdigital.com/blog">
+    <meta property="og:image" content="../assets/og-image.png">
+    
+    <!-- Twitter Card tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Digital Marketing Insights | MP Digital Blog">
+    <meta name="twitter:description" content="Explore the latest insights on digital marketing, SEO, social media, and content strategy.">
+    <meta name="twitter:image" content="../assets/twitter-card.png">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav class="navbar">
-            <a href="./index.html" class="logo" aria-label="Mpalomares Digital Home">
-                <img src="../assets/images/Logo.svg" alt="Mpalomares Digital Logo" style="width: 200px; height: auto;">
-            </a>
-            
-            <ul class="nav-links" role="navigation">
-                <li><a href="./index.html"><i class="fas fa-home"></i> Home</a></li>
-                <li class="dropdown">
-                    <a href="./portfolio.html"><i class="fas fa-briefcase"></i> Portfolio <i class="fas fa-caret-down"></i></a>
-                    <div class="dropdown-content">
-                        <a href="./Search_Ads.html"><i class="fas fa-search"></i> Search Campaign Sample</a>
-                        <a href="./pmax.html"><i class="fas fa-chart-line"></i> Pmax</a>
-                    </div>
-                </li>
-                <li><a href="./index.html#services"><i class="fas fa-cogs"></i> Services</a></li>
-                <li><a href="#" class="active"><i class="fas fa-blog"></i> Blog</a></li>
-                <li><a href="./index.html#calculator"><i class="fas fa-calculator"></i> ROI Calculator</a></li>
-                <li><a href="./index.html#contact"><i class="fas fa-envelope"></i> Contact</a></li>
-            </ul>
-            
-            <button class="mobile-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <a href="/">MP Digital</a>
+            </div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="#services">Services</a>
+                <a href="#about">About</a>
+                <a href="/blog.html" class="active">Blog</a>
+                <a href="#contact">Contact</a>
+                <!-- Auth buttons -->
+                <a href="#" class="login-trigger" data-auth="guest">Login</a>
+                <a href="#" class="register-trigger" data-auth="guest">Register</a>
+                <a href="/html/blog-management.html" class="admin-btn" data-auth="required">Admin Dashboard</a>
+                <a href="#" class="logout-btn" data-auth="required">Logout</a>
+            </div>
         </nav>
     </header>
 
-    <!-- Blog Section -->
-    <section class="blog-section">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h1>Digital Marketing Insights</h1>
-                <p>Stay updated with the latest trends, strategies, and best practices in digital marketing and Google Ads.</p>
+    <main class="blog-page" role="main">
+        <!-- Blog Header -->
+        <header class="blog-header" role="banner">
+            <div class="header-controls">
+                <div class="view-controls">
+                    <button id="grid-view-btn" class="view-btn active" aria-label="Switch to grid view">
+                        <span class="icon">⊞</span> Grid
+                    </button>
+                    <button id="list-view-btn" class="view-btn" aria-label="Switch to list view">
+                        <span class="icon">≡</span> List
+                    </button>
+                </div>
+                <button id="create-post-btn" class="primary-btn" aria-label="Create new blog post" data-auth="required">
+                    <span aria-hidden="true">+</span> Create New Post
+                </button>
             </div>
-
-            <!-- Blog Filters -->
-            <div class="blog-filters" data-aos="fade-up">
+            <div class="search-filters" role="search">
                 <div class="search-box">
-                    <input type="text" id="blog-search" placeholder="Search posts..." aria-label="Search blog posts">
-                    <i class="fas fa-search"></i>
+                    <label for="search-input" class="visually-hidden">Search blog posts</label>
+                    <div class="search-input-wrapper">
+                        <input type="search" 
+                               id="search-input" 
+                               name="search"
+                               placeholder="Search posts..."
+                               aria-label="Search blog posts"
+                               autocomplete="off"
+                               spellcheck="true">
+                        <button id="search-btn" 
+                                class="search-button" 
+                                aria-label="Perform search">
+                            <span aria-hidden="true">🔍</span>
+                        </button>
+                    </div>
                 </div>
-
-                <div class="category-filters">
-                    <button class="category-filter active" data-category="all">All</button>
-                    <button class="category-filter" data-category="google-ads">Google Ads</button>
-                    <button class="category-filter" data-category="analytics">Analytics</button>
-                    <button class="category-filter" data-category="trends">Trends</button>
-                    <button class="category-filter" data-category="strategy">Strategy</button>
-                    <button class="category-filter" data-category="optimization">Optimization</button>
+                <div class="category-filter">
+                    <label for="category-filter" class="visually-hidden">Filter by category</label>
+                    <select id="category-filter" 
+                            name="category"
+                            aria-label="Filter posts by category">
+                        <option value="">All Categories</option>
+                        <option value="digital-marketing">Digital Marketing</option>
+                        <option value="seo">SEO</option>
+                        <option value="social-media">Social Media</option>
+                        <option value="content-strategy">Content Strategy</option>
+                        <option value="analytics">Analytics</option>
+                    </select>
                 </div>
             </div>
+        </header>
 
-            <!-- Blog Grid -->
-            <div class="blog-grid" data-aos="fade-up">
-                <!-- Blog posts will be dynamically loaded here -->
+        <section class="blog-grid" id="blog-posts-container" role="feed" aria-label="Blog posts">
+            <div id="loading-placeholder" class="loading-placeholder" aria-hidden="true">
+                <div class="loading-spinner"></div>
+                <p>Loading posts...</p>
             </div>
+            <div id="no-posts-message" hidden>
+                <p>No posts found. Try adjusting your search or filters.</p>
+            </div>
+            <!-- Posts will be dynamically loaded here -->
+        </section>
 
-            <!-- Pagination -->
-            <div class="pagination" data-aos="fade-up">
-                <!-- Pagination will be dynamically generated -->
+        <nav class="pagination" id="pagination" role="navigation" aria-label="Blog posts pagination">
+            <button id="prev-page" class="pagination-btn" aria-label="Go to previous page" disabled>
+                <span aria-hidden="true">&larr;</span> Previous
+            </button>
+            <div id="page-info" aria-live="polite">
+                Page <span id="current-page">1</span> of <span id="total-pages">1</span>
+            </div>
+            <button id="next-page" class="pagination-btn" aria-label="Go to next page" disabled>
+                Next <span aria-hidden="true">&rarr;</span>
+            </button>
+        </nav>
+    </main>
+
+    <!-- Blog Post Modal -->
+    <div id="blog-post-modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-modal="true" hidden>
+        <div class="modal-content">
+            <button class="close-modal" aria-label="Close modal">&times;</button>
+            <h2 id="modal-title">Create New Post</h2>
+            <form id="blog-post-form" novalidate>
+                <input type="hidden" id="post-id" name="post-id">
+                <div class="form-group">
+                    <label for="post-title">Title <span class="required" aria-hidden="true">*</span></label>
+                    <input type="text" id="post-title" name="title" required 
+                           minlength="5" maxlength="100"
+                           aria-describedby="title-help"
+                           pattern="^[\w\s-]+$">
+                    <small id="title-help" class="help-text">Title should be 5-100 characters long and contain only letters, numbers, spaces, and hyphens.</small>
+                </div>
+                <div class="form-group">
+                    <label for="post-content">Content <span class="required" aria-hidden="true">*</span></label>
+                    <textarea id="post-content" name="content" rows="10" required
+                              minlength="100" maxlength="10000"
+                              aria-describedby="content-help"></textarea>
+                    <small id="content-help" class="help-text">Content should be between 100 and 10,000 characters.</small>
+                </div>
+                <div class="form-group">
+                    <label for="post-excerpt">Excerpt <span class="required" aria-hidden="true">*</span></label>
+                    <textarea id="post-excerpt" name="excerpt" rows="3" required
+                              maxlength="300" aria-describedby="excerpt-help"></textarea>
+                    <small id="excerpt-help" class="help-text">Brief summary of the post (max 300 characters).</small>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="post-author">Author <span class="required" aria-hidden="true">*</span></label>
+                        <input type="text" id="post-author" name="author" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="post-category">Category <span class="required" aria-hidden="true">*</span></label>
+                        <select id="post-category" name="category" required aria-describedby="category-help">
+                            <option value="">Select Category</option>
+                            <option value="digital-marketing">Digital Marketing</option>
+                            <option value="seo">SEO</option>
+                            <option value="social-media">Social Media</option>
+                            <option value="content-strategy">Content Strategy</option>
+                            <option value="analytics">Analytics</option>
+                        </select>
+                        <small id="category-help" class="help-text">Choose the most relevant category for your post.</small>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="post-status">Status <span class="required" aria-hidden="true">*</span></label>
+                        <select id="post-status" name="status" required>
+                            <option value="draft">Draft</option>
+                            <option value="published">Published</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="post-image">Featured Image URL</label>
+                        <input type="url" id="post-image" name="image"
+                               pattern="https?://.+" 
+                               aria-describedby="image-help">
+                        <small id="image-help" class="help-text">Enter a valid image URL (http:// or https://).</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="post-tags">Tags</label>
+                    <input type="text" id="post-tags" name="tags"
+                           placeholder="marketing, strategy, tips"
+                           aria-describedby="tags-help">
+                    <small id="tags-help" class="help-text">Separate tags with commas.</small>
+                </div>
+                <div class="form-group">
+                    <label for="meta-description">Meta Description</label>
+                    <textarea id="meta-description" name="meta-description" rows="2"
+                              maxlength="160" aria-describedby="meta-desc-help"></textarea>
+                    <small id="meta-desc-help" class="help-text">Brief description for search engines (max 160 characters).</small>
+                </div>
+                <div class="form-group">
+                    <label for="meta-keywords">Meta Keywords</label>
+                    <input type="text" id="meta-keywords" name="meta-keywords"
+                           placeholder="digital marketing, SEO, social media"
+                           aria-describedby="meta-keywords-help">
+                    <small id="meta-keywords-help" class="help-text">Comma-separated keywords for SEO.</small>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="primary-btn">Save Post</button>
+                    <button type="button" class="secondary-btn close-modal" aria-label="Cancel and close modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>MP Digital</h3>
+                <p>Transforming businesses through digital excellence.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="/">Home</a>
+                <a href="#services">Services</a>
+                <a href="#about">About</a>
+                <a href="/blog.html">Blog</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
             </div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <img src="../assets/images/Logo.svg" alt="Mpalomares Digital Logo" class="footer-logo">
-                    <p>Expert Google Ads management and digital marketing solutions for businesses looking to maximize their online presence and ROI.</p>
-                </div>
-                
-                <div class="footer-links">
-                    <div class="footer-section">
-                        <h3>Quick Links</h3>
-                        <ul>
-                            <li><a href="./index.html">Home</a></li>
-                            <li><a href="./portfolio.html">Portfolio</a></li>
-                            <li><a href="./index.html#services">Services</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="./index.html#contact">Contact</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="footer-section">
-                        <h3>Services</h3>
-                        <ul>
-                            <li><a href="./index.html#services">Google Ads Management</a></li>
-                            <li><a href="./index.html#services">Analytics & Reporting</a></li>
-                            <li><a href="./index.html#services">SEO Optimization</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="footer-section">
-                        <h3>Connect</h3>
-                        <div class="social-links">
-                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2024 Mpalomares Digital. All rights reserved.</p>
-                <div class="footer-legal">
-                    <a href="./privacy-policy.html">Privacy Policy</a>
-                    <a href="./terms-conditions.html">Terms & Conditions</a>
-                </div>
-            </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 MP Digital. All rights reserved.</p>
         </div>
     </footer>
 
     <!-- Scripts -->
-    <script src="../assets/js/blog-display.js"></script>
-    <script src="../assets/js/blog-admin.js"></script>
-    <script src="../assets/js/navigation.js"></script>
+    <script src="../assets/js/auth.js" defer></script>
+    <script src="../assets/js/blog-display.js" defer></script>
+    <script src="../assets/js/blog-admin.js" defer></script>
+    <!-- Service Worker Registration -->
+    <script>
+        // Register service worker for offline support
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', async () => {
+                try {
+                    const registration = await navigator.serviceWorker.register('../assets/js/service-worker.js');
+                    console.log('ServiceWorker registration successful:', registration.scope);
+                } catch (error) {
+                    console.warn('ServiceWorker registration skipped:', error.message);
+                }
+            });
+        }
 
-    <!-- Admin Controls -->
-    <div class="admin-controls" id="admin-controls" style="display: none;">
-        <div class="container">
-            <button class="btn btn-primary" onclick="showCreateModal()">
-                <i class="fas fa-plus"></i> Create New Post
-            </button>
-        </div>
-    </div>
+        // Check for online/offline status
+        function updateOnlineStatus() {
+            const statusElement = document.createElement('div');
+            statusElement.className = 'connection-status';
+            statusElement.setAttribute('aria-live', 'polite');
+            
+            if (navigator.onLine) {
+                statusElement.textContent = 'Connection restored';
+                statusElement.className += ' online';
+                setTimeout(() => statusElement.remove(), 3000);
+            } else {
+                statusElement.textContent = 'You are offline. Some features may be limited.';
+                statusElement.className += ' offline';
+            }
+            
+            document.body.appendChild(statusElement);
+        }
 
-    <!-- Post Modal -->
-    <div class="modal" id="post-modal" style="display: none;">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2 id="modal-title">Create New Post</h2>
-            <form id="post-form">
-                <div class="form-group">
-                    <label for="post-title">Title</label>
-                    <input type="text" id="post-title" required>
-                </div>
-                <div class="form-group">
-                    <label for="post-content">Content</label>
-                    <textarea id="post-content" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="post-excerpt">Excerpt</label>
-                    <textarea id="post-excerpt"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="post-author">Author</label>
-                    <input type="text" id="post-author">
-                </div>
-                <div class="form-group">
-                    <label for="post-category">Category</label>
-                    <select id="post-category">
-                        <option value="google-ads">Google Ads</option>
-                        <option value="analytics">Analytics</option>
-                        <option value="trends">Trends</option>
-                        <option value="strategy">Strategy</option>
-                        <option value="optimization">Optimization</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="post-status">Status</label>
-                    <select id="post-status">
-                        <option value="draft">Draft</option>
-                        <option value="published">Published</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="post-image">Featured Image URL</label>
-                    <input type="text" id="post-image">
-                </div>
-                <div class="form-group">
-                    <label for="post-tags">Tags (comma-separated)</label>
-                    <input type="text" id="post-tags">
-                </div>
-                <div class="form-group">
-                    <label for="post-meta-description">Meta Description</label>
-                    <textarea id="post-meta-description"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="post-meta-keywords">Meta Keywords</label>
-                    <input type="text" id="post-meta-keywords">
-                </div>
-                <button type="submit" class="btn btn-primary">Save Post</button>
-            </form>
-        </div>
-    </div>
+        window.addEventListener('online', updateOnlineStatus);
+        window.addEventListener('offline', updateOnlineStatus);
+
+        // Main initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add error event listeners for script loading
+            ['auth.js', 'blog-display.js', 'blog-admin.js'].forEach(script => {
+                const scriptElement = document.querySelector(`script[src*="${script}"]`);
+                if (scriptElement) {
+                    scriptElement.onerror = () => {
+                        console.error(`Failed to load ${script}`);
+                        document.getElementById('blog-posts-container')
+                            .innerHTML = `<div class="error-message">Failed to load required resources. Please refresh the page.</div>`;
+                    };
+                }
+            });
+
+            // Initialize after scripts are loaded
+            window.addEventListener('load', async () => {
+                try {
+                    // Initialize managers
+                    window.authManager = new AuthManager();
+                    window.blogDisplayManager = new BlogDisplayManager();
+
+                    // Initialize blog display
+                    await window.blogDisplayManager.init();
+                    console.log('Blog display initialized');
+
+                    // Initialize admin features if authenticated
+                    if (window.authManager.isAuthenticated) {
+                        window.blogAdminManager = new BlogAdminManager(window.authManager);
+                        await window.blogAdminManager.init();
+                        console.log('Admin features initialized');
+                    }
+
+                } catch (error) {
+                    console.error('Initialization error:', error);
+                    document.getElementById('blog-posts-container')
+                        .innerHTML = `<div class="error-message">An error occurred while initializing the blog. Please try again later.</div>`;
+                }
+            });
+        });
+        });
+    </script>
 </body>
 </html>

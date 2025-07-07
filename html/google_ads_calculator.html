@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Ads Keyword Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <style>
+        .google-ads-style {
+            font-family: 'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        .keyword-input {
+            min-height: 120px;
+            resize: vertical;
+        }
+        .results-table {
+            font-size: 13px;
+        }
+        .competition-high { color: #d32f2f; }
+        .competition-medium { color: #f57c00; }
+        .competition-low { color: #388e3c; }
+        .intent-high { background-color: #e8f5e8; }
+        .intent-medium { background-color: #fff3e0; }
+        .intent-low { background-color: #f3e5f5; }
+        .volume-high { background-color: #e3f2fd; }
+        .volume-medium { background-color: #f1f8e9; }
+        .volume-low { background-color: #fce4ec; }
+        .suggestion-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .negative-keywords-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+        .filter-section {
+            background: linear-gradient(135deg, #2196f3 0%, #21cbf3 100%);
+            color: white;
+        }
+        .filter-btn {
+            transition: all 0.3s ease;
+        }
+        .filter-btn.active {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .stats-card {
+            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 google-ads-style">
+    <div class="container mx-auto px-4 py-8 max-w-7xl">
+        <!-- Header -->
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+            <h1 class="text-2xl font-medium text-gray-900 mb-2">Google Ads Keyword Calculator</h1>
+            <p class="text-gray-600">Professional keyword bidding calculator with advanced filtering capabilities</p>
+        </div>
+
+        <!-- Input Section -->
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+            <h2 class="text-lg font-medium text-gray-900 mb-4">Keyword Input</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Currency</label>
+                    <select id="currency" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <option value="$">USD ($)</option>
+                        <option value="€">EUR (€)</option>
+                        <option value="£">GBP (£)</option>
+                        <option value="₹">INR (₹)</option>
+                        <option value="¥">JPY (¥)</option>
+                        <option value="C$">CAD (C$)</option>
+                        <option value="A$">AUD (A$)</option>
+                        <option value="kr">SEK (kr)</option>
+                        <option value="₽">RUB (₽)</option>
+                        <option value="R$">BRL (R$)</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Campaign Type</label>
+                    <select id="campaignType" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <option value="ecommerce">E-commerce</option>
+                        <option value="local">Local Business</option>
+                        <option value="corporate">Corporate/B2B</option>
+                        <option value="nonprofit">Nonprofit</option>
+                        <option value="leadgen">Lead Generation</option>
+                        <option value="brand">Brand Awareness</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Keywords (one per line)</label>
+                <textarea id="keywordInput" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent keyword-input" placeholder="Enter keywords, one per line:&#10;running shoes&#10;best running shoes&#10;buy running shoes online&#10;cheap running shoes"></textarea>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Or upload keywords file (.csv or .txt)</label>
+                <input type="file" id="fileInput" accept=".csv,.txt" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+            </div>
+
+            <div class="flex flex-wrap gap-4">
+                <button id="calculateBtn" class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors">
+                    Calculate Keywords
+                </button>
+                <button id="clearBtn" class="bg-gray-500 text-white px-6 py-2 rounded-md hover:bg-gray-600 transition-colors">
+                    Clear All
+                </button>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div id="resultsSection" class="hidden">
+            <!-- Stats Overview -->
+            <div class="stats-card rounded-lg p-6 mb-6">
+                <h2 class="text-lg font-medium mb-4">📊 Keywords Overview</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold" id="totalKeywords">0</div>
+                        <div class="text-sm opacity-90">Total Keywords</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold" id="avgSearchVolume">0</div>
+                        <div class="text-sm opacity-90">Avg. Search Volume</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold" id="avgCPC">$0.00</div>
+                        <div class="text-sm opacity-90">Avg. CPC</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold" id="totalVolume">0</div>
+                        <div class="text-sm opacity-90">Total Volume</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Filters -->
+            <div class="filter-section rounded-lg p-6 mb-6">
+                <h2 class="text-lg font-medium mb-4">🔍 Advanced Filters</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Search Volume Filter -->
+                    <div>
+                        <label class="block text-sm font-medium mb-3 opacity-90">Search Volume</label>
+                        <div class="flex flex-wrap gap-2">
+                            <button class="filter-btn px-3 py-2 rounded-md bg-white bg-opacity-20 text-sm hover:bg-opacity-30 active" data-filter="volume" data-value="all">All</button>
+                            <button class="filter-btn px-3 py-2 rounded-md bg-white bg-opacity-20 text-sm hover:bg-opacity-30" data-filter="volume" data-value="high">High (20K+)</button>
+                            <button class="filter-btn px-3 py-2 rounded-md bg-white bg-opacity-20 text-sm hover:bg-opacity-30" data-filter="volume" data-value="medium">Medium (5K-20K)</button>
+                            <button class="filter-btn px-3 py-2 rounded-md bg-white bg-opacity-20 text-sm hover:bg-opacity-30" data-filter="volume" data-value="low">Low (<5K)</button>
+                        </div>
+                    </div>
+
+                    <!-- Competition Filter -->
+                    <div>
+                        <label class="block text-sm font-medium mb-3 opacity-90">Competition</label>
+                        <div class="flex flex-wrap gap-2">
+                            <button class="filter-btn px-3 py-2 rounded-md bg-white bg-opacity-20 text-sm hover:bg-opacity-30 active" data-filter="competition" data-value="all">All</button>
+                            <button class="filter-btn px-3 py-2 rounded-md bg-white bg-opacity-20 text-sm hover:bg-opacity-30" data-filter="competition" data-value="high">High</button>
+                            <button class="filter-btn px-3 py-2 rounded-md bg-white bg-opacity-20 text-sm hover:bg-opacity-30" data-filter="competition" data-value="medium">Medium</button>
+                            <button class="filter-btn px-3 py-2 rounded-md bg-white bg-opacity-20 text-sm hover:bg-opacity-30" data-filter="competition" data-value="low">Low</button>
+                        </div>
+                    </div>
+
+                    <!-- Intent Filter -->
+                    <div>
+                        <label class="block text-sm font-medium mb-3 opacity-90">Intent Level</label>
+                        <div class="flex flex-wrap gap-2">
+                            <button class="filter-btn px-3 py-2 rounded-md bg-white bg-opacity-20 text-sm hover:bg-opacity-30 active" data-filter="intent" data-value="all">All</button>
+                            <button class="filter-btn px-3 py-2 rounded-md bg-white bg-opacity-20 text-sm hover:bg-opacity-30" data-filter="intent" data-value="high">High</button>
+                            <button class="filter-btn px-3 py-2 rounded-md bg-white bg-opacity-20 text-sm hover:bg-opacity-30" data-filter="intent" data-value="medium">Medium</button>
+                            <button class="filter-btn px-3 py-2 rounded-md bg-white bg-opacity-20 text-sm hover:bg-opacity-30" data-filter="intent" data-value="low">Low</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4 pt-4 border-t border-white border-opacity-20">
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm opacity-90">Showing <span id="filteredCount">0</span> of <span id="totalCount">0</span> keywords</span>
+                        <button id="resetFilters" class="px-4 py-2 bg-white bg-opacity-20 rounded-md text-sm hover:bg-opacity-30">Reset Filters</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Match Type Selector -->
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+                <h2 class="text-lg font-medium text-gray-900 mb-4">Match Type & Export</h2>
+                <div class="flex flex-wrap gap-4 items-center">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Match Type</label>
+                        <select id="matchType" class="px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <option value="broad">Broad Match</option>
+                            <option value="phrase">Phrase Match</option>
+                            <option value="exact">Exact Match</option>
+                        </select>
+                    </div>
+                    <div class="flex gap-2 mt-6">
+                        <button id="copyAllBtn" class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors">
+                            Copy Filtered Keywords
+                        </button>
+                        <button id="exportBtn" class="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 transition-colors">
+                            Export Filtered Keywords
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Table -->
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 mb-6">
+                <div class="p-6 border-b border-gray-200">
+                    <h2 class="text-lg font-medium text-gray-900">Keyword Analysis Results</h2>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full results-table">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer hover:bg-gray-100" onclick="sortTable('keyword')">
+                                    Keyword <span class="sort-arrow">↕</span>
+                                </th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer hover:bg-gray-100" onclick="sortTable('searches')">
+                                    Avg. Monthly Searches <span class="sort-arrow">↕</span>
+                                </th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer hover:bg-gray-100" onclick="sortTable('competition')">
+                                    Competition <span class="sort-arrow">↕</span>
+                                </th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer hover:bg-gray-100" onclick="sortTable('cpcLow')">
+                                    Top CPC (Low) <span class="sort-arrow">↕</span>
+                                </th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer hover:bg-gray-100" onclick="sortTable('cpcHigh')">
+                                    Top CPC (High) <span class="sort-arrow">↕</span>
+                                </th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer hover:bg-gray-100" onclick="sortTable('recommendedBid')">
+                                    Recommended Bid <span class="sort-arrow">↕</span>
+                                </th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer hover:bg-gray-100" onclick="sortTable('intent')">
+                                    Intent Level <span class="sort-arrow">↕</span>
+                                </th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer hover:bg-gray-100" onclick="sortTable('volume')">
+                                    Volume Level <span class="sort-arrow">↕</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="resultsTableBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Bulk Keywords -->
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+                <h2 class="text-lg font-medium text-gray-900 mb-4">Bulk Keywords (Copy-Ready)</h2>
+                <textarea id="bulkKeywords" class="w-full h-32 px-3 py-2 border border-gray-300 rounded-md bg-gray-50 font-mono text-sm" readonly></textarea>
+            </div>
+
+            <!-- Keyword Suggestions -->
+            <div class="suggestion-section rounded-lg p-6 mb-6">
+                <h2 class="text-lg font-medium mb-4">💡 Additional High-Intent Keywords</h2>
+                <div id="suggestedKeywords" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                </div>
+            </div>
+
+            <!-- Negative Keywords -->
+            <div class="negative-keywords-section rounded-lg p-6">
+                <h2 class="text-lg font-medium mb-4">🚫 Suggested Negative Keywords</h2>
+                <p class="text-sm mb-4 opacity-90">Add these to exclude irrelevant traffic and improve campaign efficiency</p>
+                <div id="negativeKeywords" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class GoogleAdsKeywordCalculator {
+            constructor() {
+                this.currency = '$';
+                this.campaignType = 'ecommerce';
+                this.matchType = 'broad';
+                this.keywords = [];
+                this.results = [];
+                this.filteredResults = [];
+                this.filters = {
+                    volume: 'all',
+                    competition: 'all',
+                    intent: 'all'
+                };
+                this.sortColumn = null;
+                this.sortDirection = 'asc';
+                this.initializeEventListeners();
+            }
+
+            initializeEventListeners() {
+                document.getElementById('calculateBtn').addEventListener('click', () => this.calculateKeywords());
+                document.getElementById('clearBtn').addEventListener('click', () => this.clearAll());
+                document.getElementById('currency').addEventListener('change', (e) => this.updateCurrency(e.target.value));
+                document.getElementById('campaignType').addEventListener('change', (e) => this.updateCampaignType(e.target.value));
+                document.getElementById('matchType').addEventListener('change', (e) => this.updateMatchType(e.target.value));
+                document.getElementById('fileInput').addEventListener('change', (e) => this.handleFileUpload(e));
+                document.getElementById('copyAllBtn').addEventListener('click', () => this.copyAllKeywords());
+                document.getElementById('exportBtn').addEventListener('click', () => this.exportKeywords());
+                document.getElementById('resetFilters').addEventListener('click', () => this.resetFilters());
+
+                // Filter buttons
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => this.handleFilter(e));
+                });
+            }
+
+            handleFilter(event) {
+                const button = event.target;
+                const filterType = button.dataset.filter;
+                const filterValue = button.dataset.value;
+
+                // Update active state
+                document.querySelectorAll(`[data-filter="${filterType}"]`).forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                button.classList.add('active');
+
+                // Update filter
+                this.filters[filterType] = filterValue;
+                this.applyFilters();
+            }
+
+            applyFilters() {
+                this.filteredResults = this.results.filter(result => {
+                    // Volume filter
+                    if (this.filters.volume !== 'all') {
+                        const volumeLevel = this.getVolumeLevel(result.searches);
+                        if (volumeLevel !== this.filters.volume) return false;
+                    }
+
+                    // Competition filter
+                    if (this.filters.competition !== 'all') {
+                        if (result.competition.toLowerCase() !== this.filters.competition) return false;
+                    }
+
+                    // Intent filter
+                    if (this.filters.intent !== 'all') {
+                        if (result.intent !== this.filters.intent) return false;
+                    }
+
+                    return true;
+                });
+
+                this.updateFilterCounts();
+                this.displayResults();
+                this.updateBulkKeywordsDisplay();
+            }
+
+            getVolumeLevel(searches) {
+                if (searches >= 20000) return 'high';
+                if (searches >= 5000) return 'medium';
+                return 'low';
+            }
+
+            updateFilterCounts() {
+                document.getElementById('filteredCount').textContent = this.filteredResults.length;
+                document.getElementById('totalCount').textContent = this.results.length;
+            }
+
+            resetFilters() {
+                this.filters = {
+                    volume: 'all',
+                    competition: 'all',
+                    intent: 'all'
+                };
+
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.dataset.value === 'all') {
+                        btn.classList.add('active');
+                    }
+                });
+
+                this.applyFilters();
+            }
+
+            updateCurrency(currency) {
+                this.currency = currency;
+                if (this.results.length > 0) {
+                    this.updateResultsDisplay();
+                    this.updateStats();
+                }
+            }
+
+            updateCampaignType(type) {
+                this.campaignType = type;
+            }
+
+            updateMatchType(type) {
+                this.matchType = type;
+                if (this.results.length > 0) {
+                    this.updateBulkKeywordsDisplay();
+                }
+            }
+
+            handleFileUpload(event) {
+                const file = event.target.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const content = e.target.result;
+                    let keywords = [];
+
+                    if (file.name.endsWith('.csv')) {
+                        const parsed = Papa.parse(content, { header: false });
+                        keywords = parsed.data.flat().filter(k => k && k.trim());
+                    } else {
+                        keywords = content.split('\n').filter(k => k && k.trim());
+                    }
+
+                    document.getElementById('keywordInput').value = keywords.join('\n');
+                };
+                reader.readAsText(file);
+            }
+
+            calculateKeywords() {
+                const input = document.getElementById('keywordInput').value.trim();
+                if (!input) {
+                    alert('Please enter some keywords or upload a file.');
+                    return;
+                }
+
+                this.keywords = input.split('\n').filter(k => k && k.trim()).map(k => k.trim().toLowerCase());
+                this.results = this.keywords.map(keyword => this.analyzeKeyword(keyword));
+                this.filteredResults = [...this.results];
+                
+                this.updateStats();
+                this.displayResults();
+                this.displaySuggestedKeywords();
+                this.displayNegativeKeywords();
+                this.updateFilterCounts();
+                
+                document.getElementById('resultsSection').classList.remove('hidden');
+                document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
+            }
+
+            updateStats() {
+                const totalKeywords = this.results.length;
+                const totalVolume = this.results.reduce((sum, r) => sum + r.searches, 0);
+                const avgVolume = totalKeywords > 0 ? Math.round(totalVolume / totalKeywords) : 0;
+                const avgCPC = totalKeywords > 0 ? this.results.reduce((sum, r) => sum + r.recommendedBid, 0) / totalKeywords : 0;
+
+                document.getElementById('totalKeywords').textContent = totalKeywords.toLocaleString();
+                document.getElementById('avgSearchVolume').textContent = avgVolume.toLocaleString();
+                document.getElementById('avgCPC').textContent = this.formatCurrency(avgCPC);
+                document.getElementById('totalVolume').textContent = totalVolume.toLocaleString();
+            }
+
+            analyzeKeyword(keyword) {
+                const words = keyword.toLowerCase().split(' ');
+                
+                // Intent analysis
+                const highIntentWords = ['buy', 'purchase', 'order', 'shop', 'best', 'top', 'review', 'compare', 'price', 'cheap', 'discount', 'sale', 'deal', 'donate', 'volunteer', 'sign up', 'register', 'subscribe', 'hire', 'service'];
+                const mediumIntentWords = ['how', 'what', 'guide', 'tips', 'learn', 'tutorial', 'find', 'search', 'locate', 'near me'];
+                const lowIntentWords = ['free', 'information', 'about', 'general', 'overview', 'definition', 'meaning'];
+
+                let intent = 'low';
+                if (words.some(word => highIntentWords.includes(word))) {
+                    intent = 'high';
+                } else if (words.some(word => mediumIntentWords.includes(word))) {
+                    intent = 'medium';
+                }
+
+                // Competition analysis
+                const competitiveWords = ['best', 'top', 'buy', 'shop', 'cheap', 'discount', 'review'];
+                const competition = words.some(word => competitiveWords.includes(word)) ? 'High' : 
+                                 words.length > 3 ? 'Medium' : 'Low';
+
+                // Search volume simulation with more realistic distribution
+                let baseVolume;
+                if (intent === 'high') {
+                    baseVolume = Math.floor(Math.random() * 45000) + 5000; // 5k-50k
+                } else if (intent === 'medium') {
+                    baseVolume = Math.floor(Math.random() * 15000) + 2000; // 2k-17k
+                } else {
+                    baseVolume = Math.floor(Math.random() * 8000) + 500; // 500-8.5k
+                }
+
+                // Adjust for competition
+                if (competition === 'High') baseVolume *= 1.3;
+                else if (competition === 'Low') baseVolume *= 0.7;
+
+                const searches = Math.floor(baseVolume);
+                const analysis = { intent, competition, searches };
+                const cpcData = this.calculateCPC(keyword, analysis);
+                const recommendedBid = this.calculateRecommendedBid(cpcData, analysis);
+
+                return {
+                    keyword: keyword,
+                    searches: searches,
+                    competition: competition,
+                    cpcLow: cpcData.low,
+                    cpcHigh: cpcData.high,
+                    recommendedBid: recommendedBid,
+                    intent: intent,
+                    volume: this.getVolumeLevel(searches)
+                };
+            }
+
+            calculateCPC(keyword, analysis) {
+                const baseMultiplier = this.getCurrencyMultiplier();
+                const campaignMultiplier = this.getCampaignMultiplier();
+                
+                let baseCPC = (Math.random() * 3 + 0.5) * baseMultiplier * campaignMultiplier;
+                
+                // Adjust for competition
+                if (analysis.competition === 'High') baseCPC *= 1.5;
+                else if (analysis.competition === 'Medium') baseCPC *= 1.2;
+                
+                // Adjust for intent
+                if (analysis.intent === 'high') baseCPC *= 1.8;
+                else if (analysis.intent === 'medium') baseCPC *= 1.3;
+
+                return {
+                    low: Math.max(0.1 * baseMultiplier, baseCPC * 0.7),
+                    high: baseCPC * 1.4
+                };
+            }
+
+            getCurrencyMultiplier() {
+                const multipliers = {
+                    '$': 1, '€': 0.85, '£': 0.75, '₹': 75, '¥': 110,
+                    'C$': 1.25, 'A$': 1.35, 'kr': 8.5, '₽': 60, 'R$': 5.2
+                };
+                return multipliers[this.currency] || 1;
+            }
+
+            getCampaignMultiplier() {
+                const multipliers = {
+                    'ecommerce': 1.2,
+                    'local': 0.8,
+                    'corporate': 1.5,
+                    'nonprofit': 0.6,
+                    'leadgen': 1.3,
+                    'brand': 0.9
+                };
+                return multipliers[this.campaignType] || 1;
+            }
+
+            calculateRecommendedBid(cpcData, analysis) {
+                let bidPercentage;
+                
+                switch (analysis.intent) {
+                    case 'high':
+                        bidPercentage = 0.95;
+                        break;
+                    case 'medium':
+                        bidPercentage = 0.65;
+                        break;
+                    default:
+                        bidPercentage = 0.35;
+                }
+
+                if (analysis.competition === 'High') bidPercentage *= 1.1;
+                else if (analysis.competition === 'Low') bidPercentage *= 0.9;
+
+                return cpcData.high * bidPercentage;
+            }
+
+            formatCurrency(amount) {
+                return `${this.currency}${amount.toFixed(2)}`;
+            }
+
+            displayResults() {
+                const tbody = document.getElementById('resultsTableBody');
+                tbody.innerHTML = '';
+
+                this.filteredResults.forEach(result => {
+                    const row = document.createElement('tr');
+                    row.className = `${result.intent}-intent volume-${result.volume} border-b border-gray-200`;
+                    
+                    row.innerHTML = `
+                        <td class="px-4 py-3 font-medium">${result.keyword}</td>
+                        <td class="px-4 py-3">${result.searches.toLocaleString()}</td>
+                        <td class="px-4 py-3">
+                            <span class="competition-${result.competition.toLowerCase()}">${result.competition}</span>
+                        </td>
+                        <td class="px-4 py-3">${this.formatCurrency(result.cpcLow)}</td>
+                        <td class="px-4 py-3">${this.formatCurrency(result.cpcHigh)}</td>
+                        <td class="px-4 py-3 font-semibold">${this.formatCurrency(result.recommendedBid)}</td>
+                        <td class="px-4 py-3">
+                            <span class="px-2 py-1 text-xs rounded-full ${this.getIntentBadgeClass(result.intent)}">
+                                ${result.intent.charAt(0).toUpperCase() + result.intent.slice(1)}
+                            </span>
+                        </td>
+                        <td class="px-4 py-3">
+                            <span class="px-2 py-1 text-xs rounded-full ${this.getVolumeBadgeClass(result.volume)}">
+                                ${result.volume.charAt(0).toUpperCase() + result.volume.slice(1)}
+                            </span>
+                        </td>
+                    `;
+                    tbody.appendChild(row);
+                });
+
+                this.updateBulkKeywordsDisplay();
+            }
+
+            getIntentBadgeClass(intent) {
+                const classes = {
+                    'high': 'bg-green-100 text-green-800',
+                    'medium': 'bg-yellow-100 text-yellow-800',
+                    'low': 'bg-gray-100 text-gray-800'
+                };
+                return classes[intent] || classes.low;
+            }
+
+            getVolumeBadgeClass(volume) {
+                const classes = {
+                    'high': 'bg-blue-100 text-blue-800',
+                    'medium': 'bg-orange-100 text-orange-800',
+                    'low': 'bg-red-100 text-red-800'
+                };
+                return classes[volume] || classes.low;
+            }
+
+            updateResultsDisplay() {
+                this.displayResults();
+                this.updateStats();
+            }
+
+            updateBulkKeywordsDisplay() {
+                const formatted = this.filteredResults.map(result => {
+                    const formattedKeyword = this.formatKeywordForMatchType(result.keyword);
+                    return `${formattedKeyword} - ${this.formatCurrency(result.recommendedBid)}`;
+                }).join('\n');
+
+                document.getElementById('bulkKeywords').value = formatted;
+            }
+
+            formatKeywordForMatchType(keyword) {
+                switch (this.matchType) {
+                    case 'phrase':
+                        return `"${keyword}"`;
+                    case 'exact':
+                        return `[${keyword}]`;
+                    default:
+                        return keyword;
+                }
+            }
+
+            sortTable(column) {
+                if (this.sortColumn === column) {
+                    this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+                } else {
+                    this.sortColumn = column;
+                    this.sortDirection = 'asc';
+                }
+
+                this.filteredResults.sort((a, b) => {
+                    let aVal = a[column];
+                    let bVal = b[column];
+
+                    // Handle different data types
+                    if (typeof aVal === 'string') {
+                        aVal = aVal.toLowerCase();
+                        bVal = bVal.toLowerCase();
+                    }
+
+                    if (aVal < bVal) return this.sortDirection === 'asc' ? -1 : 1;
+                    if (aVal > bVal) return this.sortDirection === 'asc' ? 1 : -1;
+                    return 0;
+                });
+
+                this.displayResults();
+                this.updateSortArrows();
+            }
+
+            updateSortArrows() {
+                document.querySelectorAll('.sort-arrow').forEach(arrow => {
+                    arrow.textContent = '↕';
+                });
+
+                if (this.sortColumn) {
+                    const header = document.querySelector(`th[onclick="sortTable('${this.sortColumn}')"] .sort-arrow`);
+                    if (header) {
+                        header.textContent = this.sortDirection === 'asc' ? '↑' : '↓';
+                    }
+                }
+            }
+
+            displaySuggestedKeywords() {
+                const container = document.getElementById('suggestedKeywords');
+                const suggestions = this.generateKeywordSuggestions();
+                
+                container.innerHTML = suggestions.map(suggestion => `
+                    <div class="bg-white bg-opacity-20 rounded-lg p-4">
+                        <div class="font-medium">${suggestion.keyword}</div>
+                        <div class="text-sm opacity-90 mt-1">
+                            ${suggestion.searches.toLocaleString()} searches
+                        </div>
+                        <div class="text-sm opacity-75 mt-1">
+                            Intent: ${suggestion.intent} | Volume: ${suggestion.volume}
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            generateKeywordSuggestions() {
+                const suggestions = [];
+                const baseKeywords = [...new Set(this.keywords.map(k => k.split(' ')[0]))];
+                
+                const intentModifiers = {
+                    'ecommerce': ['buy', 'shop', 'order', 'purchase', 'cheap', 'discount', 'best', 'top rated'],
+                    'local': ['near me', 'local', 'nearby', 'in [city]', 'best local', 'top rated'],
+                    'corporate': ['enterprise', 'business', 'professional', 'corporate', 'B2B', 'solutions'],
+                    'nonprofit': ['donate', 'volunteer', 'support', 'charity', 'fundraise', 'help'],
+                    'leadgen': ['quote', 'estimate', 'consultation', 'free trial', 'demo', 'contact'],
+                    'brand': ['review', 'compare', 'vs', 'alternative', 'best', 'top']
+                };
+
+                const modifiers = intentModifiers[this.campaignType] || intentModifiers.ecommerce;
+                
+                baseKeywords.slice(0, 3).forEach(base => {
+                    modifiers.slice(0, 8).forEach(modifier => {
+                        const keyword = `${modifier} ${base}`;
+                        const analysis = this.analyzeKeyword(keyword);
+                        suggestions.push({
+                            keyword: keyword,
+                            searches: analysis.searches,
+                            intent: analysis.intent,
+                            volume: analysis.volume
+                        });
+                    });
+                });
+
+                return suggestions.sort((a, b) => b.searches - a.searches).slice(0, 12);
+            }
+
+            displayNegativeKeywords() {
+                const container = document.getElementById('negativeKeywords');
+                const negatives = this.generateNegativeKeywords();
+                
+                container.innerHTML = negatives.map(negative => `
+                    <div class="bg-white bg-opacity-20 rounded-lg p-3">
+                        <div class="font-medium">${negative}</div>
+                    </div>
+                `).join('');
+            }
+
+            generateNegativeKeywords() {
+                const commonNegatives = ['free', 'job', 'jobs', 'career', 'salary', 'wikipedia', 'wiki', 'diy', 'how to make', 'homemade'];
+                
+                const campaignSpecificNegatives = {
+                    'ecommerce': ['wholesale', 'bulk', 'used', 'second hand', 'refurbished', 'broken', 'repair'],
+                    'local': ['online', 'international', 'worldwide', 'global', 'remote', 'virtual'],
+                    'corporate': ['personal', 'individual', 'home', 'hobby', 'amateur', 'student'],
+                    'nonprofit': ['profit', 'commercial', 'business', 'corporate', 'enterprise', 'investment'],
+                    'leadgen': ['free', 'diy', 'self', 'automated', 'cheap', 'budget'],
+                    'brand': ['competitor names', 'alternative', 'vs', 'comparison', 'review']
+                };
+
+                const specificNegatives = campaignSpecificNegatives[this.campaignType] || [];
+                
+                return [...commonNegatives, ...specificNegatives].slice(0, 15);
+            }
+
+            copyAllKeywords() {
+                const textarea = document.getElementById('bulkKeywords');
+                textarea.select();
+                textarea.setSelectionRange(0, 99999);
+                document.execCommand('copy');
+                
+                const button = document.getElementById('copyAllBtn');
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                button.className = button.className.replace('bg-green-600', 'bg-green-800');
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.className = button.className.replace('bg-green-800', 'bg-green-600');
+                }, 2000);
+            }
+
+            exportKeywords() {
+                const data = this.filteredResults.map(result => ({
+                    keyword: this.formatKeywordForMatchType(result.keyword),
+                    recommendedBid: this.formatCurrency(result.recommendedBid),
+                    searches: result.searches,
+                    competition: result.competition,
+                    intent: result.intent,
+                    volume: result.volume,
+                    cpcLow: this.formatCurrency(result.cpcLow),
+                    cpcHigh: this.formatCurrency(result.cpcHigh)
+                }));
+
+                const csv = Papa.unparse(data);
+                const blob = new Blob([csv], { type: 'text/csv' });
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `google_ads_keywords_${this.matchType}_filtered_${Date.now()}.csv`;
+                a.click();
+                window.URL.revokeObjectURL(url);
+            }
+
+            clearAll() {
+                document.getElementById('keywordInput').value = '';
+                document.getElementById('fileInput').value = '';
+                document.getElementById('resultsSection').classList.add('hidden');
+                this.keywords = [];
+                this.results = [];
+                this.filteredResults = [];
+                this.resetFilters();
+            }
+        }
+
+        // Make sortTable function globally accessible
+        window.sortTable = function(column) {
+            if (window.calculator) {
+                window.calculator.sortTable(column);
+            }
+        };
+
+        // Initialize the calculator when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            window.calculator = new GoogleAdsKeywordCalculator();
+        });
+    </script>
+</body>
+</html>
