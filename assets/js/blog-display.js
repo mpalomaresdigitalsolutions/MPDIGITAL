@@ -6,14 +6,14 @@ class BlogDisplayManager {
         this.postsPerPage = 6;
         this.filteredPosts = [];
         this.currentCategory = 'all';
+        this.viewMode = 'grid';
         this.init();
     }
 
     init() {
-        // Initialize view controls
-        this.initializeViewControls();
         this.loadBlogPosts();
         this.setupEventListeners();
+        this.initializeViewControls();
         this.displayPosts();
     }
 
@@ -106,6 +106,32 @@ class BlogDisplayManager {
                 featured: true
             }
         ];
+    }
+
+    initializeViewControls() {
+        const gridViewBtn = document.getElementById('grid-view-btn');
+        const listViewBtn = document.getElementById('list-view-btn');
+
+        if (gridViewBtn && listViewBtn) {
+            gridViewBtn.addEventListener('click', () => this.toggleView('grid'));
+            listViewBtn.addEventListener('click', () => this.toggleView('list'));
+        }
+    }
+
+    toggleView(mode) {
+        this.viewMode = mode;
+        const gridViewBtn = document.getElementById('grid-view-btn');
+        const listViewBtn = document.getElementById('list-view-btn');
+
+        if (mode === 'grid') {
+            gridViewBtn?.classList.add('active');
+            listViewBtn?.classList.remove('active');
+        } else {
+            gridViewBtn?.classList.remove('active');
+            listViewBtn?.classList.add('active');
+        }
+
+        this.displayPosts();
     }
 
     setupEventListeners() {
