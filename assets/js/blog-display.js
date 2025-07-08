@@ -213,3 +213,39 @@ document.addEventListener('DOMContentLoaded', () => {
     window.blogDisplayManager = new BlogDisplayManager();
 });
 
+
+function loadBlogPosts() {
+    const blogPosts = [
+        {
+            author: 'Marlon Palomares',
+            title: 'PPC Trends to Watch in 2025',
+            description: 'Stay ahead of the competition with insights into the emerging trends and technologies shaping the future of PPC advertising.',
+            link: './blog/ppc-trends-2025.html',
+            image: 'assets/images/blog/ppc-trends.jpg'
+        },
+        // Add more blog posts here
+    ];
+
+    const blogContainer = document.querySelector('.blog-posts-container');
+    if (!blogContainer) return;
+
+    blogPosts.forEach(post => {
+        const postElement = document.createElement('div');
+        postElement.className = 'blog-post';
+        postElement.innerHTML = `
+            <div class="post-meta">
+                <span><i class="fas fa-user" aria-hidden="true"></i> ${post.author}</span>
+            </div>
+            <h3>${post.title}</h3>
+            <p>${post.description}</p>
+            <a href="${post.link}" class="read-more">
+                Read More <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </a>
+        `;
+        blogContainer.appendChild(postElement);
+    });
+}
+
+// Call the function when the DOM is loaded
+document.addEventListener('DOMContentLoaded', loadBlogPosts);
+

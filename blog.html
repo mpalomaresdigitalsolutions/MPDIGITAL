@@ -3,194 +3,1248 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore our latest insights on digital marketing, PPC strategies, and ROI optimization.">
-    <meta name="keywords" content="digital marketing, PPC, Google Ads, ROI optimization, marketing insights">
-    <meta name="author" content="MP Digital">
-    <meta name="theme-color" content="#0066cc">
+    <meta name="description" content="Latest insights and strategies for Google Ads optimization, PPC management, and digital marketing success by Mpalomares Digital Solutions.">
+    <meta name="keywords" content="Google Ads Blog, PPC Strategies, Digital Marketing Insights, Google Ads Optimization, Marketing Tips">
+    <meta name="author" content="Marlon Palomares">
+    <title>Blog - MPalomares Digital Solutions</title>
     
-    <title>Blog - MP Digital | Digital Marketing Insights</title>
-    
-    <!-- Preload critical assets -->
-    <link rel="preload" href="assets/css/styles.css" as="style">
-    <link rel="preload" href="assets/js/blog-display.js" as="script">
-    <link rel="preload" href="assets/images/Logo.svg" as="image" type="image/svg+xml">
-    
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
-    
+    <!-- Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preload" as="script" href="../assets/js/blog-display.js">
+    <link rel="preload" as="script" href="../assets/js/blog-functions.js">
+
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
     
-    <!-- Custom Styles -->
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Mpalomares Digital Solutions Blog",
+        "description": "Latest insights and strategies for Google Ads optimization and digital marketing success",
+        "url": "https://mpalomares.com/blog",
+        "author": {
+            "@type": "Person",
+            "name": "Marlon Palomares"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Mpalomares Digital Solutions",
+            
+        }
+    }
+    </script>
+
     <style>
-    .dropdown-menu {
-        display: none;
-        position: absolute;
-        background-color: #fff;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        border-radius: 4px;
-        padding: 0.5rem 0;
-    }
-    
-    .dropdown:hover .dropdown-menu {
-        display: block;
-    }
+        :root {
+            --primary-color: #0066cc;
+            --secondary-color: #004499;
+            --accent-color: #ff6b35;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --dark-color: #1a1a1a;
+            --light-color: #f8f9fa;
+            --gray-100: #f8f9fa;
+            --gray-200: #e9ecef;
+            --gray-300: #dee2e6;
+            --gray-400: #ced4da;
+            --gray-500: #adb5bd;
+            --gray-600: #6c757d;
+            --gray-700: #495057;
+            --gray-800: #343a40;
+            --gray-900: #212529;
+            --white: #ffffff;
+            --black: #000000;
+            
+            --font-primary: 'Inter', sans-serif;
+            --font-secondary: 'Poppins', sans-serif;
+            
+            --border-radius: 8px;
+            --border-radius-lg: 12px;
+            --border-radius-xl: 16px;
+            --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --box-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            
+            --transition: all 0.3s ease;
+            --transition-fast: all 0.15s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            line-height: 1.6;
+            color: var(--gray-800);
+            background-color: var(--gray-100);
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--gray-200);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--box-shadow);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-family: var(--font-secondary);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+            transition: var(--transition);
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray-700);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-color);
+            background: rgba(0, 102, 204, 0.1);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--box-shadow-lg);
+            min-width: 220px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 1000;
+            padding: 0.5rem 0;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--gray-700);
+            border-radius: 0;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(0, 102, 204, 0.1);
+            color: var(--primary-color);
+        }
+
+        .dropdown-menu a::after {
+            display: none;
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--gray-700);
+            margin: 3px 0;
+            transition: var(--transition);
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Blog Header */
+        .blog-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.05)" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
+        }
+
+        .blog-header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .blog-header h1 {
+            font-family: var(--font-secondary);
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .blog-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Blog Controls */
+        .blog-controls {
+            background: var(--white);
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--gray-200);
+            position: sticky;
+            top: 80px;
+            z-index: 100;
+        }
+
+        .blog-controls-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .search-container {
+            position: relative;
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 3rem;
+            border: 2px solid var(--gray-300);
+            border-radius: var(--border-radius-lg);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-500);
+        }
+
+        .filter-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .filter-select {
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--gray-300);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            background: var(--white);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .view-toggle {
+            display: flex;
+            border: 2px solid var(--gray-300);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        .view-btn {
+            padding: 0.75rem 1rem;
+            background: var(--white);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--gray-600);
+        }
+
+        .view-btn.active {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .admin-btn {
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .admin-btn:hover {
+            background: #e55a2b;
+            transform: translateY(-1px);
+        }
+
+        /* Blog Content */
+        .blog-content {
+            padding: 3rem 0;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .blog-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Blog Post Cards */
+        .blog-post {
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .blog-post:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow-xl);
+        }
+
+        .blog-post-image {
+            position: relative;
+            overflow: hidden;
+            height: 250px;
+        }
+
+        .blog-post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .blog-post:hover .blog-post-image img {
+            transform: scale(1.05);
+        }
+
+        .blog-post-category {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--border-radius);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .blog-post-content {
+            padding: 1.5rem;
+        }
+
+        .blog-post h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--dark-color);
+            line-height: 1.4;
+        }
+
+        .blog-post-excerpt {
+            color: var(--gray-600);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .blog-post-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--gray-500);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-post-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-post-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            background: var(--gray-200);
+            color: var(--gray-700);
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--border-radius);
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .read-more:hover {
+            gap: 0.75rem;
+        }
+
+        /* List View Styles */
+        .blog-list .blog-post {
+            display: flex;
+            align-items: stretch;
+        }
+
+        .blog-list .blog-post-image {
+            width: 300px;
+            height: 200px;
+            flex-shrink: 0;
+        }
+
+        .blog-list .blog-post-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 3rem;
+        }
+
+        .pagination-btn {
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--gray-300);
+            background: var(--white);
+            color: var(--gray-700);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .pagination-btn:hover,
+        .pagination-btn.active {
+            border-color: var(--primary-color);
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .pagination-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Loading */
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem;
+            color: var(--gray-600);
+        }
+
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--gray-300);
+            border-top: 2px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 0.5rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--gray-600);
+        }
+
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--gray-400);
+        }
+
+        .empty-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--gray-700);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--gray-400);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--gray-800);
+            color: var(--white);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--gray-800);
+            color: var(--gray-400);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: var(--box-shadow-lg);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+            }
+
+            .nav-links.mobile-open {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .blog-header h1 {
+                font-size: 2rem;
+            }
+
+            .blog-controls-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-container {
+                max-width: none;
+            }
+
+            .filter-controls {
+                justify-content: space-between;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-list .blog-post {
+                flex-direction: column;
+            }
+
+            .blog-list .blog-post-image {
+                width: 100%;
+                height: 200px;
+            }
+        }
     </style>
-    
-    <!-- Scripts -->
-    <script src="assets/js/blog-display.js" defer></script>
 </head>
-<body class="blog-page">
-    <header class="header">
+<body>
+    <!-- Header -->
+    <header>
         <nav class="navbar">
             <div class="nav-brand">
-                <a href="index.html" aria-label="MP Digital Home">
-                    <img src="assets/images/Logo.svg" alt="MP Digital Logo" width="150" height="40">
+                <a href="index.html" class="logo" aria-label="Mpalomares Digital Home">
+                    <img src="assets/images/Logo.svg" alt="Mpalomares Digital Logo" style="width: 200px; height: auto; transition: transform 0.3s ease; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1)); transform-origin: left center;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
                 </a>
             </div>
-            
-            <button class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            
-            <div class="nav-menu" role="navigation" style="display: flex; justify-content: center; align-items: center;">
-                <ul class="nav-list horizontal-nav" style="display: flex; gap: 2rem; margin: 0; padding: 0; list-style: none;">
-                    <li><a href="index.html"><i class="fas fa-laptop-house" aria-hidden="true"></i> Home</a></li>
-                    <li><a href="portfolio.html"><i class="fas fa-project-diagram" aria-hidden="true"></i> Portfolio</a></li>
-                    <li><a href="pmax.html"><i class="fas fa-chart-network" aria-hidden="true"></i> Pmax</a></li>
-                    <li><a href="services.html"><i class="fas fa-server" aria-hidden="true"></i> Services</a></li>
-                    <li><a href="blog.html" class="active" aria-current="page"><i class="fas fa-terminal" aria-hidden="true"></i> Blog</a></li>
-                    <li class="dropdown">
-                        <a href="#" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-microchip" aria-hidden="true"></i> ROI Calculator
-                        </a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="google_ads_calculator.html"><i class="fas fa-calculator-alt" aria-hidden="true"></i> Google Ads Calculator</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="contact.html"><i class="fas fa-network-wired" aria-hidden="true"></i> Contact</a></li>
+            <ul class="nav-links horizontal-nav" role="navigation">
+                <li><a href="index.html"><i class="fas fa-arrow-left"></i> Back to Home</a></li>
+                    
+
+                    
+                
                 </ul>
-            </div>
+            
+
         </nav>
     </header>
 
-    <main class="blog-container">
-<section class="latest-insights">
-<h2>Latest Insights</h2>
-<img src="assets/images/latest_insight.png" alt="Latest Digital Marketing Insights" loading="lazy">
-</section>
-        <div class="blog-header">
-            <h1>Latest Digital Marketing Insights</h1>
-            <p class="blog-subtitle">Expert analysis and strategies for digital marketing success</p>
-            
-            <div class="blog-controls">
-                <div class="view-controls" role="group" aria-label="Blog view options">
-                    <button id="grid-view-btn" class="active" aria-pressed="true" aria-label="Grid view">
-                        <i class="fas fa-th" aria-hidden="true"></i> Grid
-                    </button>
-                    <button id="list-view-btn" aria-pressed="false" aria-label="List view">
-                        <i class="fas fa-list" aria-hidden="true"></i> List
-                    </button>
+    <!-- Main Content -->
+    <main>
+        <!-- Blog Header -->
+        <section class="blog-header">
+            <div class="container">
+                <div class="blog-header-content">
+                    <h1>Latest Google Ads Insights</h1>
+                    <p>Stay ahead with expert strategies, optimization tips, and industry insights to maximize your Google Ads performance</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Controls -->
+        <section class="blog-controls">
+            <div class="container">
+                <div class="blog-controls-container">
+                    <div class="search-container">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="search-input" class="search-input" placeholder="Search articles...">
+                    </div>
+                    
+                    <div class="filter-controls">
+                        <select id="category-filter" class="filter-select">
+                            <option value="">All Categories</option>
+                            <option value="Google Ads">Google Ads</option>
+                            <option value="PPC Strategy">PPC Strategy</option>
+                            <option value="Analytics">Analytics</option>
+                            <option value="Optimization">Optimization</option>
+                        </select>
+                        
+                        <div class="view-toggle">
+                            <button class="view-btn active" id="grid-view" onclick="toggleView('grid')">
+                                <i class="fas fa-th"></i>
+                            </button>
+                            <button class="view-btn" id="list-view" onclick="toggleView('list')">
+                                <i class="fas fa-list"></i>
+                            </button>
+                        </div>
+                        
+                        <a href="blog_management_system/src/static/index.html" class="admin-btn">
+                            <i class="fas fa-cog"></i> Admin Panel
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Content -->
+        <section class="blog-content">
+            <div class="container">
+                <div id="blog-posts" class="blog-grid">
+                    <!-- Blog posts will be loaded here -->
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        Loading articles...
+                    </div>
                 </div>
                 
-                <div class="blog-search">
-                    <input type="search" id="blog-search" placeholder="Search articles..." 
-                           aria-label="Search blog posts">
-                    <button type="button" aria-label="Search">
-                        <i class="fas fa-search" aria-hidden="true"></i>
-                    </button>
+                <!-- Pagination -->
+                <div id="pagination" class="pagination" style="display: none;">
+                    <!-- Pagination will be generated here -->
                 </div>
             </div>
-        </div>
-
-        <div id="blog-posts" class="blog-grid" role="feed" aria-label="Blog posts"></div>
-        
-        <div class="blog-pagination" role="navigation" aria-label="Blog pagination">
-            <button id="load-more" class="btn btn-primary" aria-label="Load more posts">
-                Load More <i class="fas fa-spinner fa-spin loading-icon" aria-hidden="true"></i>
-            </button>
-        </div>
+        </section>
     </main>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-brand">
-                <img src="assets/images/Logo.svg" alt="MP Digital Logo" width="150" height="40">
-                <p>Empowering businesses through innovative digital marketing solutions.</p>
-            </div>
-            
-            <div class="footer-links">
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
+                    <div class="footer-logo">
+                        
+                        <span>Mpalomares Digital</span>
+                    </div>
+                    <p>Transforming businesses through data-driven Google Ads strategies and innovative digital marketing solutions.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/marlon.palomares.2024/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/in/mpdigital/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/palomares523/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/marlonpalo64854" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://github.com/mpalomaresdigitalsolutions" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
                 </div>
                 
                 <div class="footer-section">
                     <h3>Services</h3>
-                    <ul>
-                        <li><a href="services.html#ppc">PPC Management</a></li>
-                        <li><a href="services.html#analytics">Analytics</a></li>
-                        <li><a href="services.html#optimization">Optimization</a></li>
+                    <ul class="footer-links">
+                        <li><a href="services.html">Google Ads Management</a></li>
+                        <li><a href="services.html">Campaign Optimization</a></li>
+                        <li><a href="services.html">Analytics Setup</a></li>
+                        <li><a href="services.html">Conversion Tracking</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Portfolio</h3>
+                    <ul class="footer-links">
+                        <li><a href="portfolio_consolidated.html#case-studies">Case Studies</a></li>
+                        <li><a href="portfolio_consolidated.html#analytics">Analytics</a></li>
+                        <li><a href="portfolio_consolidated.html#certificates">Certificates</a></li>
+                        <li><a href="portfolio_consolidated.html#tools">Tools</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-section">
                     <h3>Contact</h3>
-                    <ul>
-                        <li><a href="mailto:info@mpdigital.co.nz">info@mpdigital.co.nz</a></li>
-                        <li><a href="tel:+6421608001">+64 21 608 001</a></li>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Get in Touch</a></li>
+                        <li><a href="https://cal.com/marlon-palomares-c4cyjo/secret">Schedule Consultation</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="about.html">About</a></li>
                     </ul>
                 </div>
             </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2024 MP Digital. All rights reserved.</p>
-            <div class="footer-legal">
-                <a href="privacy-policy.html">Privacy Policy</a>
-                <a href="terms-conditions.html">Terms & Conditions</a>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Mpalomares Digital Solutions. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Service Worker Registration -->
     <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(registration => {
-                        console.log('ServiceWorker registration successful');
-                    })
-                    .catch(err => {
-                        console.error('ServiceWorker registration failed:', err);
+        class BlogReader {
+            constructor() {
+                this.apiBase = 'http://localhost:5000/api/blog';
+                this.posts = [];
+                this.filteredPosts = [];
+                this.currentPage = 1;
+                this.postsPerPage = 9;
+                this.currentView = 'grid';
+                this.currentCategory = '';
+                this.currentSearch = '';
+                
+                this.init();
+            }
+
+            async init() {
+                await this.loadPosts();
+                this.setupEventListeners();
+                this.renderPosts();
+            }
+
+            setupEventListeners() {
+                // Search functionality
+                const searchInput = document.getElementById('search-input');
+                searchInput.addEventListener('input', (e) => {
+                    this.currentSearch = e.target.value;
+                    this.filterPosts();
+                });
+
+                // Category filter
+                const categoryFilter = document.getElementById('category-filter');
+                categoryFilter.addEventListener('change', (e) => {
+                    this.currentCategory = e.target.value;
+                    this.filterPosts();
+                });
+
+                // Mobile navigation
+                const mobileToggle = document.querySelector('.mobile-toggle');
+                const navLinks = document.querySelector('.nav-links');
+                
+                if (mobileToggle && navLinks) {
+                    mobileToggle.addEventListener('click', () => {
+                        navLinks.classList.toggle('mobile-open');
                     });
-            });
+                }
+
+                // Header scroll effect
+                const header = document.querySelector('header');
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 100) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                });
+            }
+
+            async loadPosts() {
+                try {
+                    const response = await fetch(`${this.apiBase}/posts?status=published&per_page=50`);
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        this.posts = data.posts;
+                        this.filteredPosts = [...this.posts];
+                    } else {
+                        // Fallback to sample data if API is not available
+                        this.loadSamplePosts();
+                    }
+                } catch (error) {
+                    console.log('API not available, loading sample posts');
+                    this.loadSamplePosts();
+                }
+            }
+
+            loadSamplePosts() {
+                this.posts = [
+                    {
+                        id: '1',
+                        title: 'Google Ads Optimization Strategies for 2024',
+                        slug: 'google-ads-optimization-2024',
+                        excerpt: 'Discover the latest optimization techniques to improve your Google Ads performance and maximize ROI in the current digital landscape.',
+                        content: 'Full article content here...',
+                        author: 'Marlon Palomares',
+                        category: 'Google Ads',
+                        tags: '["google ads", "optimization", "2024", "roi"]',
+                        featured_image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=300&fit=crop',
+                        published_at: '2024-01-15T10:00:00Z',
+                        reading_time: 8,
+                        views: 1250
+                    },
+                    {
+                        id: '2',
+                        title: 'The Complete Guide to Calculating Google Ads ROI',
+                        slug: 'roi-calculation-guide',
+                        excerpt: 'Learn how to accurately measure and calculate your Google Ads return on investment with practical examples and formulas.',
+                        content: 'Full article content here...',
+                        author: 'Marlon Palomares',
+                        category: 'Analytics',
+                        tags: '["roi", "analytics", "measurement", "google ads"]',
+                        featured_image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=300&fit=crop',
+                        published_at: '2024-01-10T14:30:00Z',
+                        reading_time: 12,
+                        views: 980
+                    },
+                    {
+                        id: '3',
+                        title: 'Advanced Keyword Research for Google Ads Success',
+                        slug: 'keyword-research-best-practices',
+                        excerpt: 'Master the art of keyword research with advanced techniques and tools to find profitable keywords that drive qualified traffic.',
+                        content: 'Full article content here...',
+                        author: 'Marlon Palomares',
+                        category: 'PPC Strategy',
+                        tags: '["keywords", "research", "ppc", "strategy"]',
+                        featured_image: 'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=600&h=300&fit=crop',
+                        published_at: '2024-01-05T09:15:00Z',
+                        reading_time: 10,
+                        views: 1100
+                    },
+                    {
+                        id: '4',
+                        title: 'Performance Max Campaigns: Setup and Optimization',
+                        slug: 'performance-max-guide',
+                        excerpt: 'Everything you need to know about Performance Max campaigns, from initial setup to advanced optimization strategies.',
+                        content: 'Full article content here...',
+                        author: 'Marlon Palomares',
+                        category: 'Google Ads',
+                        tags: '["performance max", "automation", "google ads"]',
+                        featured_image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=300&fit=crop',
+                        published_at: '2023-12-28T16:45:00Z',
+                        reading_time: 15,
+                        views: 1450
+                    },
+                    {
+                        id: '5',
+                        title: 'Landing Page Optimization for Better Conversions',
+                        slug: 'landing-page-optimization',
+                        excerpt: 'Improve your Google Ads conversion rates with proven landing page optimization techniques and best practices.',
+                        content: 'Full article content here...',
+                        author: 'Marlon Palomares',
+                        category: 'Optimization',
+                        tags: '["landing pages", "conversion rate", "optimization"]',
+                        featured_image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&h=300&fit=crop',
+                        published_at: '2023-12-20T11:20:00Z',
+                        reading_time: 7,
+                        views: 890
+                    },
+                    {
+                        id: '6',
+                        title: 'Google Analytics 4 for Google Ads: Complete Setup Guide',
+                        slug: 'ga4-google-ads-setup',
+                        excerpt: 'Step-by-step guide to setting up Google Analytics 4 with Google Ads for better tracking and attribution.',
+                        content: 'Full article content here...',
+                        author: 'Marlon Palomares',
+                        category: 'Analytics',
+                        tags: '["google analytics", "ga4", "tracking", "attribution"]',
+                        featured_image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=300&fit=crop',
+                        published_at: '2023-12-15T13:10:00Z',
+                        reading_time: 11,
+                        views: 1320
+                    }
+                ];
+                this.filteredPosts = [...this.posts];
+            }
+
+            filterPosts() {
+                this.filteredPosts = this.posts.filter(post => {
+                    const matchesSearch = !this.currentSearch || 
+                        post.title.toLowerCase().includes(this.currentSearch.toLowerCase()) ||
+                        post.excerpt.toLowerCase().includes(this.currentSearch.toLowerCase());
+                    
+                    const matchesCategory = !this.currentCategory || 
+                        post.category === this.currentCategory;
+                    
+                    return matchesSearch && matchesCategory;
+                });
+                
+                this.currentPage = 1;
+                this.renderPosts();
+            }
+
+            renderPosts() {
+                const container = document.getElementById('blog-posts');
+                const startIndex = (this.currentPage - 1) * this.postsPerPage;
+                const endIndex = startIndex + this.postsPerPage;
+                const postsToShow = this.filteredPosts.slice(startIndex, endIndex);
+
+                if (postsToShow.length === 0) {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <i class="fas fa-search"></i>
+                            <h3>No articles found</h3>
+                            <p>Try adjusting your search or filter criteria</p>
+                        </div>
+                    `;
+                    document.getElementById('pagination').style.display = 'none';
+                    return;
+                }
+
+                container.className = this.currentView === 'grid' ? 'blog-grid' : 'blog-list';
+                
+                container.innerHTML = postsToShow.map(post => {
+                    const tags = post.tags ? JSON.parse(post.tags) : [];
+                    const publishedDate = new Date(post.published_at);
+                    
+                    return `
+                        <article class="blog-post" onclick="openPost('${post.slug}')">
+                            <div class="blog-post-image">
+                                <img src="${post.featured_image}" alt="${post.title}" loading="lazy">
+                                <div class="blog-post-category">${post.category}</div>
+                            </div>
+                            <div class="blog-post-content">
+                                <h3>${post.title}</h3>
+                                <p class="blog-post-excerpt">${post.excerpt}</p>
+                                <div class="blog-post-meta">
+                                    <span>
+                                        <i class="fas fa-user"></i> ${post.author}
+                                    </span>
+                                    <span>
+                                        <i class="fas fa-calendar"></i> ${publishedDate.toLocaleDateString()}
+                                    </span>
+                                    <span>
+                                        <i class="fas fa-clock"></i> ${post.reading_time} min read
+                                    </span>
+                                    <span>
+                                        <i class="fas fa-eye"></i> ${post.views} views
+                                    </span>
+                                </div>
+                                ${tags.length > 0 ? `
+                                    <div class="blog-post-tags">
+                                        ${tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                                    </div>
+                                ` : ''}
+                                <a href="#" class="read-more" onclick="event.stopPropagation(); openPost('${post.slug}')">
+                                    Read More <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </article>
+                    `;
+                }).join('');
+
+                this.renderPagination();
+            }
+
+            renderPagination() {
+                const totalPages = Math.ceil(this.filteredPosts.length / this.postsPerPage);
+                const paginationContainer = document.getElementById('pagination');
+                
+                if (totalPages <= 1) {
+                    paginationContainer.style.display = 'none';
+                    return;
+                }
+
+                paginationContainer.style.display = 'flex';
+                
+                let paginationHTML = '';
+                
+                // Previous button
+                paginationHTML += `
+                    <button class="pagination-btn" ${this.currentPage === 1 ? 'disabled' : ''} 
+                            onclick="blogReader.changePage(${this.currentPage - 1})">
+                        <i class="fas fa-chevron-left"></i> Previous
+                    </button>
+                `;
+                
+                // Page numbers
+                for (let i = 1; i <= totalPages; i++) {
+                    if (i === 1 || i === totalPages || (i >= this.currentPage - 2 && i <= this.currentPage + 2)) {
+                        paginationHTML += `
+                            <button class="pagination-btn ${i === this.currentPage ? 'active' : ''}" 
+                                    onclick="blogReader.changePage(${i})">
+                                ${i}
+                            </button>
+                        `;
+                    } else if (i === this.currentPage - 3 || i === this.currentPage + 3) {
+                        paginationHTML += '<span class="pagination-btn" disabled>...</span>';
+                    }
+                }
+                
+                // Next button
+                paginationHTML += `
+                    <button class="pagination-btn" ${this.currentPage === totalPages ? 'disabled' : ''} 
+                            onclick="blogReader.changePage(${this.currentPage + 1})">
+                        Next <i class="fas fa-chevron-right"></i>
+                    </button>
+                `;
+                
+                paginationContainer.innerHTML = paginationHTML;
+            }
+
+            changePage(page) {
+                this.currentPage = page;
+                this.renderPosts();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
         }
+
+        // View toggle functionality
+        function toggleView(view) {
+            const gridBtn = document.getElementById('grid-view');
+            const listBtn = document.getElementById('list-view');
+            
+            if (view === 'grid') {
+                gridBtn.classList.add('active');
+                listBtn.classList.remove('active');
+                blogReader.currentView = 'grid';
+            } else {
+                listBtn.classList.add('active');
+                gridBtn.classList.remove('active');
+                blogReader.currentView = 'list';
+            }
+            
+            blogReader.renderPosts();
+        }
+
+        // Open post functionality
+        function openPost(slug) {
+            // For now, just show an alert. In a real implementation, 
+            // this would navigate to the full post page
+            alert(`Opening post: ${slug}\n\nIn a full implementation, this would navigate to the complete article page.`);
+        }
+
+        // Initialize the blog reader when page loads
+        let blogReader;
+        document.addEventListener('DOMContentLoaded', function() {
+            blogReader = new BlogReader();
+        });
     </script>
 </body>
 </html>
-<style>
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    border-radius: 4px;
-    padding: 0.5rem 0;
-}
 
-.dropdown:hover .dropdown-menu {
-    display: block;
-}
-</style>

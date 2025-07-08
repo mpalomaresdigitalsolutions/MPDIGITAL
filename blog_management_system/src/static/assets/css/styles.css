@@ -58,7 +58,7 @@ header {
     border-bottom: 1px solid var(--gray-200);
     z-index: 1000;
     transition: var(--transition);
-    height: 70px;
+    height: 50px;
 }
 
 header.scrolled {
@@ -70,7 +70,7 @@ header.scrolled {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 0.75rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
     height: 100%;
@@ -149,7 +149,7 @@ header.scrolled {
     padding: 120px 0 80px;
     position: relative;
     overflow: hidden;
-    margin-top: 70px;
+    margin-top: 50px;
 }
 
 .hero::before {

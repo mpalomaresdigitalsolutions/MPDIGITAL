@@ -138,8 +138,7 @@
 
     <!-- Scripts -->
     <script src="assets/js/blog-display.js" defer></script>
-    <section class="latest-insights">
-        <div class="container">
+    <div class="container">
             <h2>Latest Insights</h2>
             <div class="insights-grid">
                 <!-- Blog posts will be dynamically inserted here -->
@@ -370,21 +369,11 @@
                 <!-- Blog posts will be dynamically loaded here -->
             </div>
             
-            <div class="blog-actions" data-aos="fade-up">
-                <a href="blog.html" class="btn btn-primary">
-                    <i class="fas fa-book-reader" aria-hidden="true"></i>
-                    View All Posts
-                </a>
-            </div>
-                            <span><i class="fas fa-user" aria-hidden="true"></i> Marlon Palomares</span>
-                        </div>
-                        <h3>PPC Trends to Watch in 2025</h3>
-                        <p>Stay ahead of the competition with insights into the emerging trends and technologies shaping the future of PPC advertising.</p>
-                        <a href="./blog/ppc-trends-2025.html" class="read-more">
-                            Read More <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </article>
+            <div class="blog-posts-container">
+                <!-- Blog posts will be loaded dynamically via JavaScript -->
+                <div class="text-center mt-4">
+                    <a href="blog.html" class="btn btn-primary"><i class="fas fa-book-reader"></i> View All Blog Posts</a>
+                </div>
             </div>
         </div>
     </section>
