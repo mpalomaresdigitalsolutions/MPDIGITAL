@@ -122,7 +122,7 @@
     <title>Mpalomares Digital Solutions - Google Ads Expert & ROI Calculator</title>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
     
     <!-- Preload critical resources -->
@@ -138,8 +138,15 @@
 
     <!-- Scripts -->
     <script src="assets/js/blog-display.js" defer></script>
-    <script src="assets/js/navigation.js" defer></script>
-    <script src="assets/js/calculator.js" defer></script>
+    <section class="latest-insights">
+        <div class="container">
+            <h2>Latest Insights</h2>
+            <div class="insights-grid">
+                <!-- Blog posts will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+        <script src="assets/js/calculator.js" defer></script>
 </head>
 <body>
     <!-- Reading Progress Bar -->
@@ -148,11 +155,12 @@
     <!-- Header -->
     <header>
         <nav class="navbar">
-            <a href="#home" class="logo" aria-label="Mpalomares Digital Home">
-                 <img src="assets/images/Logo.svg" alt="Mpalomares Digital Logo" style="width: 200px; height: auto; transition: transform 0.3s ease; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1)); transform-origin: left center;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-              </a>
-            
-            <ul class="nav-links" role="navigation">
+            <div class="nav-brand">
+                <a href="#home" class="logo" aria-label="Mpalomares Digital Home">
+                    <img src="assets/images/Logo.svg" alt="Mpalomares Digital Logo" style="width: 200px; height: auto; transition: transform 0.3s ease; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1)); transform-origin: left center;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                </a>
+            </div>
+            <ul class="nav-links horizontal-nav" role="navigation">
                 <li><a href="#home" class="active"><i class="fas fa-home"></i> Home</a></li>
                 <li class="dropdown">
                     <a href="./portfolio.html"><i class="fas fa-briefcase"></i> Portfolio <i class="fas fa-caret-down"></i></a>
@@ -166,7 +174,7 @@
                 <li class="dropdown">
                     <a href="#calculator"><i class="fas fa-calculator"></i> ROI Calculator <i class="fas fa-caret-down"></i></a>
                     <div class="dropdown-content">
-                        <a href="./google-ads-bid-calculator.html"><i class="fas fa-calculator"></i> Google Ads Calculator</a>
+                        <a href="./google_ads_calculator.html"><i class="fas fa-calculator"></i> Google Ads Calculator</a>
                     </div>
                 </li>
                 <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
@@ -469,7 +477,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                     <img src="../assets/images/Logo.svg" alt="Mpalomares Digital Logo" class="footer-logo" style="width: 300px; height: auto; margin-bottom: 30px;">
+                     <img src="assets/images/Logo.svg" alt="Mpalomares Digital Logo" class="footer-logo" style="width: 300px; height: auto; margin-bottom: 30px;">
                      <p>Expert Google Ads management and digital marketing solutions designed to maximize your ROI and drive sustainable business growth.</p>
                     <div class="social-links">
                         <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
@@ -514,8 +522,8 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
     
     <!-- Load main JavaScript -->
-    <script src="../assets/js/enhanced-main.js" defer></script>
-    <script src="../assets/js/navigation.js" defer></script>
+    <script src="assets/js/enhanced-main.js" defer></script>
+<script src="assets/js/navigation.js" defer></script>
     
     <!-- ROI Calculator Script -->
     <script defer>

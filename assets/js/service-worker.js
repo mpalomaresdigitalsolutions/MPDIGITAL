@@ -1,12 +1,16 @@
 const CACHE_NAME = 'mp-digital-cache-v1';
 const ASSETS_TO_CACHE = [
-  '../..',
-  '../../html/blog.html',
-  '../../css/styles.css',
-  '../js/auth.js',
-  '../js/blog-display.js',
-  '../js/blog-admin.js',
-  '../favicon.svg',
+  '/',
+  '/blog.html',
+  '/assets/css/styles.css',
+  '/assets/js/auth.js',
+  '/assets/js/blog-display.js',
+  '/assets/js/blog-admin.js',
+  '/assets/favicon.svg',
+  '/assets/images/blog/google-ads-optimization.jpg',
+  '/assets/images/blog/roi-calculation.jpg',
+  '/assets/images/blog/ppc-trends.jpg',
+  '/offline.html'
 ];
 
 // Install event - cache initial assets

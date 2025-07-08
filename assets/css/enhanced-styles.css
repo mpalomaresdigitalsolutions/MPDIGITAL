@@ -143,6 +143,47 @@ header.scrolled {
     align-items: center;
 }
 
+.horizontal-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.horizontal-nav li a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.horizontal-nav li a:hover {
+    color: #007bff;
+}
+
+.horizontal-nav li a i {
+    font-size: 1.2rem;
+}
+
+.latest-insights {
+    margin: 4rem 0;
+}
+
+.latest-insights img {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 2rem 0;
+}
+
 .nav-links a {
     text-decoration: none;
     color: var(--gray-700);

@@ -10,9 +10,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
-    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
       --primary-color: #0066cc;
@@ -113,10 +112,12 @@
     }
 
     .profile-image {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
       border: 4px solid var(--primary-color);
       flex-shrink: 0;
     }
@@ -306,7 +307,7 @@
       <div class="header-content">
        <div class="logo-container" style="width: 100%; text-align: center; margin-bottom: 15px;">
          <a href="#home" class="logo" aria-label="Mpalomares Digital Home">
-           <img src="../assets/images/Logo.svg" alt="Mpalomares Digital Logo" style="width: 180px; height: auto;">
+           <img src="assets/images/Logo.svg" alt="Mpalomares Digital Logo" style="width: 180px; height: auto; transition: transform 0.3s ease; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1)); transform-origin: left center;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
          </a>
        </div>
        <nav>
@@ -325,7 +326,7 @@
   <!-- Profile Section -->
   <section class="profile-section">
     <div class="profile-content">
-      <img src="../assets/images/portfolio/Profile.png" alt="Marlon Palomares" class="profile-image">
+      <img src="assets/images/portfolio/Profile.png" alt="Marlon Palomares" class="profile-image" style="border-radius: 0; clip-path: none;">
       <div class="profile-info">
         <h2>Marlon Palomares</h2>
         <p>I'm a former CSR/TSR with 7 years experience in BPO. I invested in Google Ads online courses and was trained by top Google Ads expert in the Philippines, Ian Baillo. I previously handled a search campaign for VolunteerMatch with $10K USD budget. Currently offering services for free to enhance my portfolio and deliver exceptional results for clients.</p>
@@ -337,7 +338,7 @@
   <section class="portfolio-section">
     <div class="portfolio-grid">
       <div class="portfolio-item">
-        <img src="../assets/images/portfolio/Certificate.jpg" alt="Google Ads Certificate" class="portfolio-image">
+        <img src="assets/images/portfolio/Certificate.jpg" alt="Google Ads Certificate" class="portfolio-image">
         <div class="portfolio-content">
           <h3>Google Ads Certification</h3>
           <p>Proud holder of Google Ads certification, demonstrating expertise in digital advertising and campaign management. Ready to leverage this knowledge for your business success.</p>
@@ -345,7 +346,7 @@
         </div>
       </div>
       <div class="portfolio-item">
-        <img src="../assets/images/portfolio/Google Analytics.png" alt="Google Analytics Expertise" class="portfolio-image">
+        <img src="assets/images/portfolio/Google Analytics.png" alt="Google Analytics Expertise" class="portfolio-image">
         <div class="portfolio-content">
           <h3>Data-Driven Analytics</h3>
           <p>Expert in Google Analytics implementation and analysis, providing actionable insights to optimize campaign performance and drive better ROI.</p>
@@ -353,7 +354,7 @@
         </div>
       </div>
       <div class="portfolio-item">
-        <img src="../assets/images/portfolio/Google display.png" alt="Display Campaign Success" class="portfolio-image">
+        <img src="assets/images/portfolio/Google display.png" alt="Display Campaign Success" class="portfolio-image">
         <div class="portfolio-content">
           <h3>Display Advertising Excellence</h3>
           <p>Creating visually stunning display campaigns that capture attention and drive engagement across the Google Display Network.</p>
@@ -361,7 +362,7 @@
         </div>
       </div>
       <div class="portfolio-item">
-        <img src="../assets/images/portfolio/Google Search.png" alt="Search Campaign Mastery" class="portfolio-image">
+        <img src="assets/images/portfolio/Google Search.png" alt="Search Campaign Mastery" class="portfolio-image">
         <div class="portfolio-content">
           <h3>Search Campaign Mastery</h3>
           <p>Strategic keyword targeting and ad optimization expertise that delivers high-converting search campaigns with proven ROI.</p>
@@ -369,7 +370,7 @@
         </div>
       </div>
       <div class="portfolio-item">
-        <img src="../assets/images/portfolio/Google shooping.png" alt="Shopping Campaign Success" class="portfolio-image">
+        <img src="assets/images/portfolio/Google shooping.png" alt="Shopping Campaign Success" class="portfolio-image">
         <div class="portfolio-content">
           <h3>Shopping Campaign Success</h3>
           <p>Optimizing product listings and feed management to maximize visibility and sales through Google Shopping campaigns.</p>
@@ -377,7 +378,7 @@
         </div>
       </div>
       <div class="portfolio-item">
-        <img src="../assets/images/portfolio/Google Video.png" alt="Video Advertising Impact" class="portfolio-image">
+        <img src="assets/images/portfolio/Google Video.png" alt="Video Advertising Impact" class="portfolio-image">
         <div class="portfolio-content">
           <h3>Video Advertising Impact</h3>
           <p>Creating engaging video campaigns that tell your brand story and drive meaningful engagement across YouTube and the Display Network.</p>
@@ -390,15 +391,25 @@
   <!-- Footer Section -->
   <footer>
     <div class="footer-logo" style="text-align: center; margin-bottom: 20px;">
-      <img src="../assets/images/Logo.svg" alt="Mpalomares Digital Logo" style="width: 200px; height: auto;">
+      <img src="assets/images/Logo.svg" alt="Mpalomares Digital Logo" style="width: 200px; height: auto; margin-bottom: 30px;">
     </div>
     <div class="footer-content">
-      <div class="social-icons">
-        <a href="https://www.facebook.com/marlon.palomares.2024/" target="_blank" title="Follow on Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.linkedin.com/in/mpdigital/" target="_blank" title="Connect on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://www.instagram.com/palomares523/" target="_blank" title="Follow on Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://x.com/marlonpalo64854" target="_blank" title="Follow on X"><i class="fab fa-x-twitter"></i></a>
-        <a href="https://github.com/mpalomaresdigitalsolutions" target="_blank" title="View on GitHub"><i class="fab fa-github"></i></a>
+      <div class="social-icons" style="text-align: center; display: flex; justify-content: center; gap: 20px; margin: 20px 0;">
+        <style>
+          .social-icons a {
+            transition: transform 0.3s ease, color 0.3s ease;
+            color: #333;
+          }
+          .social-icons a:hover {
+            transform: translateY(-3px);
+            color: #007bff;
+          }
+        </style>
+        <a href="https://www.facebook.com/marlon.palomares.2024/" target="_blank" title="Follow on Facebook" style="font-size: 24px;"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.linkedin.com/in/mpdigital/" target="_blank" title="Connect on LinkedIn" style="font-size: 24px;"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/palomares523/" target="_blank" title="Follow on Instagram" style="font-size: 24px;"><i class="fab fa-instagram"></i></a>
+        <a href="https://x.com/marlonpalo64854" target="_blank" title="Follow on X" style="font-size: 24px;"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://github.com/mpalomaresdigitalsolutions" target="_blank" title="View on GitHub" style="font-size: 24px;"><i class="fab fa-github"></i></a>
       </div>
     </div>
     <div class="footer-links">

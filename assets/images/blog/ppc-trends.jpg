@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#f8fafc"/>
+  <g transform="translate(100,100)">
+    <text x="300" y="50" font-family="Arial" font-size="32" text-anchor="middle" fill="#1e293b">PPC Trends 2024</text>
+    <g transform="translate(50,100)">
+      <rect x="0" y="0" width="150" height="300" fill="#bfdbfe"/>
+      <rect x="200" y="50" width="150" height="250" fill="#93c5fd"/>
+      <rect x="400" y="100" width="150" height="200" fill="#60a5fa"/>
+      <text x="75" y="320" font-family="Arial" font-size="14" text-anchor="middle">AI Automation</text>
+      <text x="275" y="320" font-family="Arial" font-size="14" text-anchor="middle">Privacy Focus</text>
+      <text x="475" y="320" font-family="Arial" font-size="14" text-anchor="middle">Smart Bidding</text>
+    </g>
+    <text x="300" y="450" font-family="Arial" font-size="24" text-anchor="middle" fill="#475569">Key Trends</text>
+  </g>
+</svg>

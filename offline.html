@@ -4,7 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Offline - MP Digital Blog</title>
+    <meta name="theme-color" content="#3498db">
     <style>
+        :root {
+            --primary-color: #3498db;
+            --primary-dark: #2980b9;
+            --text-primary: #2c3e50;
+            --text-secondary: #666;
+            --bg-primary: #f5f5f5;
+            --bg-secondary: #ffffff;
+            --animation-duration: 0.3s;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary-color: #4aa3df;
+                --primary-dark: #357abd;
+                --text-primary: #ecf0f1;
+                --text-secondary: #bdc3c7;
+                --bg-primary: #2c3e50;
+                --bg-secondary: #34495e;
+            }
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
             line-height: 1.6;
@@ -15,66 +37,97 @@
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            background-color: #f5f5f5;
-            color: #333;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color var(--animation-duration) ease;
         }
 
         .offline-container {
             max-width: 600px;
             text-align: center;
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background: var(--bg-secondary);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all var(--animation-duration) ease;
         }
 
         h1 {
-            color: #2c3e50;
-            margin-bottom: 1rem;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
         }
 
         p {
-            color: #666;
+            color: var(--text-secondary);
             margin-bottom: 1.5rem;
+            font-size: 1.1rem;
         }
 
         .offline-icon {
-            font-size: 64px;
-            margin-bottom: 1rem;
+            font-size: 72px;
+            margin-bottom: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
 
         .retry-button {
-            background-color: #3498db;
+            background-color: var(--primary-color);
             color: white;
             border: none;
-            padding: 12px 24px;
-            border-radius: 4px;
+            padding: 14px 28px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all var(--animation-duration) ease;
+            margin-top: 1rem;
         }
 
         .retry-button:hover {
-            background-color: #2980b9;
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .retry-button:focus {
             outline: none;
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.4);
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: #e74c3c;
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.4; }
+            100% { opacity: 1; }
         }
 
         @media (max-width: 480px) {
             .offline-container {
-                padding: 1.5rem;
+                padding: 2rem;
                 margin: 1rem;
             }
 
             h1 {
-                font-size: 1.5rem;
+                font-size: 1.75rem;
             }
 
             .offline-icon {
-                font-size: 48px;
+                font-size: 56px;
             }
         }
     </style>
@@ -82,15 +135,42 @@
 <body>
     <div class="offline-container" role="main">
         <div class="offline-icon" aria-hidden="true">📡</div>
-        <h1>You're Offline</h1>
+        <h1><span class="status-indicator"></span>You're Offline</h1>
         <p>It seems you've lost your internet connection. Don't worry - some features of the MP Digital Blog are still available offline.</p>
-        <p>You can still view previously loaded blog posts and drafts.</p>
-        <button class="retry-button" onclick="window.location.reload()" aria-label="Retry connection">
+        <p>You can still access cached content and previously loaded blog posts.</p>
+        <button class="retry-button" onclick="checkConnection()" aria-label="Retry connection">
             Try Again
         </button>
     </div>
 
     <script>
+        let reconnectAttempts = 0;
+        const maxReconnectAttempts = 3;
+
+        function checkConnection() {
+            const button = document.querySelector('.retry-button');
+            button.textContent = 'Checking connection...';
+            button.disabled = true;
+
+            // Simulate network check with a timeout
+            setTimeout(() => {
+                if (navigator.onLine) {
+                    window.location.reload();
+                } else {
+                    reconnectAttempts++;
+                    button.textContent = 'Try Again';
+                    button.disabled = false;
+
+                    if (reconnectAttempts >= maxReconnectAttempts) {
+                        const message = document.createElement('p');
+                        message.style.color = '#e74c3c';
+                        message.textContent = 'Multiple reconnection attempts failed. Please check your internet connection.';
+                        document.querySelector('.offline-container').insertBefore(message, button);
+                    }
+                }
+            }, 2000);
+        }
+
         // Check for online status changes
         window.addEventListener('online', () => {
             window.location.reload();
@@ -99,9 +179,16 @@
         // Add keyboard support for the retry button
         document.querySelector('.retry-button').addEventListener('keypress', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
-                window.location.reload();
+                checkConnection();
             }
         });
+
+        // Periodically check connection status
+        setInterval(() => {
+            if (navigator.onLine) {
+                window.location.reload();
+            }
+        }, 30000); // Check every 30 seconds
     </script>
 </body>
 </html>
