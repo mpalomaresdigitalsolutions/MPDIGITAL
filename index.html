@@ -141,26 +141,10 @@
     <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
     
     <!-- Preload critical resources -->
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/dist/styles.min.css">
     
-    <!-- Async load non-critical CSS -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"></noscript>
-    
-    <!-- Font Awesome - Load async -->
-    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
-
     <!-- Scripts -->
-    <script src="assets/js/blog-display.js" defer></script>
-    <div class="container">
-            <h2>Latest Insights</h2>
-            <div class="insights-grid">
-                <!-- Blog posts will be dynamically inserted here -->
-            </div>
-        </div>
-    </section>
-        <script src="assets/js/calculator.js" defer></script>
+    <script src="assets/dist/main.min.js" defer></script>
 </head>
 <body>
     <!-- Reading Progress Bar -->
@@ -523,15 +507,6 @@
     </footer>
 
     <!-- Scripts -->
-    <!-- Load AOS library for animations -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    
-    <!-- Load main JavaScript -->
-    <script src="assets/js/enhanced-main.js" defer></script>
-<script src="assets/js/navigation.js" defer></script>
-    
-    <!-- ROI Calculator Script -->
     <script defer>
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize AOS

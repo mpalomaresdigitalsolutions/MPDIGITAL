@@ -44,152 +44,155 @@
         </nav>
     </header>
 
-    <div class="container mx-auto px-4 py-8 max-w-7xl">
+    <div class="container" style="padding-top: 120px;">
         <!-- Header -->
-        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6" data-aos="fade-up">
-            <h1 class="text-2xl font-medium text-gray-900 mb-2">Google Ads Keyword Calculator</h1>
-            <p class="text-gray-600">Professional keyword bidding calculator with advanced filtering capabilities</p>
+        <div class="section-header" data-aos="fade-up">
+            <h1>Google Ads Keyword Calculator</h1>
+            <p>Professional keyword bidding calculator with advanced filtering capabilities</p>
         </div>
 
         <!-- Input Section -->
-        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6" data-aos="fade-up">
-            <h2 class="text-lg font-medium text-gray-900 mb-4">Keyword Input</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Currency</label>
-                    <select id="currency" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                        <option value="$">USD ($)</option>
-                        <option value="€">EUR (€)</option>
-                        <option value="£">GBP (£)</option>
-                        <option value="₹">INR (₹)</option>
-                        <option value="¥">JPY (¥)</option>
-                        <option value="C$">CAD (C$)</option>
-                        <option value="A$">AUD (A$)</option>
-                        <option value="kr">SEK (kr)</option>
-                        <option value="₽">RUB (₽)</option>
-                        <option value="R$">BRL (R$)</option>
-                    </select>
+        <div class="calculator-container" data-aos="fade-up">
+            <div class="calculator-header">
+                <h3>Keyword Input</h3>
+            </div>
+            <div class="calculator-body">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Currency</label>
+                        <select id="currency">
+                            <option value="$">USD ($)</option>
+                            <option value="€">EUR (€)</option>
+                            <option value="£">GBP (£)</option>
+                            <option value="₹">INR (₹)</option>
+                            <option value="¥">JPY (¥)</option>
+                            <option value="C$">CAD (C$)</option>
+                            <option value="A$">AUD (A$)</option>
+                            <option value="kr">SEK (kr)</option>
+                            <option value="₽">RUB (₽)</option>
+                            <option value="R$">BRL (R$)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Campaign Type</label>
+                        <select id="campaignType">
+                            <option value="ecommerce">E-commerce</option>
+                            <option value="local">Local Business</option>
+                            <option value="corporate">Corporate/B2B</option>
+                            <option value="nonprofit">Nonprofit</option>
+                            <option value="leadgen">Lead Generation</option>
+                            <option value="brand">Brand Awareness</option>
+                        </select>
+                    </div>
                 </div>
-                
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Campaign Type</label>
-                    <select id="campaignType" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                        <option value="ecommerce">E-commerce</option>
-                        <option value="local">Local Business</option>
-                        <option value="corporate">Corporate/B2B</option>
-                        <option value="nonprofit">Nonprofit</option>
-                        <option value="leadgen">Lead Generation</option>
-                        <option value="brand">Brand Awareness</option>
-                    </select>
+
+                <div class="form-group">
+                    <label>Keywords (one per line)</label>
+                    <textarea id="keywordInput" class="keyword-input" placeholder="Enter keywords, one per line:&#10;running shoes&#10;best running shoes&#10;buy running shoes online&#10;cheap running shoes"></textarea>
                 </div>
-            </div>
 
-            <div class="mb-4">
-                <label class="block text-sm font-medium text-gray-700 mb-2">Keywords (one per line)</label>
-                <textarea id="keywordInput" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent keyword-input" placeholder="Enter keywords, one per line:&#10;running shoes&#10;best running shoes&#10;buy running shoes online&#10;cheap running shoes"></textarea>
-            </div>
+                <div class="form-group">
+                    <label>Or upload keywords file (.csv or .txt)</label>
+                    <input type="file" id="fileInput" accept=".csv,.txt">
+                </div>
 
-            <div class="mb-4">
-                <label class="block text-sm font-medium text-gray-700 mb-2">Or upload keywords file (.csv or .txt)</label>
-                <input type="file" id="fileInput" accept=".csv,.txt" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-            </div>
-
-            <div class="flex flex-wrap gap-4">
-                <button id="calculateBtn" class="btn btn-primary">
-                    Calculate Keywords
-                </button>
-                <button id="clearBtn" class="btn btn-outline">
-                    Clear All
-                </button>
+                <div class="form-group">
+                    <button id="calculateBtn" class="btn btn-primary">
+                        Calculate Keywords
+                    </button>
+                    <button id="clearBtn" class="btn btn-outline">
+                        Clear All
+                    </button>
+                </div>
             </div>
         </div>
 
         <!-- Results Section -->
-        <div id="resultsSection" class="hidden">
+        <div id="resultsSection" class="hidden" style="margin-top: 40px;">
             <!-- Stats Overview -->
-            <div class="stats-card rounded-lg p-6 mb-6" data-aos="fade-up">
-                <h2 class="text-lg font-medium mb-4">📊 Keywords Overview</h2>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="text-center">
-                        <div class="text-2xl font-bold" id="totalKeywords">0</div>
-                        <div class="text-sm opacity-90">Total Keywords</div>
+            <div class="stats-card" data-aos="fade-up">
+                <h3>📊 Keywords Overview</h3>
+                <div class="results-grid">
+                    <div class="result-card">
+                        <div id="totalKeywords">0</div>
+                        <div>Total Keywords</div>
                     </div>
-                    <div class="text-center">
-                        <div class="text-2xl font-bold" id="avgSearchVolume">0</div>
-                        <div class="text-sm opacity-90">Avg. Search Volume</div>
+                    <div class="result-card">
+                        <div id="avgSearchVolume">0</div>
+                        <div>Avg. Search Volume</div>
                     </div>
-                    <div class="text-center">
-                        <div class="text-2xl font-bold" id="avgCPC">$0.00</div>
-                        <div class="text-sm opacity-90">Avg. CPC</div>
+                    <div class="result-card">
+                        <div id="avgCPC">$0.00</div>
+                        <div>Avg. CPC</div>
                     </div>
-                    <div class="text-center">
-                        <div class="text-2xl font-bold" id="totalVolume">0</div>
-                        <div class="text-sm opacity-90">Total Volume</div>
+                    <div class="result-card">
+                        <div id="totalVolume">0</div>
+                        <div>Total Volume</div>
                     </div>
                 </div>
             </div>
 
             <!-- Advanced Filters -->
-            <div class="filter-section rounded-lg p-6 mb-6" data-aos="fade-up">
-                <h2 class="text-lg font-medium mb-4">🔍 Advanced Filters</h2>
+            <div class="filter-section" data-aos="fade-up">
+                <h3>🔍 Advanced Filters</h3>
                 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="filter-controls">
                     <!-- Search Volume Filter -->
                     <div>
-                        <label class="block text-sm font-medium mb-3 opacity-90">Search Volume</label>
+                        <label>Search Volume</label>
                         <div class="flex flex-wrap gap-2">
-                            <button class="filter-btn px-3 py-2 rounded-md bg-white bg-opacity-20 text-sm hover:bg-opacity-30 active" data-filter="volume" data-value="all">All</button>
-                            <button class="filter-btn px-3 py-2 rounded-md bg-white bg-opacity-20 text-sm hover:bg-opacity-30" data-filter="volume" data-value="high">High (20K+)</button>
-                            <button class="filter-btn px-3 py-2 rounded-md bg-white bg-opacity-20 text-sm hover:bg-opacity-30" data-filter="volume" data-value="medium">Medium (5K-20K)</button>
-                            <button class="filter-btn px-3 py-2 rounded-md bg-white bg-opacity-20 text-sm hover:bg-opacity-30" data-filter="volume" data-value="low">Low (<5K)</button>
+                            <button class="filter-btn active" data-filter="volume" data-value="all">All</button>
+                            <button class="filter-btn" data-filter="volume" data-value="high">High (20K+)</button>
+                            <button class="filter-btn" data-filter="volume" data-value="medium">Medium (5K-20K)</button>
+                            <button class="filter-btn" data-filter="volume" data-value="low">Low (<5K)</button>
                         </div>
                     </div>
 
                     <!-- Competition Filter -->
                     <div>
-                        <label class="block text-sm font-medium mb-3 opacity-90">Competition</label>
+                        <label>Competition</label>
                         <div class="flex flex-wrap gap-2">
-                            <button class="filter-btn px-3 py-2 rounded-md bg-white bg-opacity-20 text-sm hover:bg-opacity-30 active" data-filter="competition" data-value="all">All</button>
-                            <button class="filter-btn px-3 py-2 rounded-md bg-white bg-opacity-20 text-sm hover:bg-opacity-30" data-filter="competition" data-value="high">High</button>
-                            <button class="filter-btn px-3 py-2 rounded-md bg-white bg-opacity-20 text-sm hover:bg-opacity-30" data-filter="competition" data-value="medium">Medium</button>
-                            <button class="filter-btn px-3 py-2 rounded-md bg-white bg-opacity-20 text-sm hover:bg-opacity-30" data-filter="competition" data-value="low">Low</button>
+                            <button class="filter-btn active" data-filter="competition" data-value="all">All</button>
+                            <button class="filter-btn" data-filter="competition" data-value="high">High</button>
+                            <button class="filter-btn" data-filter="competition" data-value="medium">Medium</button>
+                            <button class="filter-btn" data-filter="competition" data-value="low">Low</button>
                         </div>
                     </div>
 
                     <!-- Intent Filter -->
                     <div>
-                        <label class="block text-sm font-medium mb-3 opacity-90">Intent Level</label>
+                        <label>Intent Level</label>
                         <div class="flex flex-wrap gap-2">
-                            <button class="filter-btn px-3 py-2 rounded-md bg-white bg-opacity-20 text-sm hover:bg-opacity-30 active" data-filter="intent" data-value="all">All</button>
-                            <button class="filter-btn px-3 py-2 rounded-md bg-white bg-opacity-20 text-sm hover:bg-opacity-30" data-filter="intent" data-value="high">High</button>
-                            <button class="filter-btn px-3 py-2 rounded-md bg-white bg-opacity-20 text-sm hover:bg-opacity-30" data-filter="intent" data-value="medium">Medium</button>
-                            <button class="filter-btn px-3 py-2 rounded-md bg-white bg-opacity-20 text-sm hover:bg-opacity-30" data-filter="intent" data-value="low">Low</button>
+                            <button class="filter-btn active" data-filter="intent" data-value="all">All</button>
+                            <button class="filter-btn" data-filter="intent" data-value="high">High</button>
+                            <button class="filter-btn" data-filter="intent" data-value="medium">Medium</button>
+                            <button class="filter-btn" data-filter="intent" data-value="low">Low</button>
                         </div>
                     </div>
                 </div>
 
-                <div class="mt-4 pt-4 border-t border-white border-opacity-20">
-                    <div class="flex justify-between items-center">
-                        <span class="text-sm opacity-90">Showing <span id="filteredCount">0</span> of <span id="totalCount">0</span> keywords</span>
-                        <button id="resetFilters" class="px-4 py-2 bg-white bg-opacity-20 rounded-md text-sm hover:bg-opacity-30">Reset Filters</button>
-                    </div>
+                <div class="filter-summary">
+                    <span>Showing <span id="filteredCount">0</span> of <span id="totalCount">0</span> keywords</span>
+                    <button id="resetFilters" class="btn btn-outline">Reset Filters</button>
                 </div>
             </div>
 
             <!-- Match Type Selector -->
-            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6" data-aos="fade-up">
-                <h2 class="text-lg font-medium text-gray-900 mb-4">Match Type & Export</h2>
-                <div class="flex flex-wrap gap-4 items-center">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Match Type</label>
-                        <select id="matchType" class="px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+            <div class="calculator-container" data-aos="fade-up">
+                <div class="calculator-header">
+                    <h3>Match Type & Export</h3>
+                </div>
+                <div class="calculator-body">
+                    <div class="form-group">
+                        <label>Match Type</label>
+                        <select id="matchType">
                             <option value="broad">Broad Match</option>
                             <option value="phrase">Phrase Match</option>
                             <option value="exact">Exact Match</option>
                         </select>
                     </div>
-                    <div class="flex gap-2 mt-6">
+                    <div class="form-group">
                         <button id="copyAllBtn" class="btn btn-primary">
                             Copy Filtered Keywords
                         </button>
@@ -201,36 +204,36 @@
             </div>
 
             <!-- Results Table -->
-            <div class="bg-white rounded-lg shadow-sm border border-gray-200 mb-6" data-aos="fade-up">
-                <div class="p-6 border-b border-gray-200">
-                    <h2 class="text-lg font-medium text-gray-900">Keyword Analysis Results</h2>
+            <div class="results-table-container" data-aos="fade-up">
+                <div class="section-header">
+                    <h2>Keyword Analysis Results</h2>
                 </div>
                 <div class="overflow-x-auto">
-                    <table class="w-full results-table">
-                        <thead class="bg-gray-50">
+                    <table class="results-table">
+                        <thead>
                             <tr>
-                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer hover:bg-gray-100" onclick="sortTable('keyword')">
+                                <th onclick="sortTable('keyword')">
                                     Keyword <span class="sort-arrow">↕</span>
                                 </th>
-                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer hover:bg-gray-100" onclick="sortTable('searches')">
+                                <th onclick="sortTable('searches')">
                                     Avg. Monthly Searches <span class="sort-arrow">↕</span>
                                 </th>
-                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer hover:bg-gray-100" onclick="sortTable('competition')">
+                                <th onclick="sortTable('competition')">
                                     Competition <span class="sort-arrow">↕</span>
                                 </th>
-                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer hover:bg-gray-100" onclick="sortTable('cpcLow')">
+                                <th onclick="sortTable('cpcLow')">
                                     Top CPC (Low) <span class="sort-arrow">↕</span>
                                 </th>
-                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer hover:bg-gray-100" onclick="sortTable('cpcHigh')">
+                                <th onclick="sortTable('cpcHigh')">
                                     Top CPC (High) <span class="sort-arrow">↕</span>
                                 </th>
-                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer hover:bg-gray-100" onclick="sortTable('recommendedBid')">
+                                <th onclick="sortTable('recommendedBid')">
                                     Recommended Bid <span class="sort-arrow">↕</span>
                                 </th>
-                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer hover:bg-gray-100" onclick="sortTable('intent')">
+                                <th onclick="sortTable('intent')">
                                     Intent Level <span class="sort-arrow">↕</span>
                                 </th>
-                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer hover:bg-gray-100" onclick="sortTable('volume')">
+                                <th onclick="sortTable('volume')">
                                     Volume Level <span class="sort-arrow">↕</span>
                                 </th>
                             </tr>
@@ -242,22 +245,26 @@
             </div>
 
             <!-- Bulk Keywords -->
-            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6" data-aos="fade-up">
-                <h2 class="text-lg font-medium text-gray-900 mb-4">Bulk Keywords (Copy-Ready)</h2>
-                <textarea id="bulkKeywords" class="w-full h-32 px-3 py-2 border border-gray-300 rounded-md bg-gray-50 font-mono text-sm" readonly></textarea>
+            <div class="calculator-container" data-aos="fade-up">
+                <div class="calculator-header">
+                    <h3>Bulk Keywords (Copy-Ready)</h2>
+                </div>
+                <div class="calculator-body">
+                    <textarea id="bulkKeywords" class="w-full h-32 px-3 py-2 border border-gray-300 rounded-md bg-gray-50 font-mono text-sm" readonly></textarea>
+                </div>
             </div>
 
             <!-- Keyword Suggestions -->
-            <div class="suggestion-section rounded-lg p-6 mb-6" data-aos="fade-up">
-                <h2 class="text-lg font-medium mb-4">💡 Additional High-Intent Keywords</h2>
+            <div class="suggestion-section" data-aos="fade-up">
+                <h3>💡 Additional High-Intent Keywords</h2>
                 <div id="suggestedKeywords" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 </div>
             </div>
 
             <!-- Negative Keywords -->
-            <div class="negative-keywords-section rounded-lg p-6" data-aos="fade-up">
-                <h2 class="text-lg font-medium mb-4">🚫 Suggested Negative Keywords</h2>
-                <p class="text-sm mb-4 opacity-90">Add these to exclude irrelevant traffic and improve campaign efficiency</p>
+            <div class="negative-keywords-section" data-aos="fade-up">
+                <h3>🚫 Suggested Negative Keywords</h2>
+                <p>Add these to exclude irrelevant traffic and improve campaign efficiency</p>
                 <div id="negativeKeywords" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 </div>
             </div>
