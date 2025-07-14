@@ -5,180 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog Management - MPalomares Digital Solutions</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../assets/css/styles.css">
-    <script src="../assets/js/auth.js"></script>
-    <style>
-        .auth-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #f5f5f5;
-        }
-
-        .login-form {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px;
-        }
-
-        .login-form h2 {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: #333;
-        }
-
-        .auth-form .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .auth-form label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #666;
-        }
-
-        .auth-form input {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-
-        .auth-submit-btn {
-            width: 100%;
-            padding: 0.75rem;
-            background-color: #2196F3;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .auth-submit-btn:hover {
-            background-color: #1976D2;
-        }
-
-        .password-input-container {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .toggle-password {
-            position: absolute;
-            right: 10px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: #666;
-            padding: 0;
-            display: flex;
-            align-items: center;
-        }
-
-        .toggle-password:hover {
-            color: #333;
-        }
-
-        .auth-links {
-            margin-top: 1.5rem;
-            text-align: center;
-        }
-
-        .auth-links a {
-            color: #2196F3;
-            text-decoration: none;
-            margin: 0 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        .auth-links a:hover {
-            text-decoration: underline;
-        }
-
-        .remember-me {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .remember-me input[type="checkbox"] {
-            width: auto;
-            margin-right: 0.5rem;
-        }
-
-        .form-group .password-input-container input {
-            padding-right: 40px;
-        }
-
-        .blog-management-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .auth-section {
-            display: flex;
-            justify-content: flex-end;
-            margin-bottom: 20px;
-        }
-        .content-section {
-            height: calc(100vh - 200px);
-            overflow-y: auto;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-        }
-        .auth-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-        }
-        .auth-modal.active {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .auth-form-container {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            max-width: 400px;
-            width: 90%;
-        }
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 15px;
-            border-radius: 4px;
-            z-index: 1001;
-            display: none;
-        }
-        .notification.success {
-            background: #4CAF50;
-            color: white;
-        }
-        .notification.error {
-            background: #f44336;
-            color: white;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="assets/js/auth.js"></script>
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-brand">
+                <a href="./index.html" class="logo" aria-label="Mpalomares Digital Home">
+                    <img src="assets/images/Logo.svg" alt="Mpalomares Digital Logo" style="width: 200px; height: auto; transition: transform 0.3s ease; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1)); transform-origin: left center;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                </a>
+            </div>
+            <ul class="nav-links horizontal-nav" role="navigation">
+                <li><a href="./index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li class="dropdown">
+                    <a href="./portfolio.html"><i class="fas fa-briefcase"></i> Portfolio <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="./Search_Ads.html"><i class="fas fa-search"></i> Search Campaign Sample</a>
+                        <a href="./pmax.html"><i class="fas fa-chart-line"></i> Pmax</a>
+                    </div>
+                </li>
+                <li><a href="./services.html"><i class="fas fa-cogs"></i> Services</a></li>
+                <li><a href="./blog.html"><i class="fas fa-blog"></i> Blog</a></li>
+                <li class="dropdown">
+                    <a href="./google_ads_calculator.html"><i class="fas fa-calculator"></i> ROI Calculator <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="./google_ads_calculator.html"><i class="fas fa-calculator"></i> Google Ads Calculator</a>
+                    </div>
+                </li>
+                <li><a href="./contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+
+            <button class="mobile-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
     <div id="auth-container" class="auth-container">
-        <div class="login-form" id="login-section">
+        <div class="login-form" id="login-section" data-aos="fade-up">
             <h2>Admin Login</h2>
             <form id="login-form" class="auth-form">
                 <div class="form-group">
@@ -199,7 +67,7 @@
                         <input type="checkbox" name="remember-me"> Remember me
                     </label>
                 </div>
-                <button type="submit" class="auth-submit-btn">Sign In</button>
+                <button type="submit" class="btn btn-primary">Sign In</button>
                 <div class="auth-links">
                     <a href="#" onclick="showRegistrationForm()">Create new account</a>
                     <a href="#" onclick="showForgotPasswordForm()">Forgot password?</a>
@@ -207,7 +75,7 @@
             </form>
         </div>
 
-        <div class="login-form" id="register-section" style="display: none;">
+        <div class="login-form" id="register-section" style="display: none;" data-aos="fade-up">
             <h2>Create Admin Account</h2>
             <form id="register-form" class="auth-form">
                 <div class="form-group">
@@ -236,7 +104,7 @@
                         </button>
                     </div>
                 </div>
-                <button type="submit" class="auth-submit-btn">Create Account</button>
+                <button type="submit" class="btn btn-primary">Create Account</button>
                 <div class="auth-links">
                     <a href="#" onclick="showLoginForm()">Already have an account? Sign in</a>
                     <a href="#" onclick="localStorage.clear(); location.reload();">Clear Storage & Reset</a>
@@ -244,14 +112,14 @@
             </form>
         </div>
 
-        <div class="login-form" id="forgot-password-section" style="display: none;">
+        <div class="login-form" id="forgot-password-section" style="display: none;" data-aos="fade-up">
             <h2>Reset Password</h2>
             <form id="forgot-password-form" class="auth-form">
                 <div class="form-group">
                     <label for="reset-email">Email</label>
                     <input type="email" id="reset-email" name="email" required placeholder="Enter your email">
                 </div>
-                <button type="submit" class="auth-submit-btn">Reset Password</button>
+                <button type="submit" class="btn btn-primary">Reset Password</button>
                 <div class="auth-links">
                     <a href="#" onclick="showLoginForm()">Back to login</a>
                 </div>
@@ -260,24 +128,26 @@
     </div>
 
     <div class="admin-panel" id="admin-panel" style="display: none;">
-        <div class="auth-section">
-            <div class="user-info" style="display: none;">
-                Welcome, <span class="user-name"></span>!
-                <button class="logout-btn">Logout</button>
-            </div>
-            <button class="login-btn" style="display: none;">Login</button>
-        </div>
-
-        <div class="content-section">
-            <div class="blog-stats">
-                <h2>Blog Statistics</h2>
-                <div id="stats-container"></div>
+        <div class="container">
+            <div class="auth-section">
+                <div class="user-info" style="display: none;">
+                    Welcome, <span class="user-name"></span>!
+                    <button class="btn btn-outline">Logout</button>
+                </div>
+                <button class="btn btn-primary" style="display: none;">Login</button>
             </div>
 
-            <div class="blog-posts">
-                <h2>Manage Posts</h2>
-                <button id="create-post-btn" style="display: none;">Create New Post</button>
-                <div id="posts-container"></div>
+            <div class="content-section">
+                <div class="blog-stats" data-aos="fade-up">
+                    <h2>Blog Statistics</h2>
+                    <div id="stats-container"></div>
+                </div>
+
+                <div class="blog-posts" data-aos="fade-up" data-aos-delay="100">
+                    <h2>Manage Posts</h2>
+                    <button id="create-post-btn" class="btn btn-primary" style="display: none;">Create New Post</button>
+                    <div id="posts-container"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -290,107 +160,123 @@
     <!-- Notification -->
     <div class="notification"></div>
 
-    <script src="../assets/js/blog-admin.js" type="text/javascript"></script>
-<script>
-    // Initialize authentication
-    const authManager = new AuthManager();
-    const blogAdmin = new BlogAdminManager(authManager);
+    <script src="assets/js/blog-admin.js" type="text/javascript"></script>
+    <script>
+        // Initialize authentication
+        const authManager = new AuthManager();
+        const blogAdmin = new BlogAdminManager(authManager);
 
-    // Update UI based on authentication state
-    function updateUI() {
-        const authContainer = document.getElementById('auth-container');
-        const adminPanel = document.getElementById('admin-panel');
+        // Update UI based on authentication state
+        function updateUI() {
+            const authContainer = document.getElementById('auth-container');
+            const adminPanel = document.getElementById('admin-panel');
 
-        if (authManager.isAuthenticated) {
-            authContainer.style.display = 'none';
-            adminPanel.style.display = 'block';
-        } else {
-            authContainer.style.display = 'block';
-            adminPanel.style.display = 'none';
-        }
-    }
-
-    // Toggle password visibility
-    function togglePasswordVisibility(inputId) {
-        const input = document.getElementById(inputId);
-        const icon = input.parentElement.querySelector('.fa-eye, .fa-eye-slash');
-        
-        if (input.type === 'password') {
-            input.type = 'text';
-            icon.classList.remove('fa-eye');
-            icon.classList.add('fa-eye-slash');
-        } else {
-            input.type = 'password';
-            icon.classList.remove('fa-eye-slash');
-            icon.classList.add('fa-eye');
-        }
-    }
-
-    // Show/hide form sections
-    function showLoginForm() {
-        document.getElementById('login-section').style.display = 'block';
-        document.getElementById('register-section').style.display = 'none';
-        document.getElementById('forgot-password-section').style.display = 'none';
-    }
-
-    function showRegistrationForm() {
-        document.getElementById('login-section').style.display = 'none';
-        document.getElementById('register-section').style.display = 'block';
-        document.getElementById('forgot-password-section').style.display = 'none';
-    }
-
-    function showForgotPasswordForm() {
-        document.getElementById('login-section').style.display = 'none';
-        document.getElementById('register-section').style.display = 'none';
-        document.getElementById('forgot-password-section').style.display = 'block';
-    }
-
-    // Initial UI update
-    updateUI();
-
-    // Listen for authentication changes
-    document.addEventListener('authStateChanged', updateUI);
-
-    // Form submission handlers
-    document.getElementById('register-form').addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const password = document.getElementById('register-password').value;
-        const confirmPassword = document.getElementById('register-confirm-password').value;
-
-        if (password !== confirmPassword) {
-            const notification = document.createElement('div');
-            notification.className = 'notification error';
-            notification.textContent = 'Passwords do not match!';
-            document.body.appendChild(notification);
-            setTimeout(() => notification.remove(), 3000);
-            return;
+            if (authManager.isAuthenticated) {
+                authContainer.style.display = 'none';
+                adminPanel.style.display = 'block';
+            } else {
+                authContainer.style.display = 'flex';
+                adminPanel.style.display = 'none';
+            }
         }
 
-        // Clear localStorage before first registration attempt
-        const users = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
-        if (users.length === 0) {
-            localStorage.clear();
+        // Toggle password visibility
+        function togglePasswordVisibility(inputId) {
+            const input = document.getElementById(inputId);
+            const icon = input.parentElement.querySelector('.fa-eye, .fa-eye-slash');
+
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
         }
 
-        // Handle registration through AuthManager
-        try {
-            await authManager.handleRegistration(e.target);
-            // Form will be reset and UI will be updated by AuthManager if registration is successful
-            location.reload(); // Ensure clean state after registration
-        } catch (error) {
-            const notification = document.createElement('div');
-            notification.className = 'notification error';
-            notification.textContent = error.message || 'Registration failed. Please try again.';
-            document.body.appendChild(notification);
-            setTimeout(() => notification.remove(), 3000);
+        // Show/hide form sections
+        function showLoginForm() {
+            document.getElementById('login-section').style.display = 'block';
+            document.getElementById('register-section').style.display = 'none';
+            document.getElementById('forgot-password-section').style.display = 'none';
         }
-    });
 
-    document.getElementById('forgot-password-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        // Handle password reset through AuthManager
-        authManager.handlePasswordReset(e.target);
-    });
-</script>
+        function showRegistrationForm() {
+            document.getElementById('login-section').style.display = 'none';
+            document.getElementById('register-section').style.display = 'block';
+            document.getElementById('forgot-password-section').style.display = 'none';
+        }
+
+        function showForgotPasswordForm() {
+            document.getElementById('login-section').style.display = 'none';
+            document.getElementById('register-section').style.display = 'none';
+            document.getElementById('forgot-password-section').style.display = 'block';
+        }
+
+        // Initial UI update
+        updateUI();
+
+        // Listen for authentication changes
+        document.addEventListener('authStateChanged', updateUI);
+
+        // Form submission handlers
+        document.getElementById('register-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const password = document.getElementById('register-password').value;
+            const confirmPassword = document.getElementById('register-confirm-password').value;
+
+            if (password !== confirmPassword) {
+                const notification = document.createElement('div');
+                notification.className = 'notification error';
+                notification.textContent = 'Passwords do not match!';
+                document.body.appendChild(notification);
+                setTimeout(() => notification.remove(), 3000);
+                return;
+            }
+
+            // Clear localStorage before first registration attempt
+            const users = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+            if (users.length === 0) {
+                localStorage.clear();
+            }
+
+            // Handle registration through AuthManager
+            try {
+                await authManager.handleRegistration(e.target);
+                // Form will be reset and UI will be updated by AuthManager if registration is successful
+                location.reload(); // Ensure clean state after registration
+            } catch (error) {
+                const notification = document.createElement('div');
+                notification.className = 'notification error';
+                notification.textContent = error.message || 'Registration failed. Please try again.';
+                document.body.appendChild(notification);
+                setTimeout(() => notification.remove(), 3000);
+            }
+        });
+
+        document.getElementById('forgot-password-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Handle password reset through AuthManager
+            authManager.handlePasswordReset(e.target);
+        });
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <script src="assets/js/enhanced-main.js" defer></script>
+    <script src="assets/js/navigation.js" defer></script>
+    <script defer>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 800,
+                    easing: 'ease-in-out',
+                    once: true,
+                    offset: 100
+                });
+            }
+        });
+    </script>
 </body>
 </html>

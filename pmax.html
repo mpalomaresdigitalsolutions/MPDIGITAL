@@ -12,10 +12,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
 
-<link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="assets/css/styles.css">
     <!-- Schema Markup for Video -->
     <script type="application/ld+json">
     {
@@ -27,689 +28,235 @@
         "contentUrl": "https://youtu.be/omWuwqKzhq4"
     }
     </script>
-    
-    <style>
-        :root {
-            --color-calypso: #cccfd2;
-            --color-chilean-fire: linear-gradient(90deg, #2980b9, #2c3e50); /* Updated to gradient */
-            --color-mojo: #f39c12;
-            --color-red: #c0453c;
-            --bg-gradient: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background: var(--color-calypso);
-            color: #333;
-            line-height: 1.6;
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 5%; /* Increased padding for a more impressive look */
-            background: var(--color-chilean-fire); /* Applied gradient */
-            color: white;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 0 0 20px rgba(41, 128, 185, 0.5); /* Added glow effect */
-            border-radius: 10px; /* Added border radius for modern look */
-            animation: slideDown 0.5s ease, glow 3s ease-in-out infinite; /* Added glow animation */
-            position: relative;
-        }
-
-        .navbar a {
-            color: white;
-            text-decoration: none;
-        }
-
-        .logo {
-            font-size: 1.8rem; /* Increased logo size for prominence */
-            font-weight: bold;
-            margin-right: 2rem; /* Added spacing between logo and links */
-        }
-
-        .menu-items {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-            margin: 0;
-            padding: 0;
-            justify-content: flex-end;
-            width: 100%;
-        }
-
-        .menu-items i {
-            margin-right: 0.5rem;
-            font-size: 1.1em;
-        }
-
-        .menu-items li {
-            display: inline-block;
-        }
-
-        .menu-items a {
-            color: #333;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .menu-items a:hover {
-            color: #3498db;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            font-size: 1.2rem; /* Increased font size for prominence */
-            font-weight: 500; /* Added weight for a bolder look */
-        }
-
-        .nav-links a:hover {
-            color: var(--color-mojo);
-        }
-
-        .nav-links .active {
-            font-weight: bold;
-            color: var(--color-calypso);
-        }
-
-        .profile-section {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            max-width: 400px;
-        }
-
-        .profile-info {
-            font-size: 0.9rem;
-            color: white;
-        }
-
-        .profile-info p:first-child {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 10px;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 1.2rem;
-            transition: color 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--color-mojo);
-        }
-
-        .footer-links {
-            margin: 1rem 0;
-        }
-
-        .footer-links a {
-            color: #333;
-            text-decoration: none;
-            margin: 0 1rem;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: #3498db;
-        }
-
-        .close-menu {
-            display: none;
-            position: absolute;
-            right: 5%;
-            font-size: 1.5rem;
-        }
-
-        .hero-section {
-            position: relative;
-            padding: 4rem 5%;
-            text-align: center;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 50%, var(--accent-color) 100%);
-            color: white;
-            overflow: hidden;
-            min-height: 60vh;
-            display: flex;
-            align-items: center;
-        }
-
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .hero-section::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.3);
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-title {
-            color: #3498db;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero-title a {
-            color: #3498db;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .hero-title a:hover {
-            color: var(--color-mojo);
-        }
-
-        .video-section {
-            padding: 4rem 5%;
-            background: white;
-            border-radius: 15px;
-            margin: 2rem 5%;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .section-title {
-            color: #2980b9;
-            font-size: 2rem;
-            text-align: center;
-            margin-bottom: 2rem;
-            position: relative;
-        }
-
-        .section-title:after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 3px;
-            background: #2980b9;
-            margin: 1rem auto;
-        }
-
-        .video-container {
-            position: relative;
-            margin-bottom: 2rem;
-            border-radius: 15px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-            border: 3px solid var(--color-chilean-fire);
-        }
-
-        .video-container:hover {
-            transform: scale(1.02);
-        }
-
-        .video-wrapper {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            height: 0;
-        }
-
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 15px;
-        }
-
-        .video-container {
-            transform: perspective(1000px) rotateY(-15deg);
-            transition: var(--transition-slow);
-        }
-
-        .video-container:hover {
-            transform: perspective(1000px) rotateY(0deg) translateY(-10px);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
-        }
-
-        .video-container .overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(48,99,140,0.8), transparent);
-            overflow: hidden;
-            width: 100%;
-            height: 0;
-            transition: 0.5s ease;
-            color: white;
-            padding: 20px;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .video-container:hover .overlay {
-            height: 100%;
-        }
-
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            padding: 12px 24px;
-            text-decoration: none;
-            border-radius: 30px;
-            transition: all 0.3s ease;
-            gap: 10px;
-        }
-
-        .cta-button.blue {
-            background: var(--color-chilean-fire);
-            color: white;
-        }
-
-        .cta-button.orange {
-            background: var(--color-mojo);
-            color: white;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .step-btn {
-            display: inline-block;
-            margin-top: 15px;
-            background-color: #2980b9;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s;
-        }
-
-        .step-btn:hover {
-            background-color: #3498db;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        .step {
-            margin-bottom: 2rem;
-            padding: 2rem;
-            border: 1px solid #eee;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .step:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        .step h4 {
-            color: #2980b9;
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-        }
-
-        .step p {
-            color: #666;
-            margin: 1rem 0;
-            line-height: 1.6;
-        }
-
-        .step-image {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            margin: 1rem 0;
-        }
-
-        .video-cta-section {
-            margin-top: 3rem;
-            padding: 2rem;
-            background: #f8f9fa;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .cta-container {
-            margin-top: 2rem;
-            padding: 2rem;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .cta-container h4 {
-            color: #2980b9;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .cta-container p {
-            color: #666;
-            margin-bottom: 1.5rem;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes glow {
-            0% {
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 0 0 20px rgba(41, 128, 185, 0.5);
-            }
-            50% {
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 0 0 30px rgba(41, 128, 185, 0.8);
-            }
-            100% {
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 0 0 20px rgba(41, 128, 185, 0.5);
-            }
-        }
-
-        footer {
-            background: var(--color-red);
-            color: white;
-            padding: 2rem 5%;
-            text-align: center;
-        }
-
-        .social-media {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .social-media a {
-            color: white;
-            font-size: 1.5rem;
-            transition: transform 0.3s ease;
-        }
-
-        .social-media a:hover {
-            transform: scale(1.2) rotate(360deg);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .profile-section {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                padding: 1rem;
-            }
-
-            .profile-info {
-                margin-top: 1rem;
-            }
-
-            .social-links {
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .navbar {
-                justify-content: center; /* Keep centered on mobile */
-                position: relative;
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 70%;
-                height: 100vh;
-                background: var(--color-chilean-fire);
-                flex-direction: column;
-                justify-content: flex-start;
-                padding: 5rem 2rem 2rem;
-                transition: right 0.5s ease;
-                box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
-                z-index: 999;
-            }
-
-            .nav-links.active {
-                right: 0;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .close-menu {
-                display: block;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-            }
-
-            .video-section {
-                padding: 2rem 5%;
-                margin: 1rem 5%;
-            }
-
-            .video-container {
-                margin-bottom: 1rem;
-            }
-        }
-    </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
-    <div class="logo-container">
-        <a href="index.html">
-            <img src="assets/images/Logo.svg" alt="Mpalomares Digital Logo" style="width: 180px; height: auto; transition: transform 0.3s ease; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1)); transform-origin: left center;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-        </a>
-    </div>
-    <nav>
-        <ul class="menu-items">
-            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="portfolio.html"><i class="fas fa-briefcase"></i> Portfolio</a></li>
-            <li><a href="services.html"><i class="fas fa-cogs"></i> Services</a></li>
-            <li><a href="blog.html"><i class="fas fa-blog"></i> Blog</a></li>
-            <li><a href="google_ads_calculator.html"><i class="fas fa-calculator"></i> ROI Calculator</a></li>
-            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
-        </ul>
-    </nav>
+        <nav class="navbar">
+            <div class="nav-brand">
+                <a href="./index.html" class="logo" aria-label="Mpalomares Digital Home">
+                    <img src="assets/images/Logo.svg" alt="Mpalomares Digital Logo" style="width: 200px; height: auto; transition: transform 0.3s ease; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1)); transform-origin: left center;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                </a>
+            </div>
+            <ul class="nav-links horizontal-nav" role="navigation">
+                <li><a href="./index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li class="dropdown">
+                    <a href="./portfolio.html"><i class="fas fa-briefcase"></i> Portfolio <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="./Search_Ads.html"><i class="fas fa-search"></i> Search Campaign Sample</a>
+                        <a href="./pmax.html" class="active"><i class="fas fa-chart-line"></i> Pmax</a>
+                    </div>
+                </li>
+                <li><a href="./services.html"><i class="fas fa-cogs"></i> Services</a></li>
+                <li><a href="./blog.html"><i class="fas fa-blog"></i> Blog</a></li>
+                <li class="dropdown">
+                    <a href="./google_ads_calculator.html"><i class="fas fa-calculator"></i> ROI Calculator <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="./google_ads_calculator.html"><i class="fas fa-calculator"></i> Google Ads Calculator</a>
+                    </div>
+                </li>
+                <li><a href="./contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+
+            <button class="mobile-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
     </header>
 
     <main>
         <section class="hero-section">
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    <a href="https://cal.com/marlon-palomares-c4cyjo/secret" target="_blank">Supercharge Your Google Ads ROI</a>
-                </h1>
-                <p>Stop wasting ad spend. Start dominating your market with data-driven strategies that deliver measurable results.</p>
-                <div class="cta-buttons">
-                    <a href="https://cal.com/marlon-palomares-c4cyjo/secret" class="cta-button blue" target="_blank">
-                        <i class="fas fa-lightbulb"></i> Discover Strategies
-                    </a>
-                    <a href="https://cal.com/marlon-palomares-c4cyjo/secret" class="cta-button orange" target="_blank">
-                        <i class="fas fa-calendar-check"></i> Book Free Consultation
-                    </a>
-                    <a href="https://www.mediafire.com/file/pztiwioefhzvn2k/Goole_Ads_Brochure_for_Plumbing.pdf/file" class="cta-button orange" target="_blank">
-                        <i class="fas fa-download"></i> Download Free Brochure
-                    </a>
+            <div class="container">
+                <div class="hero-content" data-aos="fade-up">
+                    <h1 class="hero-title">
+                        <a href="https://cal.com/marlon-palomares-c4cyjo/secret" target="_blank">Supercharge Your Google Ads ROI</a>
+                    </h1>
+                    <p>Stop wasting ad spend. Start dominating your market with data-driven strategies that deliver measurable results.</p>
+                    <div class="cta-buttons">
+                        <a href="https://cal.com/marlon-palomares-c4cyjo/secret" class="btn btn-primary" target="_blank">
+                            <i class="fas fa-lightbulb"></i> Discover Strategies
+                        </a>
+                        <a href="https://cal.com/marlon-palomares-c4cyjo/secret" class="btn btn-outline" target="_blank">
+                            <i class="fas fa-calendar-check"></i> Book Free Consultation
+                        </a>
+                        <a href="https://www.mediafire.com/file/pztiwioefhzvn2k/Goole_Ads_Brochure_for_Plumbing.pdf/file" class="btn btn-outline" target="_blank">
+                            <i class="fas fa-download"></i> Download Free Brochure
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section class="video-section">
-            <h2 class="section-title">Performance Max Campaign Guide</h2>
-            
-            <h3>Best Practices for Setting Up Performance Max Campaigns</h3>
-            <div class="guide-section">
-                <h4>1. Landing Page Selection</h4>
-                <img src="assets/images/landing pages .png" alt="Landing Pages Selection" class="guide-image">
-                <p>Pick your product landing pages carefully. Ensure page titles have a single keyword theme without including other keywords that Google might target.</p>
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">Performance Max Campaign Guide</h2>
 
-                <h4>2. Asset Groups Strategy</h4>
-                <p>Add multiple Asset Groups that target product groups (NOT audiences or keyword themes). Each Asset group should:</p>
-                <ul>
-                    <li>Target one product category</li>
-                    <li>Include Audience Signals targeting specific product-related keywords</li>
-                    <li>Target specific Audiences & Demographics likely to convert</li>
-                </ul>
+                <div data-aos="fade-up">
+                    <h3>Best Practices for Setting Up Performance Max Campaigns</h3>
+                    <div class="guide-section">
+                        <h4>1. Landing Page Selection</h4>
+                        <img src="assets/images/landing pages .png" alt="Landing Pages Selection" class="guide-image" data-aos="fade-up">
+                        <p>Pick your product landing pages carefully. Ensure page titles have a single keyword theme without including other keywords that Google might target.</p>
 
-                <h4>3. Ad Copy Optimization</h4>
-                <p>Create compelling headlines and descriptions featuring:</p>
-                <ul>
-                    <li>Keyword Focus</li>
-                    <li>Emotional Triggers (FOMO)</li>
-                    <li>Clear Call to Action</li>
-                </ul>
+                        <h4>2. Asset Groups Strategy</h4>
+                        <p>Add multiple Asset Groups that target product groups (NOT audiences or keyword themes). Each Asset group should:</p>
+                        <ul>
+                            <li>Target one product category</li>
+                            <li>Include Audience Signals targeting specific product-related keywords</li>
+                            <li>Target specific Audiences & Demographics likely to convert</li>
+                        </ul>
 
-                <h4>4. Conversion Actions</h4>
-                <p>Maintain only 1-2 active conversion actions, preferably focusing on Transactions over soft conversions.</p>
-            </div>
+                        <h4>3. Ad Copy Optimization</h4>
+                        <p>Create compelling headlines and descriptions featuring:</p>
+                        <ul>
+                            <li>Keyword Focus</li>
+                            <li>Emotional Triggers (FOMO)</li>
+                            <li>Clear Call to Action</li>
+                        </ul>
 
-            <h3>Campaign Setup Steps</h3>
-            <div class="setup-steps">
-                <div class="step">
-                    <h4>Step 1: Create New Campaign</h4>
-                    <img src="assets/images/pmax/1.Select New Campaign.png" alt="New Campaign Creation" class="step-image">
-                    <p>Start by creating a new Performance Max campaign in your Google Ads account</p>
-                    <a href="contact.html" class="btn step-btn">Get Campaign Setup Help</a>
-                </div>
-
-                <div class="step">
-                    <h4>Step 2: Select Sales or Leads Goal</h4>
-                    <img src="assets/images/pmax/.2.Select Sales or Leads.png" alt="Select Sales or Leads" class="step-image">
-                    <p>Choose your primary campaign objective - either driving sales or generating leads</p>
-                    <a href="contact.html" class="btn step-btn">Goal Setting Consultation</a>
-                </div>
-
-                <div class="step">
-                    <h4>Step 3: Set Daily Budget</h4>
-                    <img src="assets/images/pmax/3. Add Daily Budget.png" alt="Daily Budget Setup" class="step-image">
-                    <p>Configure your daily spending limit and bidding strategy</p>
-                    <a href="contact.html" class="btn step-btn">Budget Strategy Session</a>
-                </div>
-
-                <div class="step">
-                    <h4>Step 4: Configure Locations</h4>
-                    <img src="assets/images/pmax/4. Add Locations.png" alt="Location Settings" class="step-image">
-                    <p>Define your target geographic locations and language settings</p>
-                    <a href="contact.html" class="btn step-btn">Location Strategy Review</a>
-                </div>
-
-                <div class="step">
-                    <h4>Step 5: Set Audience Signals</h4>
-                    <img src="assets/images/pmax/5.Audience Signal' Option.png" alt="Audience Signal Setup" class="step-image">
-                    <p>Configure audience signals to help Google identify your ideal customers</p>
-                    <a href="contact.html" class="btn step-btn">Audience Strategy Help</a>
-                </div>
-
-                <div class="step">
-                    <h4>Step 6: Define Your Audience</h4>
-                    <img src="assets/images/pmax/6. Add your Audience.png" alt="Add Your Audience" class="step-image">
-                    <p>Refine your audience targeting with detailed demographic and interest settings</p>
-                    <a href="contact.html" class="btn step-btn">Audience Optimization</a>
-                </div>
-
-                <div class="step">
-                    <h4>Step 7: Create Your Ads</h4>
-                    <img src="assets/images/pmax/7.Create Your Ads.png" alt="Create Your Ads" class="step-image">
-                    <p>Design compelling ad assets including images, headlines, and descriptions</p>
-                    <a href="contact.html" class="btn step-btn">Ad Creation Support</a>
-                </div>
-            </div>
-
-            <div class="video-cta-section">
-                <h3>Watch Our Performance Max Success Story</h3>
-                <div class="video-container">
-                    <div class="video-wrapper">
-                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/vdih9rQLFug" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <h4>4. Conversion Actions</h4>
+                        <p>Maintain only 1-2 active conversion actions, preferably focusing on Transactions over soft conversions.</p>
                     </div>
                 </div>
-                
-                <div class="cta-container">
-                    <h4>Ready to Maximize Your Campaign Performance?</h4>
-                    <p>Get expert guidance and start optimizing your Performance Max campaigns today!</p>
-                    <div class="cta-buttons">
-                        <a href="https://cal.com/marlon-palomares-c4cyjo/secret" class="cta-button blue" target="_blank">
-                            <i class="fas fa-rocket"></i> Start Optimizing Now
-                        </a>
-                        <a href="contact.html" class="cta-button orange">
-                            <i class="fas fa-comments"></i> Schedule a Strategy Call
-                        </a>
+
+                <h3 data-aos="fade-up">Campaign Setup Steps</h3>
+                <div class="setup-steps">
+                    <div class="step" data-aos="fade-up">
+                        <h4>Step 1: Create New Campaign</h4>
+                        <img src="assets/images/pmax/1.Select New Campaign.png" alt="New Campaign Creation" class="step-image">
+                        <p>Start by creating a new Performance Max campaign in your Google Ads account</p>
+                        <a href="contact.html" class="btn step-btn">Get Campaign Setup Help</a>
+                    </div>
+
+                    <div class="step" data-aos="fade-up">
+                        <h4>Step 2: Select Sales or Leads Goal</h4>
+                        <img src="assets/images/pmax/.2.Select Sales or Leads.png" alt="Select Sales or Leads" class="step-image">
+                        <p>Choose your primary campaign objective - either driving sales or generating leads</p>
+                        <a href="contact.html" class="btn step-btn">Goal Setting Consultation</a>
+                    </div>
+
+                    <div class="step" data-aos="fade-up">
+                        <h4>Step 3: Set Daily Budget</h4>
+                        <img src="assets/images/pmax/3. Add Daily Budget.png" alt="Daily Budget Setup" class="step-image">
+                        <p>Configure your daily spending limit and bidding strategy</p>
+                        <a href="contact.html" class="btn step-btn">Budget Strategy Session</a>
+                    </div>
+
+                    <div class="step" data-aos="fade-up">
+                        <h4>Step 4: Configure Locations</h4>
+                        <img src="assets/images/pmax/4. Add Locations.png" alt="Location Settings" class="step-image">
+                        <p>Define your target geographic locations and language settings</p>
+                        <a href="contact.html" class="btn step-btn">Location Strategy Review</a>
+                    </div>
+
+                    <div class="step" data-aos="fade-up">
+                        <h4>Step 5: Set Audience Signals</h4>
+                        <img src="assets/images/pmax/5.Audience Signal' Option.png" alt="Audience Signal Setup" class="step-image">
+                        <p>Configure audience signals to help Google identify your ideal customers</p>
+                        <a href="contact.html" class="btn step-btn">Audience Strategy Help</a>
+                    </div>
+
+                    <div class="step" data-aos="fade-up">
+                        <h4>Step 6: Define Your Audience</h4>
+                        <img src="assets/images/pmax/6. Add your Audience.png" alt="Add Your Audience" class="step-image">
+                        <p>Refine your audience targeting with detailed demographic and interest settings</p>
+                        <a href="contact.html" class="btn step-btn">Audience Optimization</a>
+                    </div>
+
+                    <div class="step" data-aos="fade-up">
+                        <h4>Step 7: Create Your Ads</h4>
+                        <img src="assets/images/pmax/7.Create Your Ads.png" alt="Create Your Ads" class="step-image">
+                        <p>Design compelling ad assets including images, headlines, and descriptions</p>
+                        <a href="contact.html" class="btn step-btn">Ad Creation Support</a>
+                    </div>
+                </div>
+
+                <div class="video-cta-section" data-aos="fade-up">
+                    <h3>Watch Our Performance Max Success Story</h3>
+                    <div class="video-container">
+                        <div class="video-wrapper">
+                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/vdih9rQLFug" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                    <div class="cta-container">
+                        <h4>Ready to Maximize Your Campaign Performance?</h4>
+                        <p>Get expert guidance and start optimizing your Performance Max campaigns today!</p>
+                        <div class="cta-buttons">
+                            <a href="https://cal.com/marlon-palomares-c4cyjo/secret" class="btn btn-primary" target="_blank">
+                                <i class="fas fa-rocket"></i> Start Optimizing Now
+                            </a>
+                            <a href="contact.html" class="btn btn-outline">
+                                <i class="fas fa-comments"></i> Schedule a Strategy Call
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
-    <div class="footer-logo">
-        <a href="index.html">
-            <img src="assets/images/Logo.svg" alt="Mpalomares Digital Logo" style="width: 200px; height: auto; margin-bottom: 30px;">
-        </a>
-    </div>
-        <div class="social-media">
-            <a href="https://www.facebook.com/marlon.palomares.2024/" target="_blank" title="Follow on Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.linkedin.com/in/mpdigital/" target="_blank" title="Connect on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://www.instagram.com/palomares523/" target="_blank" title="Follow on Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://x.com/marlonpalo64854" target="_blank" title="Follow on X"><i class="fab fa-x-twitter"></i></a>
-            <a href="https://github.com/mpalomaresdigitalsolutions" target="_blank" title="View on GitHub"><i class="fab fa-github"></i></a>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                     <img src="assets/images/Logo.svg" alt="Mpalomares Digital Logo" class="footer-logo" style="width: 300px; height: auto; margin-bottom: 30px;">
+                     <p>Expert Google Ads management and digital marketing solutions designed to maximize your ROI and drive sustainable business growth.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <p><a href="./services.html">Google Ads Management</a></p>
+                    <p><a href="./services.html">Analytics & Reporting</a></p>
+                    <p><a href="./services.html">SEO Optimization</a></p>
+                    <p><a href="./google_ads_calculator.html">ROI Calculator</a></p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <p><a href="./blog.html">Blog</a></p>
+                    <p><a href="./portfolio.html">Portfolio</a></p>
+                    <p><a href="./privacy-policy.html">Privacy Policy</a></p>
+                    <p><a href="./terms-conditions.html">Terms & Conditions</a></p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>hello@mpalomares.com</p>
+                    <p>+1 (555) 123-4567</p>
+                    <p>San Francisco, CA</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2024 Mpalomares Digital Solutions. All rights reserved.</p>
+            </div>
         </div>
-        <div class="footer-links">
-            <a href="privacy-policy.html">Privacy Policy</a> | 
-            <a href="terms-conditions.html">Terms & Conditions</a>
-        </div>
-        <p>&copy; 2025 MPalomares. All rights reserved.</p>
     </footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <script src="assets/js/enhanced-main.js" defer></script>
+    <script src="assets/js/navigation.js" defer></script>
+    <script defer>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 800,
+                    easing: 'ease-in-out',
+                    once: true,
+                    offset: 100
+                });
+            }
+        });
+    </script>
 </body>
 </html>

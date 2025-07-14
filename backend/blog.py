@@ -1,7 +1,8 @@
 from flask import Blueprint, request, jsonify
-from src.models.blog_post import BlogPost, db
+from backend.blog_post import BlogPost, db
 from datetime import datetime
 import json
+from flask_jwt_extended import jwt_required
 
 blog_bp = Blueprint('blog', __name__)
 
@@ -90,6 +91,7 @@ def get_post(post_id):
         return jsonify({'success': False, 'error': str(e)}), 500
 
 @blog_bp.route('/posts', methods=['POST'])
+@jwt_required()
 def create_post():
     """Create a new blog post"""
     try:
@@ -144,6 +146,7 @@ def create_post():
         return jsonify({'success': False, 'error': str(e)}), 500
 
 @blog_bp.route('/posts/<post_id>', methods=['PUT'])
+@jwt_required()
 def update_post(post_id):
     """Update an existing blog post"""
     try:
@@ -217,6 +220,7 @@ def update_post(post_id):
         return jsonify({'success': False, 'error': str(e)}), 500
 
 @blog_bp.route('/posts/<post_id>', methods=['DELETE'])
+@jwt_required()
 def delete_post(post_id):
     """Delete a blog post"""
     try:

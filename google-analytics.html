@@ -5,345 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unlocking Google Ads Analytics: The Secret Stats for Big Wins</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        :root {
-            --primary: #4285F4;
-            --secondary: #34A853;
-            --accent: #EA4335;
-            --yellow: #FBBC05;
-            --dark: #202124;
-            --light: #f8f9fa;
-            --gradient: linear-gradient(135deg, #4285F4 0%, #34A853 50%, #FBBC05 100%);
-            --gradient-accent: linear-gradient(135deg, #EA4335 0%, #FBBC05 100%);
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            background-color: var(--light);
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        header {
-            background: var(--dark);
-            color: white;
-            padding: 80px 0 100px;
-            position: relative;
-            overflow: hidden;
-            text-align: center;
-        }
-        
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--gradient);
-            opacity: 0.8;
-            z-index: 1;
-        }
-        
-        header .container {
-            position: relative;
-            z-index: 2;
-        }
-        
-        h1 {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-            animation: fadeInUp 1s ease;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-        
-        .intro {
-            font-size: 1.3rem;
-            max-width: 800px;
-            margin: 0 auto 30px;
-            animation: fadeInUp 1s ease 0.2s forwards;
-            opacity: 0;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            background: var(--accent);
-            color: white;
-            padding: 15px 35px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            animation: fadeInUp 1s ease 0.4s forwards;
-            opacity: 0;
-            border: 2px solid white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        
-        .cta-button:hover {
-            background: #d33426;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-        
-        .main-content {
-            padding: 60px 0;
-            background: white;
-            position: relative;
-        }
-        
-        .section {
-            margin-bottom: 80px;
-            opacity: 0;
-            animation: fadeIn 1s ease forwards;
-        }
-        
-        .section:nth-child(1) { animation-delay: 0.6s; }
-        .section:nth-child(2) { animation-delay: 0.8s; }
-        .section:nth-child(3) { animation-delay: 1s; }
-        .section:nth-child(4) { animation-delay: 1.2s; }
-        .section:nth-child(5) { animation-delay: 1.4s; }
-        .section:nth-child(6) { animation-delay: 1.6s; }
-        .section:nth-child(7) { animation-delay: 1.8s; }
-        
-        h2 {
-            color: var(--primary);
-            font-size: 2.2rem;
-            margin-bottom: 30px;
-            position: relative;
-            padding-bottom: 15px;
-            text-align: center;
-        }
-        
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: var(--gradient-accent);
-            border-radius: 2px;
-        }
-        
-        .insight-card {
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
-            border-left: 5px solid var(--primary);
-            transition: all 0.3s ease;
-            border-top: 1px solid #eee;
-            border-right: 1px solid #eee;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .insight-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
-            border-left: 5px solid var(--accent);
-        }
-        
-        .insight-card h3 {
-            color: var(--dark);
-            margin-top: 0;
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-        }
-        
-        .insight-card h3 i {
-            margin-right: 15px;
-            color: var(--primary);
-        }
-        
-        .why-matters {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-            border-left: 4px solid var(--secondary);
-        }
-        
-        .why-matters strong {
-            color: var(--secondary);
-        }
-        
-        .action-step {
-            background: #e8f0fe;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-            border-left: 4px solid var(--primary);
-        }
-        
-        .action-step strong {
-            color: var(--primary);
-        }
-        
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .stat-box {
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            border: 2px solid #eee;
-            transition: all 0.3s ease;
-        }
-        
-        .stat-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border: 2px solid var(--primary);
-        }
-        
-        .stat-box i {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-        
-        .stat-box h4 {
-            margin: 0 0 10px;
-            color: var(--dark);
-        }
-        
-        .highlight-box {
-            background: var(--gradient);
-            color: white;
-            padding: 40px;
-            border-radius: 10px;
-            margin: 60px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .highlight-box::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-            z-index: 1;
-            animation: pulse 8s infinite linear;
-        }
-        
-        .highlight-box h3 {
-            position: relative;
-            z-index: 2;
-            font-size: 1.8rem;
-            margin-top: 0;
-        }
-        
-        .highlight-box p {
-            position: relative;
-            z-index: 2;
-            font-size: 1.2rem;
-        }
-        
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 60px 0;
-            text-align: center;
-        }
-        
-        .footer-cta {
-            margin-bottom: 40px;
-        }
-        
-        .footer-cta h3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-        
-        .footer-cta .cta-button {
-            background: var(--yellow);
-            color: var(--dark);
-            border-color: var(--dark);
-        }
-        
-        .footer-cta .cta-button:hover {
-            background: #e9b000;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes pulse {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.2rem;
-            }
-            
-            h2 {
-                font-size: 1.8rem;
-            }
-            
-            .intro {
-                font-size: 1.1rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <div class="container">
-            <h1>Unlocking Google Ads Analytics: The Secret Stats for Big Wins</h1>
-            <p class="intro">Mastering Google Ads analytics can take your campaigns from meh to mind-blowing. Sure, clicks and impressions give you a quick peek, but the real treasure? It's buried in the hidden stats that reveal what's really working.</p>
-            <a href="#cta" class="cta-button">Reveal Your Hidden Wins Now</a>
-        </div>
+        <nav class="navbar">
+            <div class="nav-brand">
+                <a href="./index.html" class="logo" aria-label="Mpalomares Digital Home">
+                    <img src="assets/images/Logo.svg" alt="Mpalomares Digital Logo" style="width: 200px; height: auto; transition: transform 0.3s ease; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1)); transform-origin: left center;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                </a>
+            </div>
+            <ul class="nav-links horizontal-nav" role="navigation">
+                <li><a href="./index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li class="dropdown">
+                    <a href="./portfolio.html"><i class="fas fa-briefcase"></i> Portfolio <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="./Search_Ads.html"><i class="fas fa-search"></i> Search Campaign Sample</a>
+                        <a href="./pmax.html"><i class="fas fa-chart-line"></i> Pmax</a>
+                    </div>
+                </li>
+                <li><a href="./services.html"><i class="fas fa-cogs"></i> Services</a></li>
+                <li><a href="./blog.html"><i class="fas fa-blog"></i> Blog</a></li>
+                <li class="dropdown">
+                    <a href="./google_ads_calculator.html"><i class="fas fa-calculator"></i> ROI Calculator <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="./google_ads_calculator.html"><i class="fas fa-calculator"></i> Google Ads Calculator</a>
+                    </div>
+                </li>
+                <li><a href="./contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+
+            <button class="mobile-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
     </header>
     
     <main class="main-content">
         <div class="container">
-            <section class="section">
+            <section class="section" data-aos="fade-up">
+                <h1>Unlocking Google Ads Analytics: The Secret Stats for Big Wins</h1>
+                <p class="intro">Mastering Google Ads analytics can take your campaigns from meh to mind-blowing. Sure, clicks and impressions give you a quick peek, but the real treasure? It's buried in the hidden stats that reveal what's really working.</p>
+                <a href="#cta" class="btn btn-primary">Reveal Your Hidden Wins Now</a>
+            </section>
+
+            <section class="section" data-aos="fade-up">
                 <p>These insights can boost ad performance and score you some serious wins. Ready to dig into the good stuff? Let's dive into the analytics goldmine waiting in your Google Ads data!</p>
                 <p>We're not here to bore you with endless numbers. Nope, we're on a quest to uncover the sneaky insights that'll flip your campaigns into overdrive. Buckle up—we're about to reveal the game-changers your data's been hiding!</p>
             </section>
             
-            <section class="section">
+            <section class="section" data-aos="fade-up">
                 <h2>Beyond Basic Metrics: Uncovering Actionable Google Ads Insights</h2>
                 <p>Click-through rates (CTR) and cost-per-click (CPC) are cool, but they're just the opening act. They tell you what's happening—not why. To boost ad conversions, you need to hunt down the insights that spark those "aha!" moments. Here's where to look:</p>
                 
-                <div class="insight-card">
+                <div class="insight-card" data-aos="fade-up">
                     <h3><i class="fas fa-chart-pie"></i> Attribution Models in Google Ads: Identifying Conversion Drivers</h3>
                     <p>Think the last click before a sale deserves all the glory? Think again! That ad someone saw three days ago might've been the real MVP. With attribution models like Linear, Time Decay, or First Click, you can map the full customer journey.</p>
                     
@@ -356,7 +74,7 @@
                     </div>
                 </div>
                 
-                <div class="insight-card">
+                <div class="insight-card" data-aos="fade-up">
                     <h3><i class="fas fa-users"></i> Advanced Audience Targeting in Google Ads: Reaching Your Ideal Customers</h3>
                     <p>Targeting "dudes aged 18-24" is like throwing spaghetti at the wall—some sticks, but it's messy. Advanced audience targeting lets you hit up people based on their interests, search history, or past visits to your site.</p>
                     
@@ -369,7 +87,7 @@
                     </div>
                 </div>
                 
-                <div class="insight-card">
+                <div class="insight-card" data-aos="fade-up">
                     <h3><i class="fas fa-search"></i> Search Term Analysis: Optimizing Keywords for Better Results</h3>
                     <p>Your search term report is a goldmine—it shows the exact words people typed to trigger your ads. It's like a direct line to your customers' thoughts!</p>
                     
@@ -382,7 +100,7 @@
                     </div>
                 </div>
                 
-                <div class="insight-card">
+                <div class="insight-card" data-aos="fade-up">
                     <h3><i class="fas fa-window-restore"></i> Landing Page Optimization: Boosting Conversion Rates</h3>
                     <p>Your ad nailed the click—nice! But if your landing page stinks, it's like slamming the door on a guest. Look at bounce rates and time on page to see if they're sticking around.</p>
                     
@@ -395,7 +113,7 @@
                     </div>
                 </div>
                 
-                <div class="insight-card">
+                <div class="insight-card" data-aos="fade-up">
                     <h3><i class="fas fa-chess"></i> Competitor Analysis with Auction Insights: Staying Ahead in Google Ads</h3>
                     <p>Auction Insights in Google Ads is your spy kit—it reveals who's fighting you for keyword real estate and how often they're winning.</p>
                     
@@ -408,7 +126,7 @@
                     </div>
                 </div>
                 
-                <div class="insight-card">
+                <div class="insight-card" data-aos="fade-up">
                     <h3><i class="fas fa-mobile-alt"></i> Cross-Device Tracking: Mapping Multi-Device User Journeys</h3>
                     <p>People bounce between phones, tablets, and laptops like it's no big deal. Without cross-device tracking, you're missing half the story of how they find you.</p>
                     
@@ -422,42 +140,42 @@
                 </div>
             </section>
             
-            <section class="section">
+            <section class="section" data-aos="fade-up">
                 <h2>Turning Insights into Wins</h2>
                 <p>Finding these hidden Google Ads insights is awesome, but the real fun starts when you use them. Here's how to cash in:</p>
                 
                 <div class="grid">
-                    <div class="stat-box">
+                    <div class="stat-box" data-aos="fade-up">
                         <i class="fas fa-hand-holding-usd"></i>
                         <h4>Shift Bids</h4>
                         <p>Spotlight the real conversion champs with strategic bid adjustments</p>
                     </div>
                     
-                    <div class="stat-box">
+                    <div class="stat-box" data-aos="fade-up" data-aos-delay="100">
                         <i class="fas fa-bullseye"></i>
                         <h4>Fine-Tune Targeting</h4>
                         <p>Laser precision audience targeting for higher conversions</p>
                     </div>
                     
-                    <div class="stat-box">
+                    <div class="stat-box" data-aos="fade-up" data-aos-delay="200">
                         <i class="fas fa-key"></i>
                         <h4>Keyword Optimization</h4>
                         <p>Add hot keywords from your search term analysis</p>
                     </div>
                     
-                    <div class="stat-box">
+                    <div class="stat-box" data-aos="fade-up" data-aos-delay="300">
                         <i class="fas fa-window-maximize"></i>
                         <h4>Landing Page Revamp</h4>
                         <p>Boost conversion rates with data-driven page improvements</p>
                     </div>
                     
-                    <div class="stat-box">
+                    <div class="stat-box" data-aos="fade-up" data-aos-delay="400">
                         <i class="fas fa-chess-knight"></i>
                         <h4>Outsmart Competitors</h4>
                         <p>Sharper moves based on auction insights data</p>
                     </div>
                     
-                    <div class="stat-box">
+                    <div class="stat-box" data-aos="fade-up" data-aos-delay="500">
                         <i class="fas fa-sync-alt"></i>
                         <h4>Multi-Device Optimization</h4>
                         <p>Better experiences for gadget-hopping users</p>
@@ -465,32 +183,82 @@
                 </div>
             </section>
             
-            <section class="section">
+            <section class="section" data-aos="fade-up">
                 <div class="highlight-box">
                     <h3>Keep Digging, Keep Winning!</h3>
                     <p>Jumping into Google Ads analytics isn't a one-time gig—it's an ongoing treasure hunt. The more you explore, the more wins you stack. So, grab your data and start sniffing out that analytics gold. Your next big breakthrough is just a click away!</p>
                 </div>
             </section>
             
-            <section class="section" id="cta">
+            <section class="section" id="cta" data-aos="fade-up">
                 <h2>Ready to Unlock Your Google Ads Potential?</h2>
                 <p>Now that you know where to find these powerful insights, it's time to put them to work. Start small—pick one area to focus on first, measure your results, then expand your efforts as you see success.</p>
                 <p style="text-align: center; margin-top: 40px;">
-                    <a href="#" class="cta-button">Transform My Google Ads Now</a>
+                    <a href="#" class="btn btn-primary">Transform My Google Ads Now</a>
                 </p>
             </section>
         </div>
     </main>
     
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-cta">
-                <h3>Want More Google Ads Secrets?</h3>
-                <p>Get our free guide to advanced Google Ads strategies delivered straight to your inbox.</p>
-                <a href="form.html" class="cta-button">Send Me the Free Guide</a>
+            <div class="footer-content">
+                <div class="footer-section">
+                     <img src="assets/images/Logo.svg" alt="Mpalomares Digital Logo" class="footer-logo" style="width: 300px; height: auto; margin-bottom: 30px;">
+                     <p>Expert Google Ads management and digital marketing solutions designed to maximize your ROI and drive sustainable business growth.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <p><a href="./services.html">Google Ads Management</a></p>
+                    <p><a href="./services.html">Analytics & Reporting</a></p>
+                    <p><a href="./services.html">SEO Optimization</a></p>
+                    <p><a href="./google_ads_calculator.html">ROI Calculator</a></p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <p><a href="./blog.html">Blog</a></p>
+                    <p><a href="./portfolio.html">Portfolio</a></p>
+                    <p><a href="./privacy-policy.html">Privacy Policy</a></p>
+                    <p><a href="./terms-conditions.html">Terms & Conditions</a></p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>hello@mpalomares.com</p>
+                    <p>+1 (555) 123-4567</p>
+                    <p>San Francisco, CA</p>
+                </div>
             </div>
-            <p>&copy; 2025 Google Ads Analytics Mastery. All rights reserved.</p>
+
+            <div class="footer-bottom">
+                <p>© 2024 Mpalomares Digital Solutions. All rights reserved.</p>
+            </div>
         </div>
     </footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <script src="assets/js/enhanced-main.js" defer></script>
+    <script src="assets/js/navigation.js" defer></script>
+    <script defer>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 800,
+                    easing: 'ease-in-out',
+                    once: true,
+                    offset: 100
+                });
+            }
+        });
+    </script>
 </body>
 </html>

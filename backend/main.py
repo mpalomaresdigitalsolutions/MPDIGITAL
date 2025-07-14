@@ -5,18 +5,21 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
 from flask import Flask, send_from_directory
 from flask_cors import CORS
-from src.models.user import db
-from src.models.blog_post import BlogPost
-from src.routes.user import user_bp
-from src.routes.blog import blog_bp
+from flask_jwt_extended import JWTManager
+from backend.user import db, User
+from backend.blog_post import BlogPost
+from backend.blog import blog_bp
+from backend.auth import auth_bp
 
 app = Flask(__name__, static_folder=os.path.join(os.path.dirname(__file__), 'static'))
 app.config['SECRET_KEY'] = 'asdf#FGSgvasgf$5$WGT'
+app.config["JWT_SECRET_KEY"] = "super-secret"  # Change this in your production environment!
 
 # Enable CORS for all routes
 CORS(app)
+jwt = JWTManager(app)
 
-app.register_blueprint(user_bp, url_prefix='/api')
+app.register_blueprint(auth_bp, url_prefix='/api/auth')
 app.register_blueprint(blog_bp, url_prefix='/api/blog')
 
 # uncomment if you need to use database
