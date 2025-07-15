@@ -156,7 +156,7 @@
         <nav class="navbar">
             <div class="nav-brand">
                 <a href="#home" class="logo" aria-label="Mpalomares Digital Home">
-                    <img src="assets/images/Logo.svg" alt="Mpalomares Digital Logo" style="width: 180px; height: auto; transition: transform 0.3s ease; filter: drop-shadow(3px 3px 5px rgba(0,0,0,0.2)); transform-origin: left center;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    <img src="assets/images/Logo.svg" alt="Mpalomares Digital Logo" style="width: 150px; height: auto; transition: transform 0.3s ease; filter: drop-shadow(3px 3px 5px rgba(0,0,0,0.2)); transform-origin: left center;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
                 </a>
             </div>
             <ul class="nav-links horizontal-nav" role="navigation">
@@ -187,286 +187,288 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-text" data-aos="fade-right">
-                <h1>Maximize Your <span class="highlight">Google Ads ROI</span> with Expert Management</h1>
-                <p>Transform your digital marketing with data-driven strategies, advanced analytics, and proven results. Get more leads, sales, and revenue from your Google Ads campaigns.</p>
-                <div class="hero-cta">
-                    <a href="#calculator" class="btn btn-primary">
-                        <i class="fas fa-calculator" aria-hidden="true"></i>
-                        Calculate Your ROI
-                    </a>
-                    <a href="#contact" class="btn btn-outline">
-                        <i class="fas fa-comments" aria-hidden="true"></i>
-                        Free Consultation
-                    </a>
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <div class="hero-text" data-aos="fade-right">
+                    <h1>Maximize Your <span class="highlight">Google Ads ROI</span> with Expert Management</h1>
+                    <p>Transform your digital marketing with data-driven strategies, advanced analytics, and proven results. Get more leads, sales, and revenue from your Google Ads campaigns.</p>
+                    <div class="hero-cta">
+                        <a href="#calculator" class="btn btn-primary">
+                            <i class="fas fa-calculator" aria-hidden="true"></i>
+                            Calculate Your ROI
+                        </a>
+                        <a href="#contact" class="btn btn-outline">
+                            <i class="fas fa-comments" aria-hidden="true"></i>
+                            Free Consultation
+                        </a>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="hero-visual" data-aos="fade-left">
-                <div class="hero-card">
-                    <h3>Average Client Results</h3>
-                    <span class="metric">340%</span>
-                    <p>ROI Increase</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- ROI Calculator Section -->
-    <section id="calculator" class="roi-calculator">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Google Ads ROI Calculator</h2>
-                <p>Calculate your potential return on investment and discover how much revenue your Google Ads campaigns could generate based on proven industry metrics.</p>
+                <div class="hero-visual" data-aos="fade-left">
+                    <div class="hero-card">
+                        <h3>Average Client Results</h3>
+                        <span class="metric">340%</span>
+                        <p>ROI Increase</p>
+                    </div>
+                </div>
             </div>
-            
-            <div class="calculator-container" data-aos="fade-up" data-aos-delay="200">
-                <div class="calculator-header">
-                    <h3><i class="fas fa-calculator" aria-hidden="true"></i> Calculate Your Google Ads ROI</h3>
-                    <p>Enter your campaign details to get accurate ROI projections</p>
+        </section>
+
+        <!-- ROI Calculator Section -->
+        <section id="calculator" class="roi-calculator">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <h2>Google Ads ROI Calculator</h2>
+                    <p>Calculate your potential return on investment and discover how much revenue your Google Ads campaigns could generate based on proven industry metrics.</p>
                 </div>
                 
-                <div class="calculator-body">
-                    <form id="roi-calculator-form" class="calculator-form">
-                        <div class="form-group">
-                            <label for="monthly-budget">Monthly Ad Budget</label>
-                            <div class="input-group">
-                                <span class="input-prefix">$</span>
-                                <input type="number" id="monthly-budget" name="monthly-budget" placeholder="5000" min="100" required>
+                <div class="calculator-container" data-aos="fade-up" data-aos-delay="200">
+                    <div class="calculator-header">
+                        <h3><i class="fas fa-calculator" aria-hidden="true"></i> Calculate Your Google Ads ROI</h3>
+                        <p>Enter your campaign details to get accurate ROI projections</p>
+                    </div>
+
+                    <div class="calculator-body">
+                        <form id="roi-calculator-form" class="calculator-form">
+                            <div class="form-group">
+                                <label for="monthly-budget">Monthly Ad Budget</label>
+                                <div class="input-group">
+                                    <span class="input-prefix">$</span>
+                                    <input type="number" id="monthly-budget" name="monthly-budget" placeholder="5000" min="100" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="avg-cpc">Average Cost Per Click</label>
+                                <div class="input-group">
+                                    <span class="input-prefix">$</span>
+                                    <input type="number" id="avg-cpc" name="avg-cpc" placeholder="2.50" step="0.01" min="0.01" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="conversion-rate">Conversion Rate (%)</label>
+                                <input type="number" id="conversion-rate" name="conversion-rate" placeholder="3.5" step="0.1" min="0.1" max="100" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="avg-order-value">Average Order Value</label>
+                                <div class="input-group">
+                                    <span class="input-prefix">$</span>
+                                    <input type="number" id="avg-order-value" name="avg-order-value" placeholder="150" min="1" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="profit-margin">Profit Margin (%)</label>
+                                <input type="number" id="profit-margin" name="profit-margin" placeholder="25" step="0.1" min="0.1" max="100" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="industry">Industry</label>
+                                <select id="industry" name="industry" required>
+                                    <option value="">Select Industry</option>
+                                    <option value="ecommerce">E-commerce</option>
+                                    <option value="saas">SaaS/Software</option>
+                                    <option value="healthcare">Healthcare</option>
+                                    <option value="finance">Finance</option>
+                                    <option value="real-estate">Real Estate</option>
+                                    <option value="education">Education</option>
+                                    <option value="automotive">Automotive</option>
+                                    <option value="home-services">Home Services</option>
+                                    <option value="legal">Legal Services</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="calculate-btn" id="calculate-roi-btn">
+                                <i class="fas fa-chart-line" aria-hidden="true"></i>
+                                Calculate ROI
+                            </button>
+                        </form>
+                        
+                        <div id="roi-results" class="roi-results">
+                            <div class="results-grid">
+                                <div class="result-card">
+                                    <span class="metric-value" id="monthly-revenue">$0</span>
+                                    <div class="metric-label">Monthly Revenue</div>
+                                </div>
+                                <div class="result-card">
+                                    <span class="metric-value" id="monthly-profit">$0</span>
+                                    <div class="metric-label">Monthly Profit</div>
+                                </div>
+                                <div class="result-card">
+                                    <span class="metric-value" id="roi-percentage">0%</span>
+                                    <div class="metric-label">ROI Percentage</div>
+                                </div>
+                                <div class="result-card">
+                                    <span class="metric-value" id="break-even-days">0</span>
+                                    <div class="metric-label">Break-even Days</div>
+                                </div>
+                            </div>
+
+                            <div class="results-actions">
+                                <a href="#contact" class="btn btn-primary">Get Professional Help</a>
+                                <button type="button" class="btn btn-outline" onclick="window.print()">Print Results</button>
                             </div>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="avg-cpc">Average Cost Per Click</label>
-                            <div class="input-group">
-                                <span class="input-prefix">$</span>
-                                <input type="number" id="avg-cpc" name="avg-cpc" placeholder="2.50" step="0.01" min="0.01" required>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <h2>Our Services</h2>
+                    <p>Comprehensive digital marketing solutions designed to maximize your online presence and drive measurable results.</p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="service-icon">
+                            <i class="fas fa-bullseye" aria-hidden="true"></i>
+                        </div>
+                        <h3>Google Ads Management</h3>
+                        <p>Expert campaign setup, optimization, and management to maximize your advertising ROI and drive qualified traffic.</p>
+                        <a href="#contact" class="btn">Learn More</a>
+                    </div>
+
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-bar" aria-hidden="true"></i>
+                        </div>
+                        <h3>Analytics & Reporting</h3>
+                        <p>Comprehensive tracking setup and detailed reporting to measure performance and identify optimization opportunities.</p>
+                        <a href="#contact" class="btn">Learn More</a>
+                    </div>
+
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="service-icon">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </div>
+                        <h3>SEO Optimization</h3>
+                        <p>Improve your organic search visibility and drive long-term sustainable traffic growth through proven SEO strategies.</p>
+                        <a href="#contact" class="btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Preview Section -->
+        <section id="blog" class="blog-preview">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <h2>Latest Insights</h2>
+                    <p>Stay updated with the latest digital marketing trends, tips, and strategies from our experts.</p>
+                </div>
+
+                <div class="latest-insights" data-aos="fade-up">
+                    <!-- Blog posts will be dynamically loaded here -->
+                </div>
+
+                <div class="blog-posts-container">
+                    <!-- Blog posts will be loaded dynamically via JavaScript -->
+                    <div class="text-center mt-4">
+                        <a href="blog.html" class="btn btn-primary"><i class="fas fa-book-reader"></i> View All Blog Posts</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <h2>Get In Touch</h2>
+                    <p>Ready to take your digital marketing to the next level? Let\'s discuss how we can help you achieve your goals.</p>
+                </div>
+
+                <div class="contact-content">
+                    <div class="contact-info" data-aos="fade-right">
+                        <h3>Let\'s Start a Conversation</h3>
+                        <p>We're here to help you maximize your digital marketing ROI. Reach out to us for a free consultation and discover how our expertise can drive your business growth.</p>
+
+                        <div class="contact-item">
+                            <div class="icon">
+                                <i class="fas fa-envelope" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <h4>Email</h4>
+                                <p>mpalomaresdigitalsolutions@gmail.com</p>
                             </div>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="conversion-rate">Conversion Rate (%)</label>
-                            <input type="number" id="conversion-rate" name="conversion-rate" placeholder="3.5" step="0.1" min="0.1" max="100" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="avg-order-value">Average Order Value</label>
-                            <div class="input-group">
-                                <span class="input-prefix">$</span>
-                                <input type="number" id="avg-order-value" name="avg-order-value" placeholder="150" min="1" required>
+
+                        <div class="contact-item">
+                            <div class="icon">
+                                <i class="fas fa-phone" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+639913032370</p>
                             </div>
                         </div>
-                        
+
+                        <div class="contact-item">
+                            <div class="icon">
+                                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <h4>Location</h4>
+                                <p>Manila,Philipphines</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <form class="contact-form" data-aos="fade-left" id="contact-form">
+                        <h3>Send us a Message</h3>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="first-name">First Name</label>
+                                <input type="text" id="first-name" name="first-name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="last-name">Last Name</label>
+                                <input type="text" id="last-name" name="last-name" required>
+                            </div>
+                        </div>
+
                         <div class="form-group">
-                            <label for="profit-margin">Profit Margin (%)</label>
-                            <input type="number" id="profit-margin" name="profit-margin" placeholder="25" step="0.1" min="0.1" max="100" required>
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="company">Company (Optional)</label>
+                            <input type="text" id="company" name="company">
                         </div>
                         
                         <div class="form-group">
-                            <label for="industry">Industry</label>
-                            <select id="industry" name="industry" required>
-                                <option value="">Select Industry</option>
-                                <option value="ecommerce">E-commerce</option>
-                                <option value="saas">SaaS/Software</option>
-                                <option value="healthcare">Healthcare</option>
-                                <option value="finance">Finance</option>
-                                <option value="real-estate">Real Estate</option>
-                                <option value="education">Education</option>
-                                <option value="automotive">Automotive</option>
-                                <option value="home-services">Home Services</option>
-                                <option value="legal">Legal Services</option>
-                                <option value="other">Other</option>
-                            </select>
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Tell us about your project and goals..." required></textarea>
                         </div>
-                        
-                        <button type="submit" class="calculate-btn" id="calculate-roi-btn">
-                            <i class="fas fa-chart-line" aria-hidden="true"></i>
-                            Calculate ROI
+
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                            Send Message
                         </button>
                     </form>
-                    
-                    <div id="roi-results" class="roi-results">
-                        <div class="results-grid">
-                            <div class="result-card">
-                                <span class="metric-value" id="monthly-revenue">$0</span>
-                                <div class="metric-label">Monthly Revenue</div>
-                            </div>
-                            <div class="result-card">
-                                <span class="metric-value" id="monthly-profit">$0</span>
-                                <div class="metric-label">Monthly Profit</div>
-                            </div>
-                            <div class="result-card">
-                                <span class="metric-value" id="roi-percentage">0%</span>
-                                <div class="metric-label">ROI Percentage</div>
-                            </div>
-                            <div class="result-card">
-                                <span class="metric-value" id="break-even-days">0</span>
-                                <div class="metric-label">Break-even Days</div>
-                            </div>
-                        </div>
-                        
-                        <div class="results-actions">
-                            <a href="#contact" class="btn btn-primary">Get Professional Help</a>
-                            <button type="button" class="btn btn-outline" onclick="window.print()">Print Results</button>
-                        </div>
-                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Our Services</h2>
-                <p>Comprehensive digital marketing solutions designed to maximize your online presence and drive measurable results.</p>
-            </div>
-            
-            <div class="services-grid">
-                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-icon">
-                        <i class="fas fa-bullseye" aria-hidden="true"></i>
-                    </div>
-                    <h3>Google Ads Management</h3>
-                    <p>Expert campaign setup, optimization, and management to maximize your advertising ROI and drive qualified traffic.</p>
-                    <a href="#contact" class="btn">Learn More</a>
-                </div>
-                
-                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-icon">
-                        <i class="fas fa-chart-bar" aria-hidden="true"></i>
-                    </div>
-                    <h3>Analytics & Reporting</h3>
-                    <p>Comprehensive tracking setup and detailed reporting to measure performance and identify optimization opportunities.</p>
-                    <a href="#contact" class="btn">Learn More</a>
-                </div>
-                
-                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-icon">
-                        <i class="fas fa-search" aria-hidden="true"></i>
-                    </div>
-                    <h3>SEO Optimization</h3>
-                    <p>Improve your organic search visibility and drive long-term sustainable traffic growth through proven SEO strategies.</p>
-                    <a href="#contact" class="btn">Learn More</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Blog Preview Section -->
-    <section id="blog" class="blog-preview">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Latest Insights</h2>
-                <p>Stay updated with the latest digital marketing trends, tips, and strategies from our experts.</p>
-            </div>
-            
-            <div class="latest-insights" data-aos="fade-up">
-                <!-- Blog posts will be dynamically loaded here -->
-            </div>
-            
-            <div class="blog-posts-container">
-                <!-- Blog posts will be loaded dynamically via JavaScript -->
-                <div class="text-center mt-4">
-                    <a href="blog.html" class="btn btn-primary"><i class="fas fa-book-reader"></i> View All Blog Posts</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Get In Touch</h2>
-                <p>Ready to take your digital marketing to the next level? Let\'s discuss how we can help you achieve your goals.</p>
-            </div>
-            
-            <div class="contact-content">
-                <div class="contact-info" data-aos="fade-right">
-                    <h3>Let\'s Start a Conversation</h3>
-                    <p>We're here to help you maximize your digital marketing ROI. Reach out to us for a free consultation and discover how our expertise can drive your business growth.</p>
-                    
-                    <div class="contact-item">
-                        <div class="icon">
-                            <i class="fas fa-envelope" aria-hidden="true"></i>
-                        </div>
-                        <div>
-                            <h4>Email</h4>
-                            <p>mpalomaresdigitalsolutions@gmail.com</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="icon">
-                            <i class="fas fa-phone" aria-hidden="true"></i>
-                        </div>
-                        <div>
-                            <h4>Phone</h4>
-                            <p>+639913032370</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="icon">
-                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                        </div>
-                        <div>
-                            <h4>Location</h4>
-                            <p>Manila,Philipphines</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <form class="contact-form" data-aos="fade-left" id="contact-form">
-                    <h3>Send us a Message</h3>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="first-name">First Name</label>
-                            <input type="text" id="first-name" name="first-name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="last-name">Last Name</label>
-                            <input type="text" id="last-name" name="last-name" required>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="company">Company (Optional)</label>
-                        <input type="text" id="company" name="company">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" placeholder="Tell us about your project and goals..." required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-paper-plane" aria-hidden="true"></i>
-                        Send Message
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                     <img src="assets/images/Logo.svg" alt="Mpalomares Digital Logo" class="footer-logo" style="width: 300px; height: auto; margin-bottom: 30px;">
+                     <img src="assets/images/Logo.svg" alt="Mpalomares Digital Logo" class="footer-logo" style="width: 200px; height: auto; margin-bottom: 30px;">
                      <p>Expert Google Ads management and digital marketing solutions designed to maximize your ROI and drive sustainable business growth.</p>
                     <div class="social-links">
                         <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>

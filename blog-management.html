@@ -177,110 +177,112 @@
     </style>
 </head>
 <body>
-    <div id="auth-container" class="auth-container">
-        <div class="login-form" id="login-section">
-            <h2>Admin Login</h2>
-            <form id="login-form" class="auth-form">
-                <div class="form-group">
-                    <label for="login-email">Email</label>
-                    <input type="email" id="login-email" name="email" required placeholder="Enter your email">
-                </div>
-                <div class="form-group">
-                    <label for="login-password">Password</label>
-                    <div class="password-input-container">
-                        <input type="password" id="login-password" name="password" required placeholder="Enter your password">
-                        <button type="button" class="toggle-password" onclick="togglePasswordVisibility('login-password')">
-                            <i class="fas fa-eye"></i>
-                        </button>
+    <main>
+        <div id="auth-container" class="auth-container">
+            <div class="login-form" id="login-section">
+                <h2>Admin Login</h2>
+                <form id="login-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" name="email" required placeholder="Enter your email">
                     </div>
-                </div>
-                <div class="form-group remember-me">
-                    <label>
-                        <input type="checkbox" name="remember-me"> Remember me
-                    </label>
-                </div>
-                <button type="submit" class="auth-submit-btn">Sign In</button>
-                <div class="auth-links">
-                    <a href="#" onclick="showRegistrationForm()">Create new account</a>
-                    <a href="#" onclick="showForgotPasswordForm()">Forgot password?</a>
-                </div>
-            </form>
-        </div>
-
-        <div class="login-form" id="register-section" style="display: none;">
-            <h2>Create Admin Account</h2>
-            <form id="register-form" class="auth-form">
-                <div class="form-group">
-                    <label for="register-name">Full Name</label>
-                    <input type="text" id="register-name" name="name" required placeholder="Enter your full name">
-                </div>
-                <div class="form-group">
-                    <label for="register-email">Email</label>
-                    <input type="email" id="register-email" name="email" required placeholder="Enter your email">
-                </div>
-                <div class="form-group">
-                    <label for="register-password">Password</label>
-                    <div class="password-input-container">
-                        <input type="password" id="register-password" name="password" required placeholder="Enter your password">
-                        <button type="button" class="toggle-password" onclick="togglePasswordVisibility('register-password')">
-                            <i class="fas fa-eye"></i>
-                        </button>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <div class="password-input-container">
+                            <input type="password" id="login-password" name="password" required placeholder="Enter your password">
+                            <button type="button" class="toggle-password" onclick="togglePasswordVisibility('login-password')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="register-confirm-password">Confirm Password</label>
-                    <div class="password-input-container">
-                        <input type="password" id="register-confirm-password" name="confirm-password" required placeholder="Confirm your password">
-                        <button type="button" class="toggle-password" onclick="togglePasswordVisibility('register-confirm-password')">
-                            <i class="fas fa-eye"></i>
-                        </button>
+                    <div class="form-group remember-me">
+                        <label>
+                            <input type="checkbox" name="remember-me"> Remember me
+                        </label>
                     </div>
-                </div>
-                <button type="submit" class="auth-submit-btn">Create Account</button>
-                <div class="auth-links">
-                    <a href="#" onclick="showLoginForm()">Already have an account? Sign in</a>
-                    <a href="#" onclick="localStorage.clear(); location.reload();">Clear Storage & Reset</a>
-                </div>
-            </form>
-        </div>
-
-        <div class="login-form" id="forgot-password-section" style="display: none;">
-            <h2>Reset Password</h2>
-            <form id="forgot-password-form" class="auth-form">
-                <div class="form-group">
-                    <label for="reset-email">Email</label>
-                    <input type="email" id="reset-email" name="email" required placeholder="Enter your email">
-                </div>
-                <button type="submit" class="auth-submit-btn">Reset Password</button>
-                <div class="auth-links">
-                    <a href="#" onclick="showLoginForm()">Back to login</a>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <div class="admin-panel" id="admin-panel" style="display: none;">
-        <div class="auth-section">
-            <div class="user-info" style="display: none;">
-                Welcome, <span class="user-name"></span>!
-                <button class="logout-btn">Logout</button>
-            </div>
-            <button class="login-btn" style="display: none;">Login</button>
-        </div>
-
-        <div class="content-section">
-            <div class="blog-stats">
-                <h2>Blog Statistics</h2>
-                <div id="stats-container"></div>
+                    <button type="submit" class="auth-submit-btn">Sign In</button>
+                    <div class="auth-links">
+                        <a href="#" onclick="showRegistrationForm()">Create new account</a>
+                        <a href="#" onclick="showForgotPasswordForm()">Forgot password?</a>
+                    </div>
+                </form>
             </div>
 
-            <div class="blog-posts">
-                <h2>Manage Posts</h2>
-                <button id="create-post-btn" style="display: none;">Create New Post</button>
-                <div id="posts-container"></div>
+            <div class="login-form" id="register-section" style="display: none;">
+                <h2>Create Admin Account</h2>
+                <form id="register-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="register-name">Full Name</label>
+                        <input type="text" id="register-name" name="name" required placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="register-email">Email</label>
+                        <input type="email" id="register-email" name="email" required placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">Password</label>
+                        <div class="password-input-container">
+                            <input type="password" id="register-password" name="password" required placeholder="Enter your password">
+                            <button type="button" class="toggle-password" onclick="togglePasswordVisibility('register-password')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-confirm-password">Confirm Password</label>
+                        <div class="password-input-container">
+                            <input type="password" id="register-confirm-password" name="confirm-password" required placeholder="Confirm your password">
+                            <button type="button" class="toggle-password" onclick="togglePasswordVisibility('register-confirm-password')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button type="submit" class="auth-submit-btn">Create Account</button>
+                    <div class="auth-links">
+                        <a href="#" onclick="showLoginForm()">Already have an account? Sign in</a>
+                        <a href="#" onclick="localStorage.clear(); location.reload();">Clear Storage & Reset</a>
+                    </div>
+                </form>
+            </div>
+
+            <div class="login-form" id="forgot-password-section" style="display: none;">
+                <h2>Reset Password</h2>
+                <form id="forgot-password-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="reset-email">Email</label>
+                        <input type="email" id="reset-email" name="email" required placeholder="Enter your email">
+                    </div>
+                    <button type="submit" class="auth-submit-btn">Reset Password</button>
+                    <div class="auth-links">
+                        <a href="#" onclick="showLoginForm()">Back to login</a>
+                    </div>
+                </form>
             </div>
         </div>
-    </div>
+
+        <div class="admin-panel" id="admin-panel" style="display: none;">
+            <div class="auth-section">
+                <div class="user-info" style="display: none;">
+                    Welcome, <span class="user-name"></span>!
+                    <button class="logout-btn">Logout</button>
+                </div>
+                <button class="login-btn" style="display: none;">Login</button>
+            </div>
+
+            <div class="content-section">
+                <div class="blog-stats">
+                    <h2>Blog Statistics</h2>
+                    <div id="stats-container"></div>
+                </div>
+
+                <div class="blog-posts">
+                    <h2>Manage Posts</h2>
+                    <button id="create-post-btn" style="display: none;">Create New Post</button>
+                    <div id="posts-container"></div>
+                </div>
+            </div>
+        </div>
+    </main>
 
     <!-- Auth Modal -->
     <div class="auth-modal">

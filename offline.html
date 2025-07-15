@@ -133,7 +133,7 @@
     </style>
 </head>
 <body>
-    <div class="offline-container" role="main">
+    <main class="offline-container" role="main">
         <div class="offline-icon" aria-hidden="true">📡</div>
         <h1><span class="status-indicator"></span>You're Offline</h1>
         <p>It seems you've lost your internet connection. Don't worry - some features of the MP Digital Blog are still available offline.</p>
@@ -141,7 +141,7 @@
         <button class="retry-button" onclick="checkConnection()" aria-label="Retry connection">
             Try Again
         </button>
-    </div>
+    </main>
 
     <script>
         let reconnectAttempts = 0;
