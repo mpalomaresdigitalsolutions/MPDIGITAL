@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyword Match Type Converter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            padding: 40px;
+        }
+
+        .input-section {
+            margin-bottom: 30px;
+        }
+
+        .input-section h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 14px;
+            font-family: 'Consolas', monospace;
+            resize: vertical;
+            transition: border-color 0.3s ease;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #4facfe;
+            box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .match-type-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .match-type-selector label {
+            font-weight: 600;
+            color: #333;
+            margin-right: 10px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .checkbox-item label {
+            cursor: pointer;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(252, 182, 159, 0.4);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            color: #333;
+        }
+
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 154, 158, 0.4);
+        }
+
+        .output-section {
+            margin-top: 30px;
+        }
+
+        .output-tabs {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .tab-button {
+            padding: 12px 20px;
+            background: #f8f9fa;
+            border: none;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: #666;
+        }
+
+        .tab-button.active {
+            background: #4facfe;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .output-textarea {
+            background: #f8f9fa;
+            border: 2px dashed #d0d0d0;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-radius: 10px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .info-box h4 {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .info-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .info-box li {
+            margin: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .info-box li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #4facfe;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .checkbox-group {
+                flex-direction: column;
+            }
+
+            .stats {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔧 Keyword Match Type Converter</h1>
+            <p>Convert your keywords into different Google Ads match types instantly</p>
+        </div>
+
+        <div class="main-content">
+            <div class="input-section">
+                <h3>📝 Enter Your Keywords</h3>
+                <div class="input-group">
+                    <textarea 
+                        id="keywordInput" 
+                        placeholder="Enter your keywords here, one per line:&#10;&#10;water heater repair&#10;emergency plumbing&#10;24 hour plumber&#10;hot water heater fix"
+                    ></textarea>
+                </div>
+            </div>
+
+            <div class="controls">
+                <div class="match-type-selector">
+                    <label>Select Match Types:</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="broadMatch" checked>
+                            <label for="broadMatch">Broad Match</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="phraseMatch" checked>
+                            <label for="phraseMatch">Phrase Match</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="exactMatch" checked>
+                            <label for="exactMatch">Exact Match</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="modifiedBroad" checked>
+                            <label for="modifiedBroad">Phrase + [Exact]</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="convertKeywords()">🚀 Convert Keywords</button>
+                    <button class="btn btn-secondary" onclick="copyAllResults()">📋 Copy All Results</button>
+                    <button class="btn btn-danger" onclick="clearAll()">🗑️ Clear All</button>
+                </div>
+            </div>
+
+            <div class="stats" id="stats" style="display: none;">
+                <div class="stat-item">
+                    <div class="stat-number" id="totalKeywords">0</div>
+                    <div class="stat-label">Original Keywords</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="totalConverted">0</div>
+                    <div class="stat-label">Total Converted</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="matchTypes">0</div>
+                    <div class="stat-label">Match Types</div>
+                </div>
+            </div>
+
+            <div class="output-section" id="outputSection" style="display: none;">
+                <h3>📊 Converted Keywords</h3>
+                
+                <div class="output-tabs">
+                    <button class="tab-button active" onclick="showTab('all')">All Combined</button>
+                    <button class="tab-button" onclick="showTab('broad')">Broad Match</button>
+                    <button class="tab-button" onclick="showTab('phrase')">Phrase Match</button>
+                    <button class="tab-button" onclick="showTab('exact')">Exact Match</button>
+                    <button class="tab-button" onclick="showTab('modified')">Phrase + [Exact]</button>
+                </div>
+
+                <div id="tab-all" class="tab-content active">
+                    <textarea id="outputAll" class="output-textarea" readonly></textarea>
+                    <button class="btn btn-primary" style="margin-top: 10px;" onclick="copyToClipboard('outputAll')">📋 Copy All</button>
+                </div>
+
+                <div id="tab-broad" class="tab-content">
+                    <textarea id="outputBroad" class="output-textarea" readonly></textarea>
+                    <button class="btn btn-primary" style="margin-top: 10px;" onclick="copyToClipboard('outputBroad')">📋 Copy Broad Match</button>
+                </div>
+
+                <div id="tab-phrase" class="tab-content">
+                    <textarea id="outputPhrase" class="output-textarea" readonly></textarea>
+                    <button class="btn btn-primary" style="margin-top: 10px;" onclick="copyToClipboard('outputPhrase')">📋 Copy Phrase Match</button>
+                </div>
+
+                <div id="tab-exact" class="tab-content">
+                    <textarea id="outputExact" class="output-textarea" readonly></textarea>
+                    <button class="btn btn-primary" style="margin-top: 10px;" onclick="copyToClipboard('outputExact')">📋 Copy Exact Match</button>
+                </div>
+
+                <div id="tab-modified" class="tab-content">
+                    <textarea id="outputModified" class="output-textarea" readonly></textarea>
+                    <button class="btn btn-primary" style="margin-top: 10px;" onclick="copyToClipboard('outputModified')">📋 Copy Phrase + [Exact]</button>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h4>📚 Match Type Guide</h4>
+                <ul>
+                    <li><strong>Broad Match:</strong> keyword (triggers for related searches)</li>
+                    <li><strong>Phrase Match:</strong> "keyword" (triggers for phrases containing your keyword)</li>
+                    <li><strong>Exact Match:</strong> [keyword] (triggers for exact keyword or close variants)</li>
+                    <li><strong>Phrase + [Exact]:</strong> Both "keyword" and [keyword] formats</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let convertedResults = {
+            broad: [],
+            phrase: [],
+            exact: [],
+            modified: []
+        };
+
+        function convertKeywords() {
+            const input = document.getElementById('keywordInput').value.trim();
+            
+            if (!input) {
+                alert('Please enter some keywords first!');
+                return;
+            }
+
+            // Split keywords by line and clean them
+            const keywords = input.split('\n')
+                .map(keyword => keyword.trim())
+                .filter(keyword => keyword.length > 0);
+
+            // Clear previous results
+            convertedResults = {
+                broad: [],
+                phrase: [],
+                exact: [],
+                modified: []
+            };
+
+            // Get selected match types
+            const selectedTypes = {
+                broad: document.getElementById('broadMatch').checked,
+                phrase: document.getElementById('phraseMatch').checked,
+                exact: document.getElementById('exactMatch').checked,
+                modified: document.getElementById('modifiedBroad').checked
+            };
+
+            // Convert each keyword
+            keywords.forEach(keyword => {
+                if (selectedTypes.broad) {
+                    convertedResults.broad.push(keyword);
+                }
+                if (selectedTypes.phrase) {
+                    convertedResults.phrase.push(`"${keyword}"`);
+                }
+                if (selectedTypes.exact) {
+                    convertedResults.exact.push(`[${keyword}]`);
+                }
+                if (selectedTypes.modified) {
+                    convertedResults.modified.push(`"${keyword}"`);
+                    convertedResults.modified.push(`[${keyword}]`);
+                }
+            });
+
+            // Display results
+            displayResults();
+            updateStats(keywords.length);
+            
+            // Show output section
+            document.getElementById('outputSection').style.display = 'block';
+            document.getElementById('stats').style.display = 'flex';
+        }
+
+        function displayResults() {
+            // All combined results
+            let allResults = [];
+            if (convertedResults.broad.length > 0) allResults.push('// BROAD MATCH', ...convertedResults.broad, '');
+            if (convertedResults.phrase.length > 0) allResults.push('// PHRASE MATCH', ...convertedResults.phrase, '');
+            if (convertedResults.exact.length > 0) allResults.push('// EXACT MATCH', ...convertedResults.exact, '');
+            if (convertedResults.modified.length > 0) allResults.push('// PHRASE + EXACT MATCH', ...convertedResults.modified, '');
+
+            document.getElementById('outputAll').value = allResults.join('\n');
+            document.getElementById('outputBroad').value = convertedResults.broad.join('\n');
+            document.getElementById('outputPhrase').value = convertedResults.phrase.join('\n');
+            document.getElementById('outputExact').value = convertedResults.exact.join('\n');
+            document.getElementById('outputModified').value = convertedResults.modified.join('\n');
+
+            // Auto-resize textareas
+            const textareas = document.querySelectorAll('.output-textarea');
+            textareas.forEach(textarea => {
+                textarea.style.height = 'auto';
+                textarea.style.height = Math.max(200, textarea.scrollHeight) + 'px';
+            });
+        }
+
+        function updateStats(originalCount) {
+            const totalConverted = convertedResults.broad.length + 
+                                 convertedResults.phrase.length + 
+                                 convertedResults.exact.length + 
+                                 convertedResults.modified.length;
+
+            const matchTypesCount = [
+                convertedResults.broad.length > 0,
+                convertedResults.phrase.length > 0,
+                convertedResults.exact.length > 0,
+                convertedResults.modified.length > 0
+            ].filter(Boolean).length;
+
+            document.getElementById('totalKeywords').textContent = originalCount;
+            document.getElementById('totalConverted').textContent = totalConverted;
+            document.getElementById('matchTypes').textContent = matchTypesCount;
+        }
+
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Show selected tab
+            document.getElementById(`tab-${tabName}`).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+
+        function copyToClipboard(textareaId) {
+            const textarea = document.getElementById(textareaId);
+            textarea.select();
+            document.execCommand('copy');
+            
+            // Show feedback
+            const button = event.target;
+            const originalText = button.textContent;
+            button.textContent = '✅ Copied!';
+            button.style.background = '#28a745';
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.style.background = '';
+            }, 2000);
+        }
+
+        function copyAllResults() {
+            const allText = document.getElementById('outputAll').value;
+            if (!allText) {
+                alert('No results to copy. Please convert keywords first!');
+                return;
+            }
+            
+            navigator.clipboard.writeText(allText).then(() => {
+                const button = event.target;
+                const originalText = button.textContent;
+                button.textContent = '✅ Copied All!';
+                button.style.background = '#28a745';
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = '';
+                }, 2000);
+            });
+        }
+
+        function clearAll() {
+            if (confirm('Are you sure you want to clear all data?')) {
+                document.getElementById('keywordInput').value = '';
+                document.getElementById('outputAll').value = '';
+                document.getElementById('outputBroad').value = '';
+                document.getElementById('outputPhrase').value = '';
+                document.getElementById('outputExact').value = '';
+                document.getElementById('outputModified').value = '';
+                
+                document.getElementById('outputSection').style.display = 'none';
+                document.getElementById('stats').style.display = 'none';
+                
+                convertedResults = {
+                    broad: [],
+                    phrase: [],
+                    exact: [],
+                    modified: []
+                };
+            }
+        }
+
+        // Auto-resize input textarea
+        document.getElementById('keywordInput').addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = Math.max(150, this.scrollHeight) + 'px';
+        });
+
+        // Add keyboard shortcut for conversion
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 'Enter') {
+                convertKeywords();
+            }
+        });
+    </script>
+</body>
+</html>
