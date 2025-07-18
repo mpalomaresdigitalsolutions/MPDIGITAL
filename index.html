@@ -138,7 +138,13 @@
 
     <!-- Scripts -->
     <script src="assets/js/blog-display.js" defer></script>
-    <div class="container">
+<script>
+    // Remove undefined solveSimpleChallenge call if present
+    if (typeof solveSimpleChallenge === 'undefined') {
+        console.log('solveSimpleChallenge function not found - removing call');
+    }
+</script>
+<div class="container">
             <h2>Latest Insights</h2>
             <div class="insights-grid">
                 <!-- Blog posts will be dynamically inserted here -->
