@@ -220,7 +220,7 @@ function loadBlogPosts() {
             author: 'Marlon Palomares',
             title: 'PPC Trends to Watch in 2025',
             description: 'Stay ahead of the competition with insights into the emerging trends and technologies shaping the future of PPC advertising.',
-            link: './blog/ppc-trends-2025.html',
+            link: './ppc-trends-2025.html',
             image: 'assets/images/blog/ppc-trends.jpg'
         },
         // Add more blog posts here
@@ -248,4 +248,3 @@ function loadBlogPosts() {
 
 // Call the function when the DOM is loaded
 document.addEventListener('DOMContentLoaded', loadBlogPosts);
-
